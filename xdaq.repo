@@ -1,0 +1,23 @@
+[XDAQ-Core]
+name=XDAQ Core
+baseurl=https://xdaq.web.cern.ch/repo/core/15/cc7/x86_64/RPMS/
+enabled=1
+gpgcheck=0
+
+[XDAQ-Worksuite]
+name=XDAQ Worksuite
+baseurl=https://xdaq.web.cern.ch/repo/worksuite/15/cc7/x86_64/RPMS/
+enabled=1
+gpgcheck=0
+
+[XDAQ-Xaas]
+name=XDAQ Xaas
+baseurl=https://xdaq.web.cern.ch/repo/xaas/15/cc7/x86_64/RPMS/
+enabled=1
+gpgcheck=0
+
+[XDAQ-Iaas]
+name=XDAQ Iaas
+baseurl=https://xdaq.web.cern.ch/repo/iaas/15/cc7/x86_64/RPMS/
+enabled=1
+gpgcheck=0

@@ -1,0 +1,5 @@
+[cactus-ts-base]
+name=CACTUS Project Software Repository for Trigger Supervisor RPMs
+baseurl=http://www.cern.ch/cactus/release/ts/5.2/centos7_x86_64/RPMS
+enabled=1
+gpgcheck=0

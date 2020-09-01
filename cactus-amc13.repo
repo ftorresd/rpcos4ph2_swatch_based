@@ -1,0 +1,12 @@
+[cactus-amc13-base]
+name=CACTUS Project Software Repository for amc13 packages
+baseurl=http://www.cern.ch/cactus/release/amc13/1.2/centos7_x86_64/base/RPMS
+enabled=1
+gpgcheck=0
+
+
+[cactus-amc13-updates]
+name=CACTUS Project Software Repository Updates for amc13 packages
+baseurl=http://www.cern.ch/cactus/release/amc13/1.2/centos7_x86_64/updates/RPMS
+enabled=1
+gpgcheck=0

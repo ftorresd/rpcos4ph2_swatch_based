@@ -1,0 +1,12 @@
+[ipbus-sw-base]
+name=IPbus software repository
+baseurl=http://www.cern.ch/ipbus/sw/release/2.7/repos/centos7_x86_64_gcc8/base/RPMS
+enabled=1
+gpgcheck=0
+
+
+[ipbus-sw-updates]
+name=IPbus software repository updates
+baseurl=http://www.cern.ch/ipbus/sw/release/2.7/repos/centos7_x86_64_gcc8/updates/RPMS
+enabled=1
+gpgcheck=0

@@ -1,0 +1,5 @@
+[cactus-mp7]
+name=CACTUS Project Software Repository for mp7 packages
+baseurl=http://www.cern.ch/cactus/release/mp7/2.6/centos7_gcc8_x86_64/
+enabled=1
+gpgcheck=0

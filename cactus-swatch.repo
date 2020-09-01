@@ -1,0 +1,5 @@
+[cactus-swatch-base]
+name=CACTUS Project Software Repository for SWATCH packages
+baseurl=http://www.cern.ch/cactus/release/swatch/1.3/centos7_x86_64/RPMS
+enabled=1
+gpgcheck=0
