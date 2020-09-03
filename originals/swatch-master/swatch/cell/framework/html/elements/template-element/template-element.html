@@ -1,0 +1,99 @@
+<link rel="import" href="/extern/bower_components/polymer/polymer.html">
+<link rel="import" href="/ts/common-elements/reset-css/reset-css.html">
+<link rel="import" href="/ts/common-elements/iron-flex-layout-attributes/iron-flex-layout-attributes.html">
+
+<!--
+an element lives in the folder /bower_components/agilians-elements/<element-name>/
+
+only the last comment before <dom-module ...> appears in the documentation
+-->
+
+<!--
+Material design: [Click me](https://www.google.com/design/spec/components/text-fields.html)
+
+`template-element` is a template to be used when creating new elements.
+
+Example:
+
+    <template-element></template-element>
+    <template-element test="test"></template-element>
+
+### Styling
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--my-custom-color` | A custom css property | `black`
+`--my-mixin-name` | A custom mixin | `{}`
+
+@demo demo/index.html
+
+
+-->
+<dom-module id="template-element">
+  <template>
+    <!-- this makes your element follow the general theme (things like fonts) -->
+    <style include="reset-css"></style>
+
+    <!-- this will allow you to use flexbox easily -->
+    <!-- surf to /ts/common-elements/iron-flex-layout-attributes/index.html -->
+    <style include="iron-flex-layout-attributes"></style>
+
+    <style>
+:host{display:block}:host([disabled]){color:gray}.some-class,[some-attribute],some-element{color:var(--my-custom-color,blue);@apply (--my-mixin-name)}
+</style>
+
+    <h1>This is the template-element element!</h1>
+    <paper-button raised on-click="makeDinosaur">[[someproperty]]</paper-button>
+
+  </template>
+  <script>
+Polymer({is:"template-element",behaviors:[],properties:{/**
+       * Fired when you make a dinosaur
+       *
+       * @event made-a-dinosaur
+       */
+/**
+       * The message the element will show
+       */
+someproperty:{type:String,value:"Hello, World!",
+//alternatively, this can be a computed property, based on other properties
+// computed: 'computeFullName(first, last)'
+//someproperty-changed event will be fired when property changes (required for data-binding to parent)
+notify:!0,
+//element attribute will be updated when property changes
+reflectToAttribute:!0,
+//function to execute if property changes
+observer:"_disabledChanged",
+//if true, cannot be updated except with _setSomeproperty(value)
+readOnly:!1}},observers:[],/**
+     * This will do something nice
+     *
+     * @param {Egg} egg The dinosaur egg.
+     * @return {Dinosaur}
+     */
+makeDinosaur:function(egg){
+// using this, developers can use your event to fire a function of their own
+// <element-template on-made-a-dinosaur="customfunction"></element-template>
+// the second argument is optional
+return alert("you clicked the button!"),egg||(egg=new Egg("velociraptor")),this.fire("made-a-dinosaur",{fromEgg:egg}),new Dinosaur(egg)},/**
+     * This is a private function, do not use
+     */
+_destroyHumanity:function(){
+// if you have a function you don't want others to use outside your element
+// prefix the function with '_'
+dinosaurs=new Array;for(var i=0;i<1e8;i++)dinosaurs[i]=new Dinosaur,dinosaurs[i]._killAllHumans()},
+// Fires when an instance of the element is created
+// you have no data binding and the element does not contain html code yet
+created:function(){},
+// Fires when the local DOM has been fully prepared
+// data binding works and the template html is ready
+ready:function(){},
+// Fires when the element was inserted into the document
+attached:function(){},
+// Fires when the element was removed from the document
+detached:function(){},
+// Fires when an attribute was added, removed, or updated
+attributeChanged:function(name,type){}});
+</script>
+</dom-module>

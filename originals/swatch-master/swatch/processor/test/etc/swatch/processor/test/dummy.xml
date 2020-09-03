@@ -1,0 +1,28 @@
+<node>
+    <node id="ctrl" address="0x0000">
+        <node id="id" address="0x0" description="ID register">
+            <node id="magic" address="0x0"/>
+            <node id="fwrev" address="0x1">
+                <node id="c" mask="0x000000ff"/>
+                <node id="b" mask="0x0000ff00"/>
+                <node id="a" mask="0x00ff0000"/>
+                <node id="design" mask="0xff000000"/>
+            </node>
+        </node>
+        <node id="infos" address="0x2">
+            <node id="nTx" mask="0x00000ff"/>
+            <node id="nRx" mask="0x000ff00"/>
+        </node>
+        <node id="hardReset" address="0x3"/>
+        <node id="softReset" address="0x4"/>
+    </node>
+    <node id="ttc" address="0x10" module="file://dummyttc.xml"/>
+    <node id="channels" address="0x100000">
+        <node id="rx0" address="0x0"  module="file://dummychannel.xml"/>
+        <node id="rx1" address="0x1000"  module="file://dummychannel.xml"/>
+        <node id="rx2" address="0x2000"  module="file://dummychannel.xml"/>
+        <node id="rx3" address="0x3000"  module="file://dummychannel.xml"/>
+        <node id="tx0" address="0x4000" module="file://dummychannel.xml"/>
+        <node id="tx1" address="0x10000" module="file://dummychannel.xml"/>
+    </node>
+</node>

@@ -1,0 +1,368 @@
+{
+  "SYSTEM":
+          {
+            "NAME": "bmtf",
+            "CREATOR": "swatch::bmtfswatchcell::BMTFSystem",
+            "CRATES": 
+                [
+                  {
+                    "NAME": "Schroff crate 1",
+                    "LOCATION": "Point5, S1D10-43",
+                    "DESCRIPTION": "Second Schroff crate"
+                  },
+                  {
+                    "NAME": "Schroff crate 2",
+                    "LOCATION": "Point5, S2D10-43",
+                    "DESCRIPTION": "Second Schroff crate"
+                  }
+                ],
+            "PROCESSORS":
+                    [
+                      {
+                        "NAME": "mp7_slot07",
+                        "CREATOR": "bmtfswatchcell::BMTFProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+						"ROLE": "procMP7",
+                        "URI": "chtcp-2.0://bridge-s1d03-17:10203?target=amc-s1d03-09-02:50001",
+                        "ADDRESS TABLE": "file:///opt/xdaq/etc/bmtf/addr_table/framework/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 1",
+                        "CRATE SLOT": 2,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:06]", "PID": "[00:06]" },
+                            { "NAME" : "Rx[08:14]", "PID": "[08:14]" },
+                            { "NAME" : "Rx[16:30]", "PID": "[16:30]" },
+                            { "NAME" : "Rx[32:36]", "PID": "[32:36]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[60:62]", "PID": "[60:62]" }
+                        ]
+                      },
+                      {
+                        "NAME": "mp7_slot08",
+                        "CREATOR": "bmtfswatchcell::BMTFProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "procMP7",
+                        "URI": "chtcp-2.0://bridge-s1d03-17:10203?target=amc-s1d03-09-04:50001",
+                        "ADDRESS TABLE": "file:///opt/xdaq/etc/bmtf/addr_table/framework/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 1",
+                        "CRATE SLOT": 4,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:06]", "PID": "[00:06]" },
+                            { "NAME" : "Rx[08:14]", "PID": "[08:14]" },
+                            { "NAME" : "Rx[16:30]", "PID": "[16:30]" },
+                            { "NAME" : "Rx[32:36]", "PID": "[32:36]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[60:62]", "PID": "[60:62]" }
+                        ]
+                      },
+                      {
+                        "NAME": "mp7_slot09",
+                        "CREATOR": "bmtfswatchcell::BMTFProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "procMP7",
+                        "URI": "chtcp-2.0://bridge-s1d03-17:10203?target=amc-s1d03-09-06:50001",
+                        "ADDRESS TABLE": "file:///opt/xdaq/etc/bmtf/addr_table/framework/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 1",
+                        "CRATE SLOT": 6,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:06]", "PID": "[00:06]" },
+                            { "NAME" : "Rx[08:14]", "PID": "[08:14]" },
+                            { "NAME" : "Rx[16:30]", "PID": "[16:30]" },
+                            { "NAME" : "Rx[32:36]", "PID": "[32:36]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[60:62]", "PID": "[60:62]" }
+                        ]
+                      },
+                      {
+                        "NAME": "mp7_slot10",
+                        "CREATOR": "bmtfswatchcell::BMTFProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "procMP7",
+                        "URI": "chtcp-2.0://bridge-s1d03-17:10203?target=amc-s1d03-09-08:50001",
+                        "ADDRESS TABLE": "file:///opt/xdaq/etc/bmtf/addr_table/framework/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 1",
+                        "CRATE SLOT": 8,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:06]", "PID": "[00:06]" },
+                            { "NAME" : "Rx[08:14]", "PID": "[08:14]" },
+                            { "NAME" : "Rx[16:30]", "PID": "[16:30]" },
+                            { "NAME" : "Rx[32:36]", "PID": "[32:36]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[60:62]", "PID": "[60:62]" }
+                        ]
+                      },
+                      {
+                        "NAME": "mp7_slot11",
+                        "CREATOR": "bmtfswatchcell::BMTFProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "procMP7",
+                        "URI": "chtcp-2.0://bridge-s1d03-17:10203?target=amc-s1d03-09-10:50001",
+                        "ADDRESS TABLE": "file:///opt/xdaq/etc/bmtf/addr_table/framework/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 1",
+                        "CRATE SLOT": 10,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:06]", "PID": "[00:06]" },
+                            { "NAME" : "Rx[08:14]", "PID": "[08:14]" },
+                            { "NAME" : "Rx[16:30]", "PID": "[16:30]" },
+                            { "NAME" : "Rx[32:36]", "PID": "[32:36]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[60:62]", "PID": "[60:62]" }
+                        ]
+                      },
+                      {
+                        "NAME": "mp7_slot12",
+                        "CREATOR": "bmtfswatchcell::BMTFProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "procMP7",
+                        "URI": "chtcp-2.0://bridge-s1d03-17:10203?target=amc-s1d03-09-12:50001",
+                        "ADDRESS TABLE": "file:///opt/xdaq/etc/bmtf/addr_table/framework/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 1",
+                        "CRATE SLOT": 12,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:06]", "PID": "[00:06]" },
+                            { "NAME" : "Rx[08:14]", "PID": "[08:14]" },
+                            { "NAME" : "Rx[16:30]", "PID": "[16:30]" },
+                            { "NAME" : "Rx[32:36]", "PID": "[32:36]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[60:62]", "PID": "[60:62]" }
+                        ]
+                      },
+                      {
+                        "NAME": "mp7_slot01",
+                        "CREATOR": "bmtfswatchcell::BMTFProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "procMP7",
+                        "URI": "chtcp-2.0://bridge-s1d03-17:10203?target=amc-s1d03-17-01:50001",
+                        "ADDRESS TABLE": "file:///opt/xdaq/etc/bmtf/addr_table/framework/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 2",
+                        "CRATE SLOT": 1,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:06]", "PID": "[00:06]" },
+                            { "NAME" : "Rx[08:14]", "PID": "[08:14]" },
+                            { "NAME" : "Rx[16:30]", "PID": "[16:30]" },
+                            { "NAME" : "Rx[32:36]", "PID": "[32:36]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[60:62]", "PID": "[60:62]" }
+                        ]
+                      },
+                      {
+                        "NAME": "mp7_slot02",
+                        "CREATOR": "bmtfswatchcell::BMTFProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "procMP7",
+                        "URI": "chtcp-2.0://bridge-s1d03-17:10203?target=amc-s1d03-17-03:50001",
+                        "ADDRESS TABLE": "file:///opt/xdaq/etc/bmtf/addr_table/framework/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 2",
+                        "CRATE SLOT": 3,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:06]", "PID": "[00:06]" },
+                            { "NAME" : "Rx[08:14]", "PID": "[08:14]" },
+                            { "NAME" : "Rx[16:30]", "PID": "[16:30]" },
+                            { "NAME" : "Rx[32:36]", "PID": "[32:36]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[60:62]", "PID": "[60:62]" }
+                        ]
+                      },
+                      {
+                        "NAME": "mp7_slot03",
+                        "CREATOR": "bmtfswatchcell::BMTFProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "procMP7",
+                        "URI": "chtcp-2.0://bridge-s1d03-17:10203?target=amc-s1d03-17-05:50001",
+                        "ADDRESS TABLE": "file:///opt/xdaq/etc/bmtf/addr_table/framework/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 2",
+                        "CRATE SLOT": 5,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:06]", "PID": "[00:06]" },
+                            { "NAME" : "Rx[08:14]", "PID": "[08:14]" },
+                            { "NAME" : "Rx[16:30]", "PID": "[16:30]" },
+                            { "NAME" : "Rx[32:36]", "PID": "[32:36]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[60:62]", "PID": "[60:62]" }
+                        ]
+                      },
+                      {
+                        "NAME": "mp7_slot04",
+                        "CREATOR": "bmtfswatchcell::BMTFProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "procMP7",
+                        "URI": "chtcp-2.0://bridge-s1d03-17:10203?target=amc-s1d03-17-07:50001",
+                        "ADDRESS TABLE": "file:///opt/xdaq/etc/bmtf/addr_table/framework/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 2",
+                        "CRATE SLOT": 7,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:06]", "PID": "[00:06]" },
+                            { "NAME" : "Rx[08:14]", "PID": "[08:14]" },
+                            { "NAME" : "Rx[16:30]", "PID": "[16:30]" },
+                            { "NAME" : "Rx[32:36]", "PID": "[32:36]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[60:62]", "PID": "[60:62]" }
+                        ]
+                      },
+                      {
+                        "NAME": "mp7_slot05",
+                        "CREATOR": "bmtfswatchcell::BMTFProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "procMP7",
+                        "URI": "chtcp-2.0://bridge-s1d03-17:10203?target=amc-s1d03-17-09:50001",
+                        "ADDRESS TABLE": "file:///opt/xdaq/etc/bmtf/addr_table/framework/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 2",
+                        "CRATE SLOT": 9,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:06]", "PID": "[00:06]" },
+                            { "NAME" : "Rx[08:14]", "PID": "[08:14]" },
+                            { "NAME" : "Rx[16:30]", "PID": "[16:30]" },
+                            { "NAME" : "Rx[32:36]", "PID": "[32:36]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[60:62]", "PID": "[60:62]" }
+                        ]
+                      },
+                      {
+                        "NAME": "mp7_slot06",
+                        "CREATOR": "bmtfswatchcell::BMTFProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "procMP7",
+                        "URI": "chtcp-2.0://bridge-s1d03-17:10203?target=amc-s1d03-17-11:50001",
+                        "ADDRESS TABLE": "file:///opt/xdaq/etc/bmtf/addr_table/framework/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 2",
+                        "CRATE SLOT": 11,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:06]", "PID": "[00:06]" },
+                            { "NAME" : "Rx[08:14]", "PID": "[08:14]" },
+                            { "NAME" : "Rx[16:30]", "PID": "[16:30]" },
+                            { "NAME" : "Rx[32:36]", "PID": "[32:36]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[60:62]", "PID": "[60:62]" }
+                        ]
+                      }
+                    ],
+            "DAQTTCS":
+                    [
+                      {
+                        "NAME": "AMC13_BOTTOM",
+						"ROLE": "daqttc",
+                        "CREATOR": "bmtfswatchcell::BMTFDaqTTCs",
+                        "CRATE NAME": "Schroff crate 1",
+                        "CRATE SLOT": 13,
+                        "URI T2": "chtcp-2.0://ctrl-s2c16-09-01:10203?target=amc-s1d03-09-13-t2:50001",
+                        "ADDRESS TABLE T2": "file:///opt/cactus/etc/amc13/AMC13XG_T2.xml",
+						"URI T1": "chtcp-2.0://ctrl-s2c16-09-01:10203?target=amc-s1d03-09-13-t1:50001",
+                        "ADDRESS TABLE T1": "file:///opt/cactus/etc/amc13/AMC13XG_T1.xml",
+                        "FED ID": 1377
+                      },
+                      {
+                        "NAME": "AMC13_TOP",
+                        "ROLE": "daqttc",
+                        "CREATOR": "bmtfswatchcell::BMTFDaqTTCs",
+                        "CRATE NAME": "Schroff crate 2",
+                        "CRATE SLOT": 13,
+                        "URI T2": "chtcp-2.0://bridge-s1d03-17:10203?target=amc-s1d03-17-13-t2:50001",
+                        "ADDRESS TABLE T2": "file:///opt/cactus/etc/amc13/AMC13XG_T2.xml",
+                        "URI T1": "chtcp-2.0://bridge-s1d03-17:10203?target=amc-s1d03-17-13-t1:50001",
+                        "ADDRESS TABLE T1": "file:///opt/cactus/etc/amc13/AMC13XG_T1.xml",
+                        "FED ID": 1376
+                      }
+                    ],
+            "LINKS":
+                    [
+                    ],
+            "CONNECTED FEDS":
+                    [
+                        {
+                            "FED ID": 1395,
+                                    "RX PORTS" : [
+                                            "mp7_slot01.inputPorts.Rx[00:06]",
+                                            "mp7_slot02.inputPorts.Rx[00:06]",
+                                            "mp7_slot03.inputPorts.Rx[00:06]",
+                                            "mp7_slot04.inputPorts.Rx[00:06]",
+                                            "mp7_slot05.inputPorts.Rx[00:06]",
+                                            "mp7_slot06.inputPorts.Rx[00:06]",
+                                            "mp7_slot07.inputPorts.Rx[00:06]",
+                                            "mp7_slot08.inputPorts.Rx[00:06]",
+                                            "mp7_slot09.inputPorts.Rx[00:06]",
+                                            "mp7_slot10.inputPorts.Rx[00:06]",
+                                            "mp7_slot11.inputPorts.Rx[00:06]",
+                                            "mp7_slot12.inputPorts.Rx[00:06]"
+                                        ]
+                        },
+                        {
+                            "FED ID": 1391,
+                            "RX PORTS" : [  "mp7_slot01.inputPorts.Rx[08:14]",
+                                            "mp7_slot02.inputPorts.Rx[08:14]",
+                                            "mp7_slot03.inputPorts.Rx[08:14]",
+                                            "mp7_slot04.inputPorts.Rx[08:14]",
+                                            "mp7_slot05.inputPorts.Rx[08:14]",
+                                            "mp7_slot06.inputPorts.Rx[08:14]",
+                                            "mp7_slot07.inputPorts.Rx[08:14]",
+                                            "mp7_slot08.inputPorts.Rx[08:14]",
+                                            "mp7_slot09.inputPorts.Rx[08:14]",
+                                            "mp7_slot10.inputPorts.Rx[08:14]",
+                                            "mp7_slot11.inputPorts.Rx[08:14]",
+                                            "mp7_slot12.inputPorts.Rx[08:14]"
+                                        ]
+                        },
+                        {
+                            "FED ID": 1390,
+                            "RX PORTS" : [  "mp7_slot01.inputPorts.Rx[16:22]",
+                                            "mp7_slot02.inputPorts.Rx[16:22]",
+                                            "mp7_slot03.inputPorts.Rx[16:22]",
+                                            "mp7_slot04.inputPorts.Rx[16:22]",
+                                            "mp7_slot05.inputPorts.Rx[16:22]",
+                                            "mp7_slot06.inputPorts.Rx[16:22]",
+                                            "mp7_slot07.inputPorts.Rx[16:22]",
+                                            "mp7_slot08.inputPorts.Rx[16:22]",
+                                            "mp7_slot09.inputPorts.Rx[16:22]",
+                                            "mp7_slot10.inputPorts.Rx[16:22]",
+                                            "mp7_slot11.inputPorts.Rx[16:22]",
+                                            "mp7_slot12.inputPorts.Rx[16:22]"
+                                        ]
+                        },
+                        {
+                            "FED ID": 1393,
+                            "RX PORTS" : [  "mp7_slot01.inputPorts.Rx[22:28]",
+                                            "mp7_slot02.inputPorts.Rx[22:28]",
+                                            "mp7_slot03.inputPorts.Rx[22:28]",
+                                            "mp7_slot04.inputPorts.Rx[22:28]",
+                                            "mp7_slot05.inputPorts.Rx[22:28]",
+                                            "mp7_slot06.inputPorts.Rx[22:28]",
+                                            "mp7_slot07.inputPorts.Rx[22:28]",
+                                            "mp7_slot08.inputPorts.Rx[22:28]",
+                                            "mp7_slot09.inputPorts.Rx[22:28]",
+                                            "mp7_slot10.inputPorts.Rx[22:28]",
+                                            "mp7_slot11.inputPorts.Rx[22:28]",
+                                            "mp7_slot12.inputPorts.Rx[22:28]"
+                                        ]
+                        },
+                        {
+                            "FED ID": 1394,
+                            "RX PORTS" : [  "mp7_slot01.inputPorts.Rx[28:30]","mp7_slot01.inputPorts.Rx[32:36]",
+                                            "mp7_slot02.inputPorts.Rx[28:30]","mp7_slot02.inputPorts.Rx[32:36]",
+                                            "mp7_slot03.inputPorts.Rx[28:30]","mp7_slot03.inputPorts.Rx[32:36]",
+                                            "mp7_slot04.inputPorts.Rx[28:30]","mp7_slot04.inputPorts.Rx[32:36]",
+                                            "mp7_slot05.inputPorts.Rx[28:30]","mp7_slot05.inputPorts.Rx[32:36]",
+                                            "mp7_slot06.inputPorts.Rx[28:30]","mp7_slot06.inputPorts.Rx[32:36]",
+                                            "mp7_slot07.inputPorts.Rx[28:30]","mp7_slot07.inputPorts.Rx[32:36]",
+                                            "mp7_slot08.inputPorts.Rx[28:30]","mp7_slot08.inputPorts.Rx[32:36]",
+                                            "mp7_slot09.inputPorts.Rx[28:30]","mp7_slot09.inputPorts.Rx[32:36]",
+                                            "mp7_slot10.inputPorts.Rx[28:30]","mp7_slot10.inputPorts.Rx[32:36]",
+                                            "mp7_slot11.inputPorts.Rx[28:30]","mp7_slot11.inputPorts.Rx[32:36]",
+                                            "mp7_slot12.inputPorts.Rx[28:30]","mp7_slot12.inputPorts.Rx[32:36]"
+                                        ]
+                        }
+
+                    ],
+            "EXCLUDED BOARDS":
+		            []
+          }
+}

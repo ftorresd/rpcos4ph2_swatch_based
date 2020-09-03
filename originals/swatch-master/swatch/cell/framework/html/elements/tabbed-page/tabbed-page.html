@@ -1,0 +1,34 @@
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+
+
+<link rel="import" href="/extern/bower_components/paper-tabs/paper-tab.html">
+<link rel="import" href="/extern/bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="/extern/bower_components/iron-pages/iron-pages.html">
+
+
+<dom-module id="tabbed-page">
+    <template>
+        <style>
+:host{--paper-tabs-selection-bar-color:#aaa}[tabs-container]{background:#fff;font-family:Source Sans Pro;color:#666}[tabs-container] paper-tabs{margin:0 auto;border-bottom:1px solid #eee;text-align:left}[tabs-container] paper-tabs paper-tab{-webkit-font-smoothing:antialiased;text-align:left;font-size:1pc;font-weight:400;width:150px;text-rendering:optimizeLegibility}
+</style>
+        <div tabs-container>
+            <paper-tabs noink scrollable selected="{{selected}}">
+                <paper-tab>System</paper-tab>
+                <paper-tab>Processors</paper-tab>
+                <paper-tab>Object Details</paper-tab>
+                <paper-tab>Ports</paper-tab>
+                <paper-tab>Metrics</paper-tab>
+            </paper-tabs>
+        </div>
+        <iron-pages selected="{{selected}}">
+            <content select="swatch-system"></content>
+            <content select="swatch-processors"></content>
+            <content select="swatch-object-details"></content>
+            <content select="swatch-ports"></content>
+            <content select="swatch-metrics"></content>
+        </iron-pages>
+    </template>
+    <script>
+Polymer({is:"tabbed-page",properties:{selected:{type:String,value:0},tabnames:{type:Array,value:[]},tabids:{type:Array,value:[]}}});
+</script>
+</dom-module>

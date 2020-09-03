@@ -1,0 +1,296 @@
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+<link rel="import" href="/extern/bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="/extern/bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="/extern/bower_components/paper-item/paper-item.html">
+<link rel="import" href="/extern/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/extern/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/extern/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/extern/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/extern/bower_components/paper-progress/paper-progress.html">
+<link rel="import" href="/ts/common-elements/iron-flex-layout-attributes/iron-flex-layout-attributes.html">
+<link rel="import" href="/ts/common-elements/auto-update/auto-update.html">
+<link rel="import" href="/ts/common-elements/master-detail-layout/master-detail-layout.html">
+<link rel="import" href="/ts/common-elements/reset-css/reset-css.html">
+<link rel="import" href="/extern/bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="/extern/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/extern/bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="/swatchcell/framework/html/elements/monitorable-status/monitorable-status.html">
+
+<link rel="import" href="/ts/common-elements/command-input/command-input.html">
+
+
+<dom-module id="command-sequences-panel">
+
+    <template>
+
+      <style include="swatch-styles" is="custom-style"></style>
+      <style include="reset-css"></style>
+
+      <style>
+        paper-item {
+          --paper-item-min-height: 1em;
+          font-size: 1em;
+        }
+      </style>
+
+      <style include="iron-flex-layout-attributes"></style>
+      <link rel="import" type="css" href="css/command-sequences-panel-min.css?__inline=true">
+
+      <template is="dom-if" if="{{!objectTypes.0}}">
+        <p class="Error" style="font-weight:bold;">No processors / DaqTTCManagers in system</p>
+      </template>
+
+      <!-- Object Types -->
+
+      <auto-update
+        id="objectTypeArrayRequester"
+        data="{{objectTypes}}"
+        callback="CommandSequencePanel::getObjectTypeArray"
+        no-refresh
+        interval="3000"
+        headless
+      ></auto-update>
+
+      <!-- Devices -->
+
+      <auto-update
+        id="deviceArrayRequester"
+        data="{{devices}}"
+        callback="CommandSequencePanel::getDeviceArray"
+        no-refresh
+        headless
+        parameters='["objecttype"]'
+        on-data-changed="deviceArrayChanged"
+        interval="3000"
+      ></auto-update>
+
+      <!-- Commands -->
+
+      <auto-update
+        id="commandSequenceArrayRequester"
+        data="{{commandSequences}}"
+        callback="CommandSequencePanel::getCommandSequenceArray"
+        no-refresh
+        headless
+        parameters='["objecttype"]'
+      ></auto-update>
+
+
+      <master-detail-layout>
+        <div master style="padding:10px">
+          <template is="dom-if" if="{{objectTypes.0}}">
+            <span style="font-weight: bold;">Select object type:</span><br/>
+          </template>
+          <paper-listbox id="objectTypeMenu" selected="{{selectedObjectType}}" on-iron-select="sendObjectType" on-iron-items-changed="sendObjectType">
+            <template is="dom-repeat" items="{{objectTypes}}" as="obj">
+              <paper-item id$="{{obj}}">{{obj}}</paper-item>
+            </template>
+          </paper-listbox>
+        </div>
+        <div detail>
+          <master-detail-layout>
+
+            <div master style="padding:10px">
+              <template is="dom-if" if="{{commandSequences.0}}">
+                <span style="font-weight: bold;">Select sequence:</span><br/>
+              </template>
+              <paper-listbox id="commandSequenceMenu" selected="{{selectedCommandSequence}}" on-iron-select="sendCommandSequence">
+                <template is="dom-repeat" items="{{commandSequences}}" as="obj">
+                  <paper-item id$="{{obj}}">{{obj}}</paper-item>
+                </template>
+              </paper-listbox>
+            </div>
+
+            <div detail style="padding:10px">
+              <template is="dom-if" if="{{devices.0}}">
+                <span style="font-weight: bold;">Select devices:</span><br/>
+              </template>
+              <paper-listbox id="deviceMenu" selected-values="{{selectedDevices}}" multi on-selected-values-changed="sendDevices">
+                <template is="dom-repeat" items="{{devices}}" as="obj">
+                  <paper-item id$="{{obj.id}}" >{{obj.id}}
+                    <template is="dom-if" if="{{obj.lockedby}}">
+                      (locked by {{obj.lockedby}})
+                    </template>
+                  </paper-item>
+                </template>
+              </paper-listbox>
+              <template is="dom-if" if="{{devices.0}}">
+                <paper-button raised on-click="selectAll">Select all</paper-button>
+                <paper-button raised on-click="selectNone">Select none</paper-button>
+              </template>
+            </div>
+
+          </master-detail-layout>
+        </div>
+      </master-detail-layout>
+
+      <div class="spacer"></div>
+
+      <auto-update
+        id="commandsListRequester"
+        data="{{commandsList}}"
+        callback="CommandSequencePanel::getCommandsList"
+        no-refresh
+        headless
+        parameters='["commandsequence", "objecttype"]'
+      ></auto-update>
+
+      <auto-update
+        id="GateKeeperChecker"
+        data="{{isGateKeeperReady}}"
+        callback="CommandSequencePanel::isGateKeeperReady"
+        no-refresh
+        headless
+        on-data-changed="checkRunButtonAndAutoUpdate"
+      ></auto-update>
+
+      <template is="dom-if" if="{{isGateKeeperReady}}">
+        <span class="Good">GateKeeper is Ready.</span> <br/>
+      </template>
+
+      <template is="dom-if" if="{{!isGateKeeperReady}}">
+        <span class="Error">GateKeeper is Not Available. Please load one before proceeding.</span> <br/>
+      </template>
+
+
+      <div horizontal layout>
+
+        <template is="dom-if" if="{{commandsList.0}}">
+          <div style="min-width: 300px">
+            <paper-button style="width: 100%; background-color: #F5F5F5;" on-click="toggleCommandsListCollapse">
+              <div>
+                Commands list
+                <paper-icon-button icon="icons:expand-more" style="margin:0;padding:0; width: 25px; height: 25px;"></paper-icon-button>
+              </div>
+            </paper-button>
+            <iron-collapse id="commandsListCollapse">
+              <div>
+                <ol>
+                  <template is="dom-repeat" items="{{commandsList}}" as="command">
+                    <li><span style="font-weight: bold;">{{command.name}}</span> (<span>namespace:</span> <span style="font-style: italic;">{{command.namespace}}</span>)</li>
+                  </template>
+                </ol>
+              </div>
+            </iron-collapse>
+          </div>
+        </template>
+
+        <template is="dom-if" if="{{objectTypes.0}}">
+          <template is="dom-if" if="{{!commandsList.0}}">
+            <span class="Error" >Please select a command sequence.</span> <br/>
+          </template>
+        </template>
+
+        <div style="padding: 10px;">
+          <template is="dom-if" if="{{objectTypes.0}}">
+            <paper-button id="runCommandSequenceButton" raised on-click="runCommandSequence" ><iron-icon icon="launch"></iron-icon>Run command sequence</paper-button>
+          </template>
+        </div>
+      </div>
+
+      <div class="spacer"></div>
+
+      <auto-update
+          id="commandSequenceStarter"
+          callback="CommandSequencePanel::runCommandSequence"
+          data="{{runCommandSequenceResult}}"
+          no-refresh
+          headless
+          parameters='["run"]'
+          run="{{run}}"
+        ></auto-update>
+
+      <template is="dom-if" if="{{isCommandSequenceStatusBusy(runCommandSequenceResult.status)}}">
+        <span class="Error">One of the selected devices has become busy, the command sequence was aborted.</span>
+      </template>
+
+      <template is="dom-if" if="{{isCommandSequenceStatusMissingParameter(runCommandSequenceResult.status)}}">
+        <span class="Error">Not all of the parameters required for running the selected sequence are available:</span>
+        <table>
+          <tr>
+            <th>Device ID</th>
+            <th>Namespace</th>
+            <th>Command</th>
+            <th>Missing Parameter</th>
+          </tr>
+          <template is="dom-repeat" items="{{runCommandSequenceResult.devices}}" as="device">
+            <template is="dom-repeat" items="{{device.missingparameters}}" as="parameter">
+              <tr>
+                <td class="compacttable"><span style="font-weight: bold;">{{device.id}}</span></td>
+                <td class="compacttable"><span>{{parameter.namespace}}</span></td>
+                <td class="compacttable"><span>{{parameter.command}}</span></td>
+                <td class="compacttable"><span style="font-weight:bold;" class="Error">{{parameter.parameter}}</span></td>
+              </tr>
+            </template>
+          </template>
+        </table>
+      </template>
+
+      <auto-update
+          id="commandSequenceStatusUpdater"
+          data="{{commandSequenceStatus}}"
+          callback="CommandSequencePanel::getCommandSequenceStatus"
+          parameters='["commandsequence", "objecttype", "devices"]'
+          headless
+          on-data-changed="onCommandSequenceStatusChanged"
+          interval="1000"
+      ></auto-update>
+
+
+      <template is="dom-if" if="{{commandSequenceStatus.0.time}}">
+        <span>Last updated:</span> <span>{{commandSequenceStatus.0.time}}</span>
+        <table id="commandSequenceInterface">
+          <tr>
+            <th style="min-width: 150px;">Object</th><th style="min-width: 80px;">Status</th><th style="min-width: 100px;">Running <br/> time</th><th style="min-width: 100px">Progress</th><th>Commands</th>
+          </tr>
+          <template is="dom-repeat" items="{{commandSequenceStatus}}" as="cmdSeq">
+            <tr>
+              <td>{{cmdSeq.device}}</td>
+              <td class$="{{cmdSeq.status}}">{{cmdSeq.status}}</td>
+              <td>{{cmdSeq.runningtime}}</td>
+              <td><paper-progress id$="[[getProgressID(cmdSeq.device)]]" value="{{cmdSeq.progress}}" class$="{{setProgressClass(cmdSeq.status, cmdSeq.device)}}"></paper-progress> &nbsp; <span>{{cmdSeq.progress}}</span>&#37;</td>
+              <td style="padding-left: 5px;">
+                <div horizontal layout >
+                  <div>
+                    <paper-button id="[[getButtonCollapseID(cmdSeq.device)]]" style="background-color: #E0E0E0;" on-click="toggleIronCollapse">
+                      <paper-icon-button icon="icons:expand-more" style="margin:0;padding:0; width: 15px; height: 15px;"></paper-icon-button>
+                    </paper-button>
+                  </div>
+                  <div flex>
+                    <template is="dom-repeat" items="{{cmdSeq.commands}}" as="cmd" filter="isRunning">
+                      <table>
+                        <tr>
+                          <td class="compacttable" style="width: 150px" ><span>{{cmd.id}}</span></td>
+                          <td class="compacttable" style="width: 70px"><span>{{cmd.progress}}</span>&#37;</td>
+                          <td class="compacttable"><span>{{cmd.message}}</span></td>
+                        </tr>
+                      </table>
+                    </template>
+                  </div>
+                </div>
+                <iron-collapse id="[[getIronCollapseID(cmdSeq.device)]]">
+                  <table>
+                    <tr>
+                      <th class="compacttable" style="width: 150px">Name</th><th class="compacttable" style="width: 70px">Progress</th><th class="compacttable">Message</th><th class="compacttable">Result</th>
+                    </tr>
+                    <template is="dom-repeat" items="{{cmdSeq.commands}}" as="cmd">
+                      <tr>
+                        <td class="compacttable"><monitorable-status status="[[cmd.status]]"></monitorable-status><span>{{cmd.id}}</span></td>
+                        <td class="compacttable"><span>{{cmd.progress}}</span>&#37;</td>
+                        <td class="compacttable"><span>{{cmd.message}}</span></td>
+                        <td class="compacttable"><span>{{cmd.result}}</span></td>
+                      </tr>
+                    </template>
+                  </table>
+                </iron-collapse>
+              </td>
+            </tr>
+          </template>
+        </table>
+      </template>
+
+    </template>
+
+    <script src="javascript/command-sequences-panel-min.js?__inline=true"></script>
+
+</dom-module>

@@ -1,0 +1,181 @@
+
+
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+<link rel="import" href="/extern/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/extern/bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="/extern/bower_components/paper-styles/color.html">
+
+
+<!--
+
+Element which displays a square with the status of a MonitorableObject;
+ - Good
+ - Warning
+ - Error
+ - NoLimit
+ - Unknown
+
+If the flag non-critical is set then a Grey Border wraps the box, to show that the status is not contributing to the global status
+
+@demo demo/index.html
+
+-->
+
+<dom-module id="monitorable-object-status">
+  <template>
+
+    <style>
+
+      :host {
+        display: inline-block;
+      }
+
+      #content {
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+      }
+
+      #border {
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+
+      /* STATUS BASED COLOURS: */
+      .Error-bkg {
+        background-color: #E44E50;
+      }
+      .Good-bkg {
+        background-color: var(--paper-green-400);
+      }
+      .Warning-bkg {
+        background-color: orange;
+      }
+      .NoLimit-bkg {
+        background-color: var(--paper-grey-400);
+      }
+      .Unknown-bkg {
+        background-color: var(--paper-grey-800);
+      }
+      .Enabled-bkg {
+        background-color: #4d4dff;
+      }
+      .Disabled-bkg {
+        background-color: gray;
+      }
+      .NonCritical-bkg {
+        background-color: #78909C;
+      }
+
+      .Error-border {
+        border: 3px solid #E44E50;
+      }
+      .Good-border {
+        border: 3px solid var(--paper-green-400);
+      }
+      .Warning-border {
+        border: 3px solid orange;
+      }
+      .NoLimit-border {
+        border: 3px solid  var(--paper-grey-400);
+      }
+      .Unknown-border {
+        border: 3px solid var(--paper-grey-800);
+      }
+      .Enabled-border {
+        border: 3px solid #4d4dff;
+      }
+      .Disabled-border {
+        border: 3px solid gray;
+      }
+      .NonCritical-border{
+        border: 3px solid gray;
+      }
+      .Default-border {
+        border: 1px solid #ddd;
+      }
+
+    </style>
+
+    <div
+        on-mouseout="mouseOut"
+        on-mouseover="mouseOver"
+        on-click="clicked"
+        id="content"
+        class$="[[_getContentClass(status, nonCritical, inverted)]]"
+    ></div>
+
+  </template>
+  <script>
+
+    Polymer({
+      is: 'monitorable-object-status',
+      properties: {
+
+        /**
+         * Fired when the mouse goes over the item
+         * @event mouse-over
+         * @param {String} id
+         */
+
+         /**
+          * Fired when the mouse goes out of the item
+          * @event mouse-out
+          * @param {String} id
+          */
+
+          /**
+           * Fired when the mouse clicks the item
+           * @event click
+           * @param {String} id
+           */
+
+        status: {
+          type: String,
+          value: ""
+        },
+        nonCritical: {
+          type: Boolean,
+          value: false
+        },
+        inverted: {
+          type: Boolean,
+          value: false
+        }
+      },
+      mouseOver: function () {
+        this.fire("mouse-over", {id: this.id});
+      },
+      mouseOut: function () {
+        this.fire("mouse-out", {id: this.id});
+      },
+      clicked: function (e) {
+        this.fire("click", {id: this.id});
+        e.stopPropagation();
+      },
+      _getContentClass: function(status, nonCritical, isInverted) {
+        var classname = "";
+
+        if (!isInverted) {
+          classname = status + "-bkg ";
+          if (nonCritical) {
+            classname += " NonCritical-border";
+          } else {
+            classname += "Default-border";
+          }
+          return classname;
+        } else {
+          if (nonCritical) {
+            classname = status + "-border NonCritical-bkg";
+          } else {
+            classname = status + "-bkg";
+          }
+          return classname;
+        }
+      }
+    });
+  </script>
+</dom-module>

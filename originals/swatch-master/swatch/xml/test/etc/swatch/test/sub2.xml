@@ -1,0 +1,6 @@
+<algo id="system">
+  <context id="processors">
+    <param id="electronLookUpTable" type="vector:int">56, 345, 954, 310</param>
+    <!--- many more params -->
+  </context>
+</algo>

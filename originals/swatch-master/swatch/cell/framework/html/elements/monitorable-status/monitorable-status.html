@@ -1,0 +1,103 @@
+
+
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+<link rel="import" href="/extern/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/extern/bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="/extern/bower_components/paper-styles/paper-styles.html">
+
+<!--
+
+Element which displays a circular div with a background color set according to the status attribute.
+The following status are available:
+ - Good
+ - Warning
+ - Error
+ - NoLimit
+ - Unknown
+ - Enabled
+ - Disabled
+ - NonCritical
+ - Running
+ - Done
+
+@demo demo/index.html
+
+-->
+
+<dom-module id="monitorable-status">
+  <template>
+
+    <style include="swatch-styles"></style>
+    <style>
+
+      div.metricstatus {
+        width: 15px;
+        height: 15px;
+        border:1px solid #ddd;
+        float: left;
+        margin-right: 10px;
+        vertical-align: middle;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      /* STATUS BASED COLOURS: */
+      .Error-bkg {
+        background-color: #E44E50;
+        color: white;
+      }
+      .Good-bkg {
+        background-color: var(--paper-green-400);
+      }
+      .Done-bkg {
+        background-color: var(--paper-green-400);
+      }
+      .Warning-bkg {
+        background-color: orange;
+      }
+      .NoLimit-bkg {
+        background-color: var(--paper-grey-400);
+      }
+      .Unknown-bkg {
+        background-color: var(--paper-grey-800);
+        color: white;
+      }
+      .Enabled-bkg {
+  	    background-color: #4d4dff;
+      }
+      .Disabled-bkg {
+  	    background-color: gray;
+      }
+      .NonCritical-bkg {
+  	    background-color: #997300;
+  	  }
+      .Running-bkg {
+  	    background-color: var(--paper-blue-500);
+  	  }
+      
+
+    </style>
+
+    <div title="Metric Status: {{status}}" class$="{{_getMetricStatusClass(status)}}">[[getContent(status)]]</div>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'monitorable-status',
+      properties: {
+        status: {
+          type: String,
+          value: ""
+        }
+      },
+      _getMetricStatusClass: function(status) {
+        return 'metricstatus '+status+'-bkg';
+      },
+      getContent: function (status) {
+        if (status == "Error") return "E";
+        if (status == "Warning") return "W";
+        return "";
+      }
+    });
+  </script>
+</dom-module>

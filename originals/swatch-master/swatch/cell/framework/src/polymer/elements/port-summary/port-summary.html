@@ -1,0 +1,98 @@
+<link rel="import" href="/extern/bower_components/polymer/polymer.html">
+<link rel="import" href="/ts/common-elements/reset-css/reset-css.html">
+<link rel="import" href="/ts/common-elements/iron-flex-layout-attributes/iron-flex-layout-attributes.html">
+<link rel="import" href="/swatchcell/framework/html/elements/monitorable-object-status/monitorable-object-status.html">
+
+<!--
+
+Example:
+
+    <port-summary input-ports="[[inputPortsJson]]" output-ports="[[outputPortsJson]]"></port-summary>
+    <port-summary amc-ports="[[amcPortsJson]]"></port-summary>
+
+Use the port-click event to do stuff if the user clicks a port
+
+@demo demo/index.html
+-->
+<dom-module id="port-summary">
+  <template>
+    <style include="reset-css"></style>
+    <style include="iron-flex-layout-attributes"></style>
+
+    <link rel="stylesheet" type="text/css" href="css/port-summary-min.css?__inline=true">
+
+    <div class="portsection">
+
+      <h4>{{header}}</h4>
+
+      <template is="dom-if" if="[[inputPorts.length]]">
+
+        <h4>Input Ports</h4>
+        <template is="dom-repeat" items="{{inputPorts}}" as="portcollection">
+          <template is="dom-repeat" items="{{portcollection}}" as="port">
+            <monitorable-object-status
+              status="{{port.status}}"
+              non-critical="[[_isNonCritical(port.monitoringstatus)]]"
+              on-mouse-out="_mouseOut"
+              on-mouse-over="_mouseIn"
+              id$="{{port.id}}"
+              port-type="input"
+              on-click="_firePortClick"
+              class="port">
+            </monitorable-object-status>
+          </template>
+        </template>
+        <div class="clearfix"></div>
+
+      </template>
+
+      <template is="dom-if" if="[[outputPorts.length]]">
+
+        <h4>Output Ports</h4>
+        <template is="dom-repeat" items="{{outputPorts}}" as="portcollection">
+          <template is="dom-repeat" items="{{portcollection}}" as="port">
+            <monitorable-object-status
+              status="{{port.status}}"
+              non-critical="[[_isNonCritical(port.monitoringstatus)]]"
+              on-mouse-out="_mouseOut"
+              on-mouse-over="_mouseIn"
+              id$="{{port.id}}"
+              port-type="output"
+              on-click="_firePortClick"
+              class="port">
+            </monitorable-object-status>
+          </template>
+        </template>
+        <div class="clearfix"></div>
+
+      </template>
+
+      <template is="dom-if" if="[[amcPorts.length]]">
+
+          <h4>AMC ports</h4>
+          <template is="dom-repeat" items="{{amcPorts}}" as="portcollection">
+            <template is="dom-repeat" items="{{portcollection}}" as="port">
+              <monitorable-object-status
+              class="port"
+              status="{{port.status}}"
+              on-mouse-out="_mouseOut"
+              on-mouse-over="_mouseIn"
+              id$="{{port.id}}"
+              port-type="amc"
+              on-click="_firePortClick"
+              non-critical="[[_isNonCritical(port.monitoringstatus)]]"
+              ></monitorable-object-status>
+            </template>
+          </template>
+          <div class="clearfix"></div>
+
+      </template>
+
+      <!-- we need a non-breaking space because otherwise the space for the port is not allocated -->
+      <div class="mouseover"><span id="portName"></span>&nbsp;</div>
+
+    </div>
+
+  </template>
+  <script src="javascript/port-summary-min.js?__inline=true"></script>
+</dom-module>

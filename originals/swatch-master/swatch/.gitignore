@@ -1,0 +1,6 @@
+nbproject
+**/bin
+**/obj
+**/lib
+**/rpm
+swatch.log

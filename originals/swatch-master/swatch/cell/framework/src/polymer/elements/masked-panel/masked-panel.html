@@ -1,0 +1,247 @@
+<link rel="import" href="/extern/bower_components/polymer/polymer.html">
+<link rel="import" href="/ts/common-elements/reset-css/reset-css.html">
+<link rel="import" href="/ts/common-elements/iron-flex-layout-attributes/iron-flex-layout-attributes.html">
+<link rel="import" href="/extern/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/extern/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/swatchcell/framework/html/elements/swatch-styles/swatch-styles.html">
+<link rel="import" href="/ts/ajaxell/html/elements/ag-toaster/ag-toaster.html">
+<link rel="import" href="/ts/ajaxell/html/elements/ag-toaster/throws-toast.html">
+
+<!--
+an element lives in the folder /bower_components/agilians-elements/<element-name>/
+
+only the last comment before <dom-module ...> appears in the documentation
+-->
+
+<!--
+Material design: [Click me](https://www.google.com/design/spec/components/text-fields.html)
+
+`masked-panel` Masking panel element
+
+-->
+<dom-module id="masked-panel">
+  <template>
+    <!-- this makes your element follow the general theme (things like fonts) -->
+    <style include="reset-css"></style>
+    <style include="swatch-styles"></style>
+
+    <ts-ajax
+      id="applyDynamicMasksAjax"
+      data="{{operationStatus}}"
+      callback="MaskedPanel::applyDynamicMasks"
+      parameters='["fedmaps"]'
+      fedmaps="{{fedMaps}}"
+      on-data-changed="checkStatus"
+    ></ts-ajax>
+
+    <ts-ajax
+      id="applyStaticMasksAjax"
+      data="{{operationStatus}}"
+      callback="MaskedPanel::applyStaticMasks"
+      on-data-changed="checkStatus"
+    ></ts-ajax>
+
+    <ts-ajax
+      id="clearMasksAjax"
+      data="{{operationStatus}}"
+      callback="MaskedPanel::clearMasks"
+      on-data-changed="checkStatus"
+    ></ts-ajax>
+
+    <ts-ajax
+      id="maskedObjectsRequester"
+      data="{{maskedObjects}}"
+      callback="MaskedPanel::getMaskedObjects"
+      auto
+    ></ts-ajax>
+
+    <!-- this will allow you to use flexbox easily -->
+    <!-- surf to /ts/common-elements/iron-flex-layout-attributes/index.html -->
+    <style include="iron-flex-layout-attributes"></style>
+
+    <link rel="stylesheet" type="text/css" href="css/masked-panel-min.css?__inline=true">
+
+    <div vertical layout style="height:100%;">
+
+      <template is="dom-if" if="[[!isGatekeeperReady]]">
+        <div class="Error" style="font-weight: bold;">
+          GateKeeper is not available. Please load one before proceeding.
+        </div>
+      </template>
+      
+      <div horizontal layout align-center>
+        <paper-input label="FED Enable Mask" flex value="{{fedMaps}}"></paper-input>
+        <div style="margin-top:10px;">
+          <paper-button disabled="[[!isGatekeeperReady]]" raised on-click="applyDynamicMasks">Apply Dynamic Masks</paper-button>
+        </div>
+      </div>
+
+      <div vertical layout align-end>
+        <div style="margin-top: 10px;">
+          <paper-button disabled="[[!isGatekeeperReady]]" raised on-click="clearMasks">Clear masks</paper-button>
+          <paper-button disabled="[[!isGatekeeperReady]]" raised on-click="applyStaticMasks">Apply Static Masks</paper-button>
+        </div>
+      </div>
+
+
+      <div horizontal layout style="margin-top: 10px;" flex>
+
+        <div vertical layout style="width: 50%;" class="dashedDiv">
+
+          <span class="containerTitle">Masked objects</span>
+
+          <paper-dropdown-menu label="Filter" noink on-iron-select="filterMaskedItems">
+              <paper-menu class="dropdown-content" selected="0">
+                <paper-item filter-tag="all">Show all</paper-item>
+                <paper-item filter-tag="link">Links</paper-item>
+                <paper-item filter-tag="input">Inputs</paper-item>
+                <paper-item filter-tag="amcport">AMC Ports</paper-item>
+              </paper-menu>
+          </paper-dropdown-menu>
+
+          <template is="dom-if" if="[[isLink(selectedMaskedFilter)]]">
+            <div id="maskedLinks">
+              <div class="label">Masked Links</div>
+              <ul>
+                <template is="dom-if" if="[[!maskedObjects.maskedLinks.length]]">
+                  <li class="object">
+                    No masked links
+                  </li>
+                </template>
+                <template is="dom-repeat" items="[[maskedObjects.maskedLinks]]" as="link">
+                  <li class="object">
+                    [[link]]
+                  </li>
+                </template>
+              </ul>
+            </div>
+          </template>
+
+          <template is="dom-if" if="[[isInput(selectedMaskedFilter)]]">
+            <div id="maskedInputs">
+              <div class="label">Masked Inputs</div>
+              <ul>
+                <template is="dom-if" if="[[!maskedObjects.maskedInputs.length]]">
+                  <li class="object">
+                    No masked inputs
+                  </li>
+                </template>
+                <template is="dom-repeat" items="[[maskedObjects.maskedInputs]]" as="input">
+                  <li class="object">
+                    [[input]]
+                  </li>
+                </template>
+              </ul>
+            </div>
+          </template>
+          
+          <template is="dom-if" if="[[isAMCPort(selectedMaskedFilter)]]">
+            <div id="maskedAMCPorts">
+              <div class="label">Masked AMC Ports</div>
+              <ul>
+                <template is="dom-if" if="[[!maskedObjects.maskedAMCPorts.length]]">
+                  <li class="object">
+                    No masked AMC ports
+                  </li>
+                </template>
+                <template is="dom-repeat" items="[[maskedObjects.maskedAMCPorts]]" as="amcPort">
+                  <li class="object">
+                    [[amcPort]]
+                  </li>
+                </template>
+              </ul>
+            </div>
+          </template>
+          
+          <template is="dom-if" if="[[isAll(selectedMaskedFilter)]]">
+            <template is="dom-if" if="[[maskedObjects.otherMaskedObjects.length]]">
+              <div id="otherMaskedObjects">
+                <div class="label">Other masked objects</div>
+                <ul>                  
+                  <template is="dom-repeat" items="[[maskedObjects.otherMaskedObjects]]" as="maskedObject">
+                    <li class="object">
+                      [[maskedObject]]
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </template>
+          </template>
+
+        </div>
+
+        <div vertical layout style="width: 50%;" class="dashedDiv">
+
+          <span class="containerTitle">Disabled objects</span>
+
+          <paper-dropdown-menu label="Filter" noink on-iron-select="filterDisabledItems">
+              <paper-menu class="dropdown-content" selected="0">
+                <paper-item filter-tag="all">Show all</paper-item>
+                <paper-item filter-tag="dtm">DTMs</paper-item>
+                <paper-item filter-tag="amc">AMCs</paper-item>
+              </paper-menu>
+          </paper-dropdown-menu>
+
+          <template is="dom-if" if="[[isDTM(selectedDisabledFilter)]]">
+            <div id="disabledDTMs">
+              <div class="label">Disabled DTMs</div>
+              <ul>
+                <template is="dom-if" if="[[!maskedObjects.disabledDTMs.length]]">
+                  <li class="object">
+                    No disabled DTMs
+                  </li>
+                </template>
+                <template is="dom-repeat" items="[[maskedObjects.disabledDTMs]]" as="dtm">
+                  <li class="object">
+                    [[dtm]]
+                  </li>
+                </template>
+              </ul>
+            </div>
+          </template>
+
+          <template is="dom-if" if="[[isAMC(selectedDisabledFilter)]]">
+            <div id="disabledAMCs">
+              <div class="label">Disabled AMCs</div>
+              <ul>
+                <template is="dom-if" if="[[!maskedObjects.disabledAMCs.length]]">
+                  <li class="object">
+                    No disabled AMCs
+                  </li>
+                </template>
+                <template is="dom-repeat" items="[[maskedObjects.disabledAMCs]]" as="amc">
+                  <li class="object">
+                    [[amc]]
+                  </li>
+                </template>
+              </ul>
+            </div>
+          </template>
+          
+          <template is="dom-if" if="[[isAll(selectedDisabledFilter)]]">
+            <template is="dom-if" if="[[maskedObjects.otherDisabledObjects.length]]">
+              <div id="otherDisabledObjects">
+                <div class="label">Other disabled objects</div>
+                <ul>                  
+                  <template is="dom-repeat" items="[[maskedObjects.otherDisabledObjects]]" as="disabledObject">
+                    <li class="object">
+                      [[disabledObject]]
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </template>
+          </template>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+
+  </template>
+  <script src="javascript/masked-panel-min.js?__inline=true"></script>
+</dom-module>

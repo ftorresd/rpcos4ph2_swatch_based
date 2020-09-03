@@ -1,0 +1,83 @@
+<system id="calol2">
+  <creator>calol2::System"</creator>
+
+  <crates>
+    <crate id="S2D11-29">
+      <location>Point5, S2D11-29</location>
+      <description>Calorimeter trigger layer 2 main processor crate</description>
+    </crate>
+  </crates>
+
+  <processors>
+    <processor id="MP8">
+      <creator>calol2::MainProcessor</creator>
+      <hw-type>MP7-XE</hw-type>
+      <role>MainProcessor</role>
+      <uri>chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-09:50001</uri>
+      <address-table>file:///opt/cactus/etc/mp7/addrtab/xe_v2_0_0/mp7xe_infra.xml</address-table>
+      <crate>S2D11-29</crate>
+      <slot>9</slot>
+      <rx-port name="Rx[0:72]" pid="[0:72]"/>
+      <tx-port name="Tx[60:66]" pid="[60:66]"/>
+    </processor>
+
+    <processor id="DEMUX">
+      <creator>calol2::Demux</creator>
+      <hw-type>MP7-XE</hw-type>
+      <role>Demux</role>
+      <uri>chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-12:50001</uri>
+      <address-table>file:///opt/cactus/etc/mp7/addrtab/xe_v2_0_0/mp7xe_infra.xml</address-table>
+      <crate>S2D11-29</crate>
+      <slot>12</slot>
+      <rx-port name="Rx[0:72]" pid="[0:72]"/>
+      <tx-port name="Tx[04:11]" pid="[04:11]"/>
+    </processor>
+
+    <processor id="FaultyProcessor">
+      <creator>calol2::MainProcessor</creator>
+      <hw-type>MP7-XE</hw-type>
+      <role>Defunct</role>
+      <uri>chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-09:50001</uri>
+      <address-table>file:///opt/cactus/etc/mp7/addrtab/xe_v2_0_0/mp7xe_infra.xml</address-table>
+      <crate>S2D11-29</crate>
+      <slot>1</slot>
+      <rx-port name="Rx[73:76]" pid="[73:76]"/>
+      <tx-port name="Tx[60:66]" pid="[60:66]"/>
+    </processor>
+  </processors>
+
+  <daqttc-mgrs>
+    <daqttc-mgr id="AMC13">
+      <creator>swatch::amc13::AMC13Manager</creator>
+      <role>daqttc</role>
+      <crate>S2D11-29</crate>
+      <slot>13</slot>
+      <uri id="t1">chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-13-t1:50001</uri>
+      <uri id="t2">chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-13-t2:50001</uri>
+      <address-table id="t1">file:///opt/cactus/etc/amc13/AMC13XG_T1.xml</address-table>
+      <address-table id="t2">file:///opt/cactus/etc/amc13/AMC13XG_T2.xml</address-table>
+      <fed-id>1360</fed-id>
+    </daqttc-mgr>
+  </daqttc-mgrs>
+
+  <links>
+    <link id="MP8_Tx_[60:66]">
+      <from>MP8</from>
+      <to>DEMUX</to>
+      <tx-port>Tx[60:66]</tx-port>
+      <rx-port>Rx[39:72:6]</rx-port>
+    </link>
+  </links>
+
+  <connected-feds>
+    <connected-fed id="1356">
+      <port id="MP8.inputPorts.Rx[00:10]" />
+      <port id="MP8.inputPorts.Rx[58:72]" />
+      <port id="FaultyProcessor.inputPorts.Rx[73:76]" />
+    </connected-fed>
+  </connected-feds>
+
+  <excluded-boards>
+    <exclude id="FaultyProcessor" />
+  </excluded-boards>
+</system>

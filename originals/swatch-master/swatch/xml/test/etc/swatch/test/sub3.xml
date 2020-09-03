@@ -1,0 +1,26 @@
+<run-settings id="system">
+  <context id="processor1">
+    <param id="aParam" type="string">aValueForProcessor1</param>
+    <state id="Halted">
+      <mon-obj id="ports.Rx00" status="non-critical" />
+    </state>
+    <mask id="ports.Rx00"/>
+    <!--- many more masks & mon settings -->
+  </context>
+  <!-- To check that multiple contexts with same ID & in same file get merged correctly:
+          Specify other port's mon setting in another context tag of same name -->
+  <context id="processor1">
+    <state id="Halted">
+      <mon-obj id="ports.Rx01" status="non-critical" />
+    </state>
+  </context>
+  <context id="processors">
+    <state id="Halted">
+      <mon-obj id="ports.Rx03" status="non-critical" />
+    </state>
+    <!-- MASK INPUT PORT 00 -->
+    <mask id="inputPorts.Rx033" />
+  </context>
+  <!-- In practice, many more contexts -->
+  <disable id="brokenProcessor" />
+</run-settings>

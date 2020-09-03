@@ -1,0 +1,50 @@
+<link rel="import" href="/extern/bower_components/polymer/polymer.html">
+<link rel="import" href="/ts/common-elements/reset-css/reset-css.html">
+<link rel="import" href="/ts/common-elements/iron-flex-layout-attributes/iron-flex-layout-attributes.html">
+<link rel="import" href="/ts/common-elements/ts-ajax/ts-ajax.html">
+<link rel="import" href="/ts/common-elements/ts-tree/ts-tree.html">
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+<link rel="import" href="/swatchcell/framework/html/elements/iron-collapse-tree/iron-collapse-tree.html">
+
+<!--
+
+`explore-panel` is the SWATCH Explore Panel polymer element
+
+Example:
+
+    <explore-panel></explore-panel>
+    <explore-panel test="test"></explore-panel>
+
+@demo demo/index.html
+
+
+-->
+<dom-module id="explore-panel">
+  <template>
+    <!-- this makes your element follow the general theme (things like fonts) -->
+    <style include="reset-css"></style>
+
+    <!-- this will allow you to use flexbox easily -->
+    <!-- surf to /ts/common-elements/iron-flex-layout-attributes/index.html -->
+    <style include="iron-flex-layout-attributes"></style>
+    <style include="swatch-styles"></style>
+
+    <style>
+:host{height:100%;display:block}
+</style>
+
+    <ts-ajax
+      id="systemTreeRequester"
+      callback="ExplorePanel::getExploreTree"
+      data="{{exploreTree}}"
+      auto
+    ></ts-ajax>
+
+    <iron-collapse-tree tree="{{exploreTree}}" on-node-clicked="treeClicked" opened></iron-collapse-tree>
+    <!--<ts-tree tree="{{exploreTree}}"></ts-tree>-->
+
+  </template>
+  <script>
+Polymer({is:"explore-panel",properties:{exploreTree:{type:Object,value:function(){return{}}},selectedItem:{type:String,value:""}},treeClicked:function(event){this.set("selectedItem",event.detail.nodeId),console.log(this.selectedItem)}});
+</script>
+</dom-module>

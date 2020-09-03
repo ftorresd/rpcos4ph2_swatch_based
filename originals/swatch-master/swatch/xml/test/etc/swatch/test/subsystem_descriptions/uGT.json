@@ -1,0 +1,136 @@
+{
+  "SYSTEM":
+  {
+    "NAME": "uGT",
+    "CREATOR": "ugt::uGtSystem",
+    "CRATES":
+    [
+      {
+        "NAME": "uGT-CRATE",
+        "LOCATION": "Point5, S1E04-32",
+        "DESCRIPTION": "VadaTech Crate for uGT"
+      }
+    ],
+    "PROCESSORS":
+    [
+      {
+        "NAME": "MP7_slot1",
+        "CREATOR": "ugt::uGtProcessor",
+        "HARDWARE TYPE": "MP7-XE",
+        "ROLE": "uGtProcessor",
+        "URI": "chtcp-2.0://bridge-s1e04-32.cms:10203?target=amc-s1e04-32-01.cms:50001",
+        "ADDRESS TABLE": "file:///nfshome0/ugtts/CellConfig/mp7xe_infra.xml",
+        "CRATE NAME": "uGT-CRATE",
+        "CRATE SLOT": 1,
+        "RX PORTS": [
+          { "NAME" : "MuonRx[00:04]", "PID": "[00:04]" },
+          { "NAME" : "CaloRx[00:08]", "PID": "[04:12]" },
+          { "NAME" : "ExtCondRx[00:04]", "PID": "[12:16]" }
+        ],
+        "TX PORTS": [ { "NAME" : "Tx[16:25]", "PID": "[16:25]" } ]
+      },
+      {
+        "NAME": "Finor_slot07",
+        "CREATOR": "ugt::uGtFinorProcessor",
+        "ROLE" : "uGtFinorProcessor",
+        "HARDWARE TYPE": "AMC502",
+        "URI": "chtcp-2.0://bridge-s1e04-32.cms:10203?target=amc-s1e04-32-07.cms:50001",
+        "ADDRESS TABLE": "file:///nfshome0/ugtts/CellConfig/amc502_finor_infra.xml",
+        "CRATE NAME": "uGT-CRATE",
+        "CRATE SLOT": 7,
+        "RX PORTS": [],
+        "TX PORTS": []
+      },
+      {
+        "NAME": "ExtCond_slot09",
+        "CREATOR": "ugt::uGtExtCondProcessor",
+        "ROLE" : "uGtExtCondProcessor",
+        "HARDWARE TYPE": "AMC502",
+        "URI": "chtcp-2.0://bridge-s1e04-32.cms:10203?target=amc-s1e04-32-09.cms:50001",
+        "ADDRESS TABLE": "file:///nfshome0/ugtts/CellConfig/amc502_extcond_infra.xml",
+        "CRATE NAME": "uGT-CRATE",
+        "CRATE SLOT": 9,
+        "RX PORTS": [],
+        "TX PORTS": [
+            { "NAME" : "ExtCondTx[00:04]", "PID": "[00:04]" }
+        ]
+      },
+      {
+        "NAME": "ExtCond_slot10",
+        "CREATOR": "ugt::uGtExtCondProcessor",
+        "ROLE" : "uGtExtCondProcessor",
+        "HARDWARE TYPE": "AMC502",
+        "URI": "chtcp-2.0://bridge-s1e04-32.cms:10203?target=amc-s1e04-32-10.cms:50001",
+        "ADDRESS TABLE": "file:///nfshome0/ugtts/CellConfig/amc502_extcond_infra.xml",
+        "CRATE NAME": "uGT-CRATE",
+        "CRATE SLOT": 10,
+        "RX PORTS": [],
+        "TX PORTS": [
+            { "NAME" : "ExtCondTx[00:04]", "PID": "[00:04]" }
+        ]
+      },
+      {
+        "NAME": "ExtCond_slot11",
+        "CREATOR": "ugt::uGtExtCondProcessor",
+        "ROLE" : "uGtExtCondProcessor",
+        "HARDWARE TYPE": "AMC502",
+        "URI": "chtcp-2.0://bridge-s1e04-32.cms:10203?target=amc-s1e04-32-11.cms:50001",
+        "ADDRESS TABLE": "file:///nfshome0/ugtts/CellConfig/amc502_extcond_infra.xml",
+        "CRATE NAME": "uGT-CRATE",
+        "CRATE SLOT": 11,
+        "RX PORTS": [],
+        "TX PORTS": [
+            { "NAME" : "ExtCondTx[00:04]", "PID": "[00:04]" }
+        ]
+      },
+      {
+        "NAME": "ExtCond_slot12",
+        "CREATOR": "ugt::uGtExtCondProcessor",
+        "ROLE" : "uGtExtCondProcessor",
+        "HARDWARE TYPE": "AMC502",
+        "URI": "chtcp-2.0://bridge-s1e04-32.cms:10203?target=amc-s1e04-32-12.cms:50001",
+        "ADDRESS TABLE": "file:///nfshome0/ugtts/CellConfig/amc502_extcond_infra.xml",
+        "CRATE NAME": "uGT-CRATE",
+        "CRATE SLOT": 12,
+        "RX PORTS": [],
+        "TX PORTS": [
+            { "NAME" : "ExtCondTx[00:04]", "PID": "[00:04]" }
+        ]
+      }
+    ],
+    "DAQTTCS":
+    [
+      {
+        "NAME": "AMC13",
+        "CREATOR": "swatch::amc13::AMC13Manager",
+        "ROLE": "daqttc",
+        "CRATE NAME": "uGT-CRATE",
+        "CRATE SLOT": 13,
+        "URI T1": "chtcp-2.0://bridge-s1e04-32.cms:10203?target=amc-s1e04-32-13-t1.cms:50001",
+        "ADDRESS TABLE T1": "file:///opt/cactus/etc/amc13/AMC13XG_T1.xml",
+        "URI T2": "chtcp-2.0://bridge-s1e04-32.cms:10203?target=amc-s1e04-32-13-t2.cms:50001",
+        "ADDRESS TABLE T2": "file:///opt/cactus/etc/amc13/AMC13XG_T2.xml",
+        "FED ID": 1404
+      }
+    ],
+    "CONNECTED FEDS":
+    [
+      {
+        "FED ID": 1402,
+        "RX PORTS" : [ "MP7_slot1.inputPorts.MuonRx[00:04]" ]
+      },
+      {
+        "FED ID": 1360,
+        "RX PORTS" : [ "MP7_slot1.inputPorts.CaloRx[00:07]" ]
+      }
+    ],
+    "EXCLUDED BOARDS": [],
+    "LINKS":
+    [
+      { "NAME" : "link0_[00:01]", "TX" : "ExtCond_slot09", "TX PORT" : "ExtCondTx[00:01]", "RX" : "MP7_slot1", "RX PORT" : "ExtCondRx[03:04]" },
+      { "NAME" : "link1_[00:01]", "TX" : "ExtCond_slot10", "TX PORT" : "ExtCondTx[00:01]", "RX" : "MP7_slot1", "RX PORT" : "ExtCondRx[02:03]" },
+      { "NAME" : "link2_[00:01]", "TX" : "ExtCond_slot11", "TX PORT" : "ExtCondTx[00:01]", "RX" : "MP7_slot1", "RX PORT" : "ExtCondRx[01:02]" },
+      { "NAME" : "link3_[00:01]", "TX" : "ExtCond_slot12", "TX PORT" : "ExtCondTx[00:01]", "RX" : "MP7_slot1", "RX PORT" : "ExtCondRx[00:01]" }
+    ]
+  }
+}

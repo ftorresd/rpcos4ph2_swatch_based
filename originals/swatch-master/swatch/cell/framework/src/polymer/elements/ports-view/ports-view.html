@@ -1,0 +1,50 @@
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+<link rel="import" href="/ts/common-elements/reset-css/reset-css.html">
+
+<link rel="import" href="/ts/common-elements/auto-update/auto-update.html">
+
+<link rel="import" href="/swatchcell/framework/html/elements/monitorable-object-status/monitorable-object-status.html">
+<link rel="import" href="/swatchcell/framework/html/elements/ports-table/ports-table.html">
+
+<dom-module id="ports-view">
+  <template>
+
+    <style include="swatch-styles"></style>
+    <style include="reset-css"></style>
+    <link rel="import" type="css" href="css/ports-view-min.css?__inline=true">
+    <auto-update id="autoupdateprocessor" data="{{processors}}" callback="MonitorPanel::respondPortsJSON"  style="padding: 15px;"></auto-update>
+    <div class="container">
+
+      <template is="dom-repeat" items="{{processors}}" as="proc">
+        <port-summary
+          header="[[proc.id]]"
+          processor-id="[[proc.id]]"
+          input-ports="[[proc.components.0.components]]"
+          output-ports="[[proc.components.1.components]]"
+          flex
+          on-port-click="showPortMetric"
+          class="proc">
+        </port-summary>
+      </template>
+
+      <hr>
+
+      <template is="dom-if" if="{{processors}}">
+		    <h3>Input Port Details</h3>
+      </template>
+      <template is="dom-repeat" items="{{processors}}" as="proc">
+        <ports-table id="{{getID(proc.id, proc.components.0.id)}}" portcollection="{{proc.components.0}}" name="{{proc.id}}" ></ports-table>
+      </template>
+
+      <template is="dom-if" if="{{processors}}">
+        <h3>Output Port Details</h3>
+      </template>
+      <template is="dom-repeat" items="{{processors}}" as="proc">
+        <ports-table id="{{getID(proc.id, proc.components.1.id)}}" portcollection="{{proc.components.1}}" name="{{proc.id}}" ></ports-table>
+      </template>
+
+    </div>
+
+  </template>
+  <script src="javascript/ports-view-min.js?__inline=true"></script>
+</dom-module>

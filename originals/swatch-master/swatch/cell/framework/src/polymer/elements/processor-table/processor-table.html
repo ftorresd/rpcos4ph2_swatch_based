@@ -1,0 +1,93 @@
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+
+
+<link rel="import" href="/extern/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/extern/bower_components/iron-collapse/iron-collapse.html">
+
+
+<dom-module id="processor-table">
+  <template>
+    <style include="swatch-styles"></style>
+    <style>
+
+    </style>
+    <button class$="{{getHeadingClass(system.processor_status)}}" on-click="toggle">
+      Processors <span>{{system.id}}</span>
+      <paper-icon-button icon="icons:expand-more" style="margin:0;padding:0"></paper-icon-button>
+    </button>
+    <iron-collapse id="proc_table">
+      <div class="content">
+        <table>
+          <tr>
+            <th>Processor ID</th><th>Slot</th><th>Status</th>
+            <template is="dom-repeat" items="[[_components]]" as="component" >
+              <th>{{component}}</th>
+            </template>
+          </tr>
+          <template is="dom-repeat" items="{{system.processors}}" filter="isNotEmpty" as="processor">
+            <tr>
+              <td>{{processor.id}}</td><td>{{processor.slot}}</td><td class$="{{processor.status}}">{{processor.status}}</td>
+              <template is="dom-repeat" items="{{processor.components}}" as="component" index-as="comp_idx">
+                <td class$="{{component.status}}">{{component.status}}</td>
+              </template>
+            </tr>
+          </template>
+        </table>
+      </div>
+    </iron-collapse>
+    <div class="spacer">&nbsp;</div>
+  </template>
+  <script>
+      Polymer({
+        is: 'processor-table',
+        properties: {
+          system: {
+            type: Object,
+            value: {},
+            observer: "_fillComponents"
+          },
+          _components: {
+            type: Array,
+            value: function () { return []; }
+          },
+          _firstProcessorFound: {
+            type: Boolean,
+            value: false
+          }
+        },
+        // ready: function() {
+        //   var status = this.system.processor_status;
+        //   if (status != "Good" && status != "NoLimit") {
+        //     this.$.proc_table.toggle();
+        //   }
+        // },
+        getId: function(sysid) {
+          return 'proc_table_'+sysid;
+        },
+        toggle: function(event) {
+          event.preventDefault();
+          this.$.proc_table.toggle();
+        },
+        isNotEmpty: function(processor) {
+          return processor.status != "Empty";
+        },
+        getHeadingClass: function(status) {
+          return 'heading '+status+'-faded-bkg';
+        },
+        _fillComponents: function () {
+          if (this._components === undefined) this.set("_components", []);
+
+          for (var x = 0; x < this.system.processors.length; x++) {
+            if ((!this._firstProcessorFound) && (this.isNotEmpty(this.system.processors[x]))) {
+              this._firstProcessorFound = true;
+              for(var y = 0; y < this.system.processors[x].components.length; y++){
+                this.push("_components", this.system.processors[x].components[y].id);
+              }
+              return;
+            }
+          }
+
+        }
+      });
+  </script>
+</dom-module>

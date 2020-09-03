@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+  <head>
+    <title>monitorable-object-status demo</title>
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <script>window.Polymer = window.Polymer || {};window.Polymer.dom = 'shadow';</script>
+    <script src="/extern/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../monitorable-object-status.html">
+    <link rel="import" href="/ts/common-elements/iron-flex-layout-attributes/iron-flex-layout-attributes.html">
+
+    <link rel="import" href="/extern/bower_components/polymer/polymer.html">
+
+  </head>
+
+
+  <body unresolved>
+    <demo-element></demo-element>
+  </body>
+
+
+  <dom-module id="demo-element">
+    <template>
+      <style>
+        :host {
+          display: block;
+        }
+
+        monitorable-object-status {
+          width: 12px;
+          height: 12px;
+        }
+
+        div {
+          padding: 10px;
+        }
+
+        monitorable-object-status {
+          padding: 10px;
+        }
+
+      </style>
+
+      <style include="iron-flex-layout-attributes"></style>
+
+      <div horizontal layout align-start>
+
+        <div vertical layout>
+
+          <span>
+            Good
+          </span>
+
+          <monitorable-object-status status="Good"></monitorable-object-status>
+
+          <monitorable-object-status status="Good" non-critical></monitorable-object-status>
+
+          <monitorable-object-status status="Good" non-critical inverted></monitorable-object-status>
+
+        </div>
+
+        <div vertical layout>
+
+          <span>
+            Warning
+          </span>
+
+          <monitorable-object-status status="Warning"></monitorable-object-status>
+
+          <monitorable-object-status status="Warning" non-critical></monitorable-object-status>
+
+          <monitorable-object-status status="Warning" non-critical inverted></monitorable-object-status>
+
+        </div>
+
+        <div vertical layout>
+
+          <span>
+            Error
+          </span>
+
+          <monitorable-object-status status="Error"></monitorable-object-status>
+
+          <monitorable-object-status status="Error" non-critical></monitorable-object-status>
+
+          <monitorable-object-status status="Error" non-critical inverted></monitorable-object-status>
+
+        </div>
+
+        <div vertical layout>
+          
+          <span>
+            NoLimit
+          </span>
+
+          <monitorable-object-status status="NoLimit"></monitorable-object-status>
+
+        </div>
+
+        <div vertical layout>
+
+          <span>
+            Unknown
+          </span>
+
+          <monitorable-object-status status="Unknown"></monitorable-object-status>
+
+        </div>
+
+
+      </div>
+
+    </template>
+    <script>
+      Polymer({
+        is: 'demo-element',
+
+      });
+    </script>
+  </dom-module>
+
+</html>

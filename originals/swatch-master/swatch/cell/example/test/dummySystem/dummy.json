@@ -1,0 +1,235 @@
+{
+  "SYSTEM":
+          {
+            "NAME": "dummySys",
+            "CREATOR" : "swatch::dummy::DummySystem",
+            "CRATES":
+                [
+                  {
+                    "NAME": "crate1",
+                    "LOCATION": "Point5, S2D10-43",
+                    "DESCRIPTION": "The first crate"
+                  },
+                  {
+                    "NAME": "crate2",
+                    "LOCATION": "Point5",
+                    "DESCRIPTION": "The second crate"
+                  }
+                ],
+            "EXCLUDED BOARDS" : [],
+            "PROCESSORS":
+                    [
+                      {
+                        "NAME": "procA1",
+                        "CREATOR": "swatch::dummy::DummyProcessor",
+                        "HARDWARE TYPE": "DummyHw",
+                        "ROLE": "procRoleA",
+                        "URI": "dummy://uriA1",
+                        "ADDRESS TABLE": "file:///path/to/addrFileA.xml",
+                        "CRATE NAME": "crate1",
+                        "CRATE SLOT": 3,
+                        "RX PORTS": [ { "NAME" : "Rx[00:80]", "PID": "[00:80]" } ],
+                        "TX PORTS": [ { "NAME" : "Tx[00:10]", "PID": "[00:40:4]" } ]
+                      },
+                      {
+                        "NAME": "procA2",
+                        "CREATOR": "swatch::dummy::DummyProcessor",
+                        "HARDWARE TYPE": "DummyHw",
+                        "ROLE": "procRoleA",
+                        "URI": "dummy://uriA2",
+                        "ADDRESS TABLE": "file:///path/to/addrFile.xml",
+                        "CRATE NAME": "crate1",
+                        "CRATE SLOT": 2,
+                        "RX PORTS": [ { "NAME" : "Rx[00:80]", "PID": "[00:80]" } ],
+                        "TX PORTS": [ { "NAME" : "Tx[00:10]", "PID": "[00:40:4]" } ]
+                      },
+                      {
+                        "NAME": "procA3",
+                        "CREATOR": "swatch::dummy::DummyProcessor",
+                        "HARDWARE TYPE": "DummyHw",
+                        "ROLE": "procRoleA",
+                        "URI": "dummy://uriA3",
+                        "ADDRESS TABLE": "file:///path/to/addrFileA.xml",
+                        "CRATE NAME": "crate1",
+                        "CRATE SLOT": 5,
+                        "RX PORTS": [ { "NAME" : "Rx[00:80]", "PID": "[00:80]" } ],
+                        "TX PORTS": [ { "NAME" : "Tx[00:10]", "PID": "[00:40:4]" } ]
+                      },
+                      {
+                        "NAME": "procA4",
+                        "CREATOR": "swatch::dummy::DummyProcessor",
+                        "HARDWARE TYPE": "DummyHw",
+                        "ROLE": "procRoleA",
+                        "URI": "dummy://uriA4",
+                        "ADDRESS TABLE": "file:///path/to/addrFileA.xml",
+                        "CRATE NAME": "crate1",
+                        "CRATE SLOT": 6,
+                        "RX PORTS": [ { "NAME" : "Rx[00:80]", "PID": "[00:80]" } ],
+                        "TX PORTS": [ { "NAME" : "Tx[00:10]", "PID": "[00:40:4]" } ]
+                      },
+                      {
+                        "NAME": "procA5",
+                        "CREATOR": "swatch::dummy::DummyProcessor",
+                        "HARDWARE TYPE": "DummyHw",
+                        "ROLE": "procRoleA",
+                        "URI": "dummy://uriA5",
+                        "ADDRESS TABLE": "file:///path/to/addrFileA.xml",
+                        "CRATE NAME": "crate1",
+                        "CRATE SLOT": 9,
+                        "RX PORTS": [ { "NAME" : "Rx[00:80]", "PID": "[00:80]" } ],
+                        "TX PORTS": [ { "NAME" : "Tx[00:10]", "PID": "[00:40:4]" } ]
+                      },
+                      {
+                        "NAME": "procA6",
+                        "CREATOR": "swatch::dummy::DummyProcessor",
+                        "HARDWARE TYPE": "DummyHw",
+                        "ROLE": "procRoleA",
+                        "URI": "dummy://uriA6",
+                        "ADDRESS TABLE": "file:///path/to/addrFileA.xml",
+                        "CRATE NAME": "crate1",
+                        "CRATE SLOT": 10,
+                        "RX PORTS": [ { "NAME" : "Rx[00:80]", "PID": "[00:80]" } ],
+                        "TX PORTS": [ { "NAME" : "Tx[00:10]", "PID": "[00:40:4]" } ]
+                      },
+
+                      {
+                        "NAME": "procB1",
+                        "CREATOR": "swatch::dummy::DummyProcessor",
+                        "HARDWARE TYPE": "DummyHw",
+                        "ROLE": "procRoleB",
+                        "URI": "dummy://uriB1",
+                        "ADDRESS TABLE": "file:///path/to/addrFile.xml",
+                        "CRATE NAME": "crate2",
+                        "CRATE SLOT": 7,
+                        "RX PORTS": [ { "NAME" : "Rx[00:40]", "PID": "[00:40]" } ],
+                        "TX PORTS": [ { "NAME" : "Tx[00:02]", "PID": "[0:2]" } ]
+                      },
+                      {
+                        "NAME": "procB2",
+                        "CREATOR": "swatch::dummy::DummyProcessor",
+                        "HARDWARE TYPE": "DummyHw",
+                        "ROLE": "procRoleB",
+                        "URI": "dummy://uriB2",
+                        "ADDRESS TABLE": "file:///path/to/addrFile.xml",
+                        "CRATE NAME": "crate2",
+                        "CRATE SLOT": 8,
+                        "RX PORTS": [ { "NAME" : "Rx[00:40]", "PID": "[00:40]" } ],
+                        "TX PORTS": [ { "NAME" : "Tx[00:02]", "PID": "[0:2]" } ]
+                      },
+                      {
+                        "NAME": "procB3",
+                        "CREATOR": "swatch::dummy::DummyProcessor",
+                        "HARDWARE TYPE": "DummyHw",
+                        "ROLE": "procRoleB",
+                        "URI": "dummy://uriB3",
+                        "ADDRESS TABLE": "file:///path/to/addrFile.xml",
+                        "CRATE NAME": "crate2",
+                        "CRATE SLOT": 9,
+                        "RX PORTS": [ { "NAME" : "Rx[00:40]", "PID": "[00:40]" } ],
+                        "TX PORTS": [ { "NAME" : "Tx[00:02]", "PID": "[0:2]" } ]
+                      },
+                      {
+                        "NAME": "procB4",
+                        "CREATOR": "swatch::dummy::DummyProcessor",
+                        "HARDWARE TYPE": "DummyHw",
+                        "ROLE": "procRoleB",
+                        "URI": "dummy://uriB4",
+                        "ADDRESS TABLE": "file:///path/to/addrFile.xml",
+                        "CRATE NAME": "crate2",
+                        "CRATE SLOT": 10,
+                        "RX PORTS": [ { "NAME" : "Rx[00:40]", "PID": "[00:40]" } ],
+                        "TX PORTS": [ { "NAME" : "Tx[00:02]", "PID": "[0:2]" } ]
+                      },
+                      {
+                        "NAME": "procB5",
+                        "CREATOR": "swatch::dummy::DummyProcessor",
+                        "HARDWARE TYPE": "DummyHw",
+                        "ROLE": "procRoleB",
+                        "URI": "dummy://uriB5",
+                        "ADDRESS TABLE": "file:///path/to/addrFile.xml",
+                        "CRATE NAME": "crate2",
+                        "CRATE SLOT": 11,
+                        "RX PORTS": [ { "NAME" : "Rx[00:40]", "PID": "[00:40]" } ],
+                        "TX PORTS": [ { "NAME" : "Tx[00:02]", "PID": "[0:2]" } ]
+                      },
+                      {
+                        "NAME": "procB6",
+                        "CREATOR": "swatch::dummy::DummyProcessor",
+                        "HARDWARE TYPE": "DummyHw",
+                        "ROLE": "procRoleB",
+                        "URI": "dummy://uriB6",
+                        "ADDRESS TABLE": "file:///path/to/addrFile.xml",
+                        "CRATE NAME": "crate2",
+                        "CRATE SLOT": 12,
+                        "RX PORTS": [ { "NAME" : "Rx[00:40]", "PID": "[00:40]" } ],
+                        "TX PORTS": [ { "NAME" : "Tx[00:02]", "PID": "[0:2]" } ]
+                      },
+
+                      {
+                        "NAME": "procC",
+                        "CREATOR": "swatch::dummy::DummyProcessor",
+                        "HARDWARE TYPE": "DummyHw",
+                        "ROLE": "procRoleC",
+                        "URI": "dummy://uriC",
+                        "ADDRESS TABLE": "file:///path/to/addrFile.xml",
+                        "CRATE NAME": "crate2",
+                        "CRATE SLOT": 1,
+                        "RX PORTS": [ { "NAME" : "Rx[00:72]", "PID": "[00:72]" } ],
+                        "TX PORTS": [ { "NAME" : "Tx[00:04]", "PID": "[0:4]" } ]
+                      }
+
+                    ],
+            "DAQTTCS":
+                    [
+                      {
+                        "NAME": "AMC13_one",
+                        "CREATOR": "swatch::dummy::DummyAMC13Manager",
+                        "ROLE": "daqttc",
+                        "CRATE NAME": "crate1",
+                        "CRATE SLOT": 13,
+                        "URI T1": "dummy://uriDaqTTC-1-T1",
+                        "ADDRESS TABLE T1": "file:///path/to/addrFile.xml",
+                        "URI T2": "dummy://uriDaqTTC-1-T2",
+                        "ADDRESS TABLE T2": "file:///path/to/addrFile.xml",
+                        "FED ID": 1234
+                      },
+                      {
+                        "NAME": "AMC13_two",
+                        "CREATOR": "swatch::dummy::DummyAMC13Manager",
+                        "ROLE": "daqttc",
+                        "CRATE NAME": "crate2",
+                        "CRATE SLOT": 13,
+                        "URI T1": "dummy://uriDaqTTC-2-T1",
+                        "ADDRESS TABLE T1": "file:///path/to/addrFile.xml",
+                        "URI T2": "dummy://uriDaqTTC-2-T2",
+                        "ADDRESS TABLE T2": "file:///path/to/addrFile.xml",
+                        "FED ID": 1235
+                      }
+
+                    ],
+            "LINKS":
+                    [
+                      { "NAME": "link_A1C_[00:10]", "TX": "procA1", "TX PORT": "Tx[00:10]", "RX": "procC", "RX PORT": "Rx[00:10]" } ,
+                      { "NAME": "link_A2C_[00:10]", "TX": "procA2", "TX PORT": "Tx[00:10]", "RX": "procC", "RX PORT": "Rx[10:20]" },
+                      { "NAME": "link_A3C_[00:10]", "TX": "procA3", "TX PORT": "Tx[00:10]", "RX": "procC", "RX PORT": "Rx[20:30]" },
+                      { "NAME": "link_A4C_[00:10]", "TX": "procA4", "TX PORT": "Tx[00:10]", "RX": "procC", "RX PORT": "Rx[30:40]" },
+                      { "NAME": "link_A5C_[00:10]", "TX": "procA5", "TX PORT": "Tx[00:10]", "RX": "procC", "RX PORT": "Rx[40:50]" },
+                      { "NAME": "link_A6C_[00:10]", "TX": "procA6", "TX PORT": "Tx[00:10]", "RX": "procC", "RX PORT": "Rx[50:60]" }
+                    ],
+            "CONNECTED FEDS":
+                [
+                    {
+                        "FED ID": 999,
+                        "RX PORTS" : [
+                            "procA1.inputPorts.Rx[00:10]"
+                        ]
+                    },
+                                        {
+                        "FED ID": 899,
+                        "RX PORTS" : [
+                            "procA1.inputPorts.Rx[10:20]"
+                        ]
+                    }
+                ]
+          }
+}

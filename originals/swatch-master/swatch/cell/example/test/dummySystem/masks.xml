@@ -1,0 +1,151 @@
+<run-settings id="dummySys">
+    <context id="processors">
+        <!-- MASK INPUT PORT 00 -->
+        <mask id="inputPorts.Rx00" />
+        <state id="Halted">
+            <mon-obj id="inputPorts.Rx00" status="disabled" />
+            <!-- <mon-obj id="readout.tts" status="non-critical" /> -->
+        </state>
+    </context>
+ 
+    <context id="">
+        <state id="Halted">
+            <mon-obj id="portsInError" status="non-critical"/>
+        </state>
+    </context>
+
+    <context id="procA1"> 
+        <!-- MASK INPUT PORT 00 -->
+        <mask id="inputPorts.Rx00" />
+        <state id="Halted">			
+            <mon-obj id="inputPorts" status="non-critical" />            
+            <mon-obj id="ttc" status="non-critical" />
+            <mon-obj id="outputPorts" status="non-critical" />
+            <mon-obj id="algo" status="non-critical" />
+            <mon-obj id="firmwareVersion" status="non-critical" />
+        </state>
+    </context>
+    
+    <context id="procA2plus1">
+        <!-- MASK INPUT PORT 00 -->
+        <mask id="inputPorts.Rx00" />
+        <state id="Halted">
+        <!-- overrides the non-critical specified above -->
+        <mon-obj id="inputPorts.Rx00" status="disabled" />            
+        <!-- <mon-obj id="readout.tts" status="disabled" />  -->
+        </state>
+    </context>
+    
+    <context id="procA3">
+        <!-- MASK INPUT PORT 00 -->
+        <mask id="inputPorts.Rx00" />
+        <state id="Halted">
+            <mon-obj id="inputPorts.Rx00" status="non-critical" />
+            <mon-obj id="readout.tts" status="disabled" />     
+        </state>
+    </context>
+    
+    <context id="procA4">
+        <!-- MASK INPUT PORT 00 -->
+        <mask id="inputPorts.Rx00" />
+        <state id="Halted">
+            <mon-obj id="inputPorts.Rx00" status="non-critical" />
+            <mon-obj id="readout.tts" status="non-critical" />     
+        </state>
+    </context>
+    
+    <context id="procA5">
+        <!-- MASK INPUT PORT 00 -->
+        <mask id="inputPorts.Rx00" />
+        <state id="Halted">
+            <mon-obj id="inputPorts.Rx00" status="non-critical" />
+            <mon-obj id="readout.tts" status="non-critical" />     
+        </state>
+    </context>
+    
+    
+    <context id="procA6">
+        <!-- MASK INPUT PORT 00 -->
+        <mask id="inputPorts.Rx00" />
+        <state id="Halted">
+            <mon-obj id="inputPorts.Rx00" status="non-critical" />
+            <mon-obj id="readout.tts" status="non-critical" />     
+        </state>
+    </context>
+    
+    <context id="procB1">
+        <!-- MASK INPUT PORT 00 -->
+        <mask id="inputPorts.Rx00" />
+        <state id="Halted">
+            <mon-obj id="inputPorts.Rx00" status="non-critical" />
+            <mon-obj id="readout.tts" status="non-critical" />     
+        </state>
+    </context>
+    
+    <context id="procB2">
+        <!-- MASK INPUT PORT 00 -->
+        <mask id="inputPorts.Rx00" />
+        <state id="Halted">
+            <mon-obj id="inputPorts.Rx00" status="non-critical" />
+            <mon-obj id="readout.tts" status="non-critical" />     
+        </state>
+    </context>
+    
+    <context id="procB3">
+        <!-- MASK INPUT PORT 00 -->
+        <mask id="inputPorts.Rx00" />
+        <state id="Halted">
+            <mon-obj id="inputPorts.Rx00" status="non-critical" />
+            <mon-obj id="readout.tts" status="non-critical" />     
+        </state>
+    </context>
+    
+    <context id="procB4">
+        <!-- MASK INPUT PORT 00 -->
+        <mask id="inputPorts.Rx00" />
+        <state id="Halted">
+            <mon-obj id="inputPorts.Rx00" status="non-critical" />
+            <mon-obj id="readout.tts" status="non-critical" />     
+        </state>
+    </context>
+    
+    <context id="procB5">
+        <!-- MASK INPUT PORT 00 -->
+        <mask id="inputPorts.Rx00" />
+        <state id="Halted">
+            <mon-obj id="inputPorts.Rx00" status="non-critical" />
+            <mon-obj id="readout.tts" status="non-critical" />     
+        </state>
+    </context>
+    
+    <context id="procB6">
+        <!-- MASK INPUT PORT 00 -->
+        <mask id="inputPorts.Rx00" />
+        <state id="Halted">
+            <mon-obj id="inputPorts.Rx00" status="non-critical" />
+            <mon-obj id="readout.tts" status="non-critical" />     
+        </state>
+    </context>    
+
+
+    <context id="procC">
+        <!-- MASK INPUT PORTS 40-42 & 45 -->
+        <mask id="inputPorts.Rx40" />
+        <mask id="inputPorts.Rx41" />
+        <mask id="inputPorts.Rx42" />
+        <mask id="inputPorts.Rx45" />
+        <state id="Halted">
+            <mon-obj id="inputPorts" status="non-critical" />           
+            <mon-obj id="inputPorts.Rx41" status="non-critical" />
+            <mon-obj id="inputPorts.Rx42" status="non-critical" />
+            <mon-obj id="inputPorts.Rx45" status="non-critical" />
+            <!-- proc C's daq block is not critical  ... -->
+            <mon-obj id="readout" status="disabled" />
+            <mon-obj id="ttc" status="disabled" />
+        </state>
+    </context>
+
+    <!-- Exclude procB6 from system-level actions -->
+    <disable id="procB6" />
+
+</run-settings>

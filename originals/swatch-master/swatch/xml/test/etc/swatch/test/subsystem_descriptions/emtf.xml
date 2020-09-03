@@ -1,0 +1,271 @@
+<system id="emtf">
+  <creator>emtf::Mtf7System</creator>
+  <crates>
+    <crate id="S1D05g">
+      <description>EMTF production system</description>
+      <location>P5</location>
+    </crate>
+    <crate id="S1D05f">
+      <description>EMTF production system</description>
+      <location>P5</location>
+    </crate>
+  </crates>
+  <processors>
+    <processor id="EMTF+1">
+      <creator>emtf::Mtf7Processor</creator>
+      <hw-type>MTF7</hw-type>
+      <role>procRoleA</role>
+      <uri>0</uri>
+      <address-table>/nfshome0/emtfts/cactus_1701/cactusprojects/emtf/ts/cell/emtf_pcie_address_table.txt</address-table>
+      <crate>S1D05g</crate>
+      <slot>1</slot>
+      <rx-port pid="[00:08]" name="me1a_[2:10]"/>
+      <rx-port pid="[08:16]" name="me1b_[2:10]"/>
+      <rx-port pid="[16:24]" name="me2_[2:10]"/>
+      <rx-port pid="[24:32]" name="me3_[2:10]"/>
+      <rx-port pid="[32:40]" name="me4_[2:10]"/>
+      <rx-port pid="[40:43]" name="me1n_[3:10:3]"/>
+      <rx-port pid="[43:45]" name="me2n_[3:10:6]"/>
+      <rx-port pid="[45:47]" name="me3n_[3:10:6]"/>
+      <rx-port pid="[47:49]" name="me4n_[3:10:6]"/>
+      <tx-port pid="00" name="Output_to_uGMT"/>
+    </processor>
+    <processor id="EMTF+6">
+      <creator>emtf::Mtf7Processor</creator>
+      <hw-type>MTF7</hw-type>
+      <role>procRoleA</role>
+      <uri>1</uri>
+      <address-table>/nfshome0/emtfts/cactus_1701/cactusprojects/emtf/ts/cell/emtf_pcie_address_table.txt</address-table>
+      <crate>S1D05g</crate>
+      <slot>3</slot>
+      <rx-port pid="[00:08]" name="me1a_[2:10]"/>
+      <rx-port pid="[08:16]" name="me1b_[2:10]"/>
+      <rx-port pid="[16:24]" name="me2_[2:10]"/>
+      <rx-port pid="[24:32]" name="me3_[2:10]"/>
+      <rx-port pid="[32:40]" name="me4_[2:10]"/>
+      <rx-port pid="[40:43]" name="me1n_[3:10:3]"/>
+      <rx-port pid="[43:45]" name="me2n_[3:10:6]"/>
+      <rx-port pid="[45:47]" name="me3n_[3:10:6]"/>
+      <rx-port pid="[47:49]" name="me4n_[3:10:6]"/>
+      <tx-port pid="00" name="Output_to_uGMT"/>
+    </processor>
+    <processor id="EMTF+3">
+      <creator>emtf::Mtf7Processor</creator>
+      <hw-type>MTF7</hw-type>
+      <role>procRoleA</role>
+      <uri>2</uri>
+      <address-table>/nfshome0/emtfts/cactus_1701/cactusprojects/emtf/ts/cell/emtf_pcie_address_table.txt</address-table>
+      <crate>S1D05g</crate>
+      <slot>5</slot>
+      <rx-port pid="[00:08]" name="me1a_[2:10]"/>
+      <rx-port pid="[08:16]" name="me1b_[2:10]"/>
+      <rx-port pid="[16:24]" name="me2_[2:10]"/>
+      <rx-port pid="[24:32]" name="me3_[2:10]"/>
+      <rx-port pid="[32:40]" name="me4_[2:10]"/>
+      <rx-port pid="[40:43]" name="me1n_[3:10:3]"/>
+      <rx-port pid="[43:45]" name="me2n_[3:10:6]"/>
+      <rx-port pid="[45:47]" name="me3n_[3:10:6]"/>
+      <rx-port pid="[47:49]" name="me4n_[3:10:6]"/>
+      <tx-port pid="00" name="Output_to_uGMT"/>
+    </processor>
+    <processor id="EMTF+4">
+      <creator>emtf::Mtf7Processor</creator>
+      <hw-type>MTF7</hw-type>
+      <role>procRoleA</role>
+      <uri>3</uri>
+      <address-table>/nfshome0/emtfts/cactus_1701/cactusprojects/emtf/ts/cell/emtf_pcie_address_table.txt</address-table>
+      <crate>S1D05g</crate>
+      <slot>7</slot>
+      <rx-port pid="[00:08]" name="me1a_[2:10]"/>
+      <rx-port pid="[08:16]" name="me1b_[2:10]"/>
+      <rx-port pid="[16:24]" name="me2_[2:10]"/>
+      <rx-port pid="[24:32]" name="me3_[2:10]"/>
+      <rx-port pid="[32:40]" name="me4_[2:10]"/>
+      <rx-port pid="[40:43]" name="me1n_[3:10:3]"/>
+      <rx-port pid="[43:45]" name="me2n_[3:10:6]"/>
+      <rx-port pid="[45:47]" name="me3n_[3:10:6]"/>
+      <rx-port pid="[47:49]" name="me4n_[3:10:6]"/>
+      <tx-port pid="00" name="Output_to_uGMT"/>
+    </processor>
+    <processor id="EMTF+2">
+      <creator>emtf::Mtf7Processor</creator>
+      <hw-type>MTF7</hw-type>
+      <role>procRoleA</role>
+      <uri>4</uri>
+      <address-table>/nfshome0/emtfts/cactus_1701/cactusprojects/emtf/ts/cell/emtf_pcie_address_table.txt</address-table>
+      <crate>S1D05g</crate>
+      <slot>9</slot>
+      <rx-port pid="[00:08]" name="me1a_[2:10]"/>
+      <rx-port pid="[08:16]" name="me1b_[2:10]"/>
+      <rx-port pid="[16:24]" name="me2_[2:10]"/>
+      <rx-port pid="[24:32]" name="me3_[2:10]"/>
+      <rx-port pid="[32:40]" name="me4_[2:10]"/>
+      <rx-port pid="[40:43]" name="me1n_[3:10:3]"/>
+      <rx-port pid="[43:45]" name="me2n_[3:10:6]"/>
+      <rx-port pid="[45:47]" name="me3n_[3:10:6]"/>
+      <rx-port pid="[47:49]" name="me4n_[3:10:6]"/>
+      <tx-port pid="00" name="Output_to_uGMT"/>
+    </processor>
+    <processor id="EMTF+5">
+      <creator>emtf::Mtf7Processor</creator>
+      <hw-type>MTF7</hw-type>
+      <role>procRoleA</role>
+      <uri>5</uri>
+      <address-table>/nfshome0/emtfts/cactus_1701/cactusprojects/emtf/ts/cell/emtf_pcie_address_table.txt</address-table>
+      <crate>S1D05g</crate>
+      <slot>11</slot>
+      <rx-port pid="[00:08]" name="me1a_[2:10]"/>
+      <rx-port pid="[08:16]" name="me1b_[2:10]"/>
+      <rx-port pid="[16:24]" name="me2_[2:10]"/>
+      <rx-port pid="[24:32]" name="me3_[2:10]"/>
+      <rx-port pid="[32:40]" name="me4_[2:10]"/>
+      <rx-port pid="[40:43]" name="me1n_[3:10:3]"/>
+      <rx-port pid="[43:45]" name="me2n_[3:10:6]"/>
+      <rx-port pid="[45:47]" name="me3n_[3:10:6]"/>
+      <rx-port pid="[47:49]" name="me4n_[3:10:6]"/>
+      <tx-port pid="00" name="Output_to_uGMT"/>
+    </processor>
+    <processor id="EMTF-1">
+      <creator>emtf::Mtf7Processor</creator>
+      <hw-type>MTF7</hw-type>
+      <role>procRoleA</role>
+      <uri>6</uri>
+      <address-table>/nfshome0/emtfts/cactus_1701/cactusprojects/emtf/ts/cell/emtf_pcie_address_table.txt</address-table>
+      <crate>S1D05f</crate>
+      <slot>1</slot>
+      <rx-port pid="[00:08]" name="me1a_[2:10]"/>
+      <rx-port pid="[08:16]" name="me1b_[2:10]"/>
+      <rx-port pid="[16:24]" name="me2_[2:10]"/>
+      <rx-port pid="[24:32]" name="me3_[2:10]"/>
+      <rx-port pid="[32:40]" name="me4_[2:10]"/>
+      <rx-port pid="[40:43]" name="me1n_[3:10:3]"/>
+      <rx-port pid="[43:45]" name="me2n_[3:10:6]"/>
+      <rx-port pid="[45:47]" name="me3n_[3:10:6]"/>
+      <rx-port pid="[47:49]" name="me4n_[3:10:6]"/>
+      <tx-port pid="00" name="Output_to_uGMT"/>
+    </processor>
+    <processor id="EMTF-6">
+      <creator>emtf::Mtf7Processor</creator>
+      <hw-type>MTF7</hw-type>
+      <role>procRoleA</role>
+      <uri>7</uri>
+      <address-table>/nfshome0/emtfts/cactus_1701/cactusprojects/emtf/ts/cell/emtf_pcie_address_table.txt</address-table>
+      <crate>S1D05f</crate>
+      <slot>3</slot>
+      <rx-port pid="[00:08]" name="me1a_[2:10]"/>
+      <rx-port pid="[08:16]" name="me1b_[2:10]"/>
+      <rx-port pid="[16:24]" name="me2_[2:10]"/>
+      <rx-port pid="[24:32]" name="me3_[2:10]"/>
+      <rx-port pid="[32:40]" name="me4_[2:10]"/>
+      <rx-port pid="[40:43]" name="me1n_[3:10:3]"/>
+      <rx-port pid="[43:45]" name="me2n_[3:10:6]"/>
+      <rx-port pid="[45:47]" name="me3n_[3:10:6]"/>
+      <rx-port pid="[47:49]" name="me4n_[3:10:6]"/>
+      <tx-port pid="00" name="Output_to_uGMT"/>
+    </processor>
+    <processor id="EMTF-3">
+      <creator>emtf::Mtf7Processor</creator>
+      <hw-type>MTF7</hw-type>
+      <role>procRoleA</role>
+      <uri>8</uri>
+      <address-table>/nfshome0/emtfts/cactus_1701/cactusprojects/emtf/ts/cell/emtf_pcie_address_table.txt</address-table>
+      <crate>S1D05f</crate>
+      <slot>5</slot>
+      <rx-port pid="[00:08]" name="me1a_[2:10]"/>
+      <rx-port pid="[08:16]" name="me1b_[2:10]"/>
+      <rx-port pid="[16:24]" name="me2_[2:10]"/>
+      <rx-port pid="[24:32]" name="me3_[2:10]"/>
+      <rx-port pid="[32:40]" name="me4_[2:10]"/>
+      <rx-port pid="[40:43]" name="me1n_[3:10:3]"/>
+      <rx-port pid="[43:45]" name="me2n_[3:10:6]"/>
+      <rx-port pid="[45:47]" name="me3n_[3:10:6]"/>
+      <rx-port pid="[47:49]" name="me4n_[3:10:6]"/>
+      <tx-port pid="00" name="Output_to_uGMT"/>
+    </processor>
+    <processor id="EMTF-4">
+      <creator>emtf::Mtf7Processor</creator>
+      <hw-type>MTF7</hw-type>
+      <role>procRoleA</role>
+      <uri>9</uri>
+      <address-table>/nfshome0/emtfts/cactus_1701/cactusprojects/emtf/ts/cell/emtf_pcie_address_table.txt</address-table>
+      <crate>S1D05f</crate>
+      <slot>7</slot>
+      <rx-port pid="[00:08]" name="me1a_[2:10]"/>
+      <rx-port pid="[08:16]" name="me1b_[2:10]"/>
+      <rx-port pid="[16:24]" name="me2_[2:10]"/>
+      <rx-port pid="[24:32]" name="me3_[2:10]"/>
+      <rx-port pid="[32:40]" name="me4_[2:10]"/>
+      <rx-port pid="[40:43]" name="me1n_[3:10:3]"/>
+      <rx-port pid="[43:45]" name="me2n_[3:10:6]"/>
+      <rx-port pid="[45:47]" name="me3n_[3:10:6]"/>
+      <rx-port pid="[47:49]" name="me4n_[3:10:6]"/>
+      <tx-port pid="00" name="Output_to_uGMT"/>
+    </processor>
+    <processor id="EMTF-2">
+      <creator>emtf::Mtf7Processor</creator>
+      <hw-type>MTF7</hw-type>
+      <role>procRoleA</role>
+      <uri>10</uri>
+      <address-table>/nfshome0/emtfts/cactus_1701/cactusprojects/emtf/ts/cell/emtf_pcie_address_table.txt</address-table>
+      <crate>S1D05f</crate>
+      <slot>9</slot>
+      <rx-port pid="[00:08]" name="me1a_[2:10]"/>
+      <rx-port pid="[08:16]" name="me1b_[2:10]"/>
+      <rx-port pid="[16:24]" name="me2_[2:10]"/>
+      <rx-port pid="[24:32]" name="me3_[2:10]"/>
+      <rx-port pid="[32:40]" name="me4_[2:10]"/>
+      <rx-port pid="[40:43]" name="me1n_[3:10:3]"/>
+      <rx-port pid="[43:45]" name="me2n_[3:10:6]"/>
+      <rx-port pid="[45:47]" name="me3n_[3:10:6]"/>
+      <rx-port pid="[47:49]" name="me4n_[3:10:6]"/>
+      <tx-port pid="00" name="Output_to_uGMT"/>
+    </processor>
+    <processor id="EMTF-5">
+      <creator>emtf::Mtf7Processor</creator>
+      <hw-type>MTF7</hw-type>
+      <role>procRoleA</role>
+      <uri>11</uri>
+      <address-table>/nfshome0/emtfts/cactus_1701/cactusprojects/emtf/ts/cell/emtf_pcie_address_table.txt</address-table>
+      <crate>S1D05f</crate>
+      <slot>11</slot>
+      <rx-port pid="[00:08]" name="me1a_[2:10]"/>
+      <rx-port pid="[08:16]" name="me1b_[2:10]"/>
+      <rx-port pid="[16:24]" name="me2_[2:10]"/>
+      <rx-port pid="[24:32]" name="me3_[2:10]"/>
+      <rx-port pid="[32:40]" name="me4_[2:10]"/>
+      <rx-port pid="[40:43]" name="me1n_[3:10:3]"/>
+      <rx-port pid="[43:45]" name="me2n_[3:10:6]"/>
+      <rx-port pid="[45:47]" name="me3n_[3:10:6]"/>
+      <rx-port pid="[47:49]" name="me4n_[3:10:6]"/>
+      <tx-port pid="00" name="Output_to_uGMT"/>
+    </processor>
+  </processors>
+  <daqttc-mgrs>
+    <daqttc-mgr id="amc13emtf1">
+      <creator>swatch::amc13::AMC13Manager</creator>
+      <role>daqttc</role>
+      <crate>S1D05g</crate>
+      <slot>13</slot>
+      <uri id="t1">ipbusudp-2.0://192.168.3.139:50001</uri>
+      <uri id="t2">ipbusudp-2.0://192.168.3.138:50001</uri>
+      <address-table id="t1">file:///opt/cactus/etc/amc13/AMC13XG_T1.xml</address-table>
+      <address-table id="t2">file:///opt/cactus/etc/amc13/AMC13XG_T2.xml</address-table>
+      <fed-id>1385</fed-id>
+    </daqttc-mgr>
+    <daqttc-mgr id="amc13emtf2">
+      <creator>swatch::amc13::AMC13Manager</creator>
+      <role>daqttc</role>
+      <crate>S1D05f</crate>
+      <slot>13</slot>
+      <uri id="t1">ipbusudp-2.0://192.168.3.163:50001</uri>
+      <uri id="t2">ipbusudp-2.0://192.168.3.162:50001</uri>
+      <address-table id="t1">file:///opt/cactus/etc/amc13/AMC13XG_T1.xml</address-table>
+      <address-table id="t2">file:///opt/cactus/etc/amc13/AMC13XG_T2.xml</address-table>
+      <fed-id>1384</fed-id>
+    </daqttc-mgr>
+  </daqttc-mgrs>
+  <links/>
+  <connected-feds/>
+  <excluded-boards/>
+</system>
+

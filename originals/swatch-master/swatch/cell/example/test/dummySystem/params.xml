@@ -1,0 +1,43 @@
+<infra id="dummySys">
+    <context id="processors">
+        <param id="cmdDuration" type="uint">1</param>
+        <param cmd="reboot" id="cmdDuration" type="uint">5</param>
+        <param id="returnWarning" type="bool">false</param>
+        <param id="returnError" type="bool">false</param>
+        <param id="throw" type="bool">false</param>
+    </context>
+
+    <context id="">
+        <param id="runcontrol_engage_invoke_malloc_trim" type="bool">true</param>
+        <param id="runcontrol_reset_invoke_malloc_trim" type="bool">true</param>
+    </context>
+
+    <context id="procC">
+        <param cmd="reset" id="returnWarning" type="bool">true</param>
+    </context>
+
+    <context id="procA1">
+        <param cmd="reset" id="returnWarning" type="bool">true</param>
+    </context>
+
+    <!-- processors with role 'procRoleB' take a bit longer to configure -->
+    <!-- <context id="procRoleB">
+        <param id="cmdDuration" type="uint">8</param>
+        <param id="reboot.cmdDuration" type="uint">12</param>
+        <param id="clkErrorTimeout" type="uint">10000</param>
+    </context> -->
+
+    <!-- proc C loses clock first -->
+    <!-- <context id="procC">
+      <param id="clkErrorTimeout" type="uint">10000</param>
+    </context> -->
+
+    <!-- AMC13s ... -->
+    <context id="daqttcs">
+        <param id="cmdDuration" type="uint">1</param>
+        <param cmd="reboot" id="cmdDuration" type="uint">8</param>
+        <param id="returnWarning" type="bool">false</param>
+        <param id="returnError" type="bool">false</param>
+        <param id="throw" type="bool">false</param>
+    </context>
+</infra>

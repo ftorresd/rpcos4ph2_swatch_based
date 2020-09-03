@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <title>iron-collapse-tree demo</title>
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <script>window.Polymer = window.Polymer || {};window.Polymer.dom = 'shadow';</script>
+    <script src="/extern/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../iron-collapse-tree.html">
+  </head>
+  <body>
+    <iron-collapse-tree id="collapseTree"></iron-collapse-tree>
+  </body>
+  <script>
+    var tree = {
+      name: "My root",
+      tree: [
+        {
+          name: "Branch 1",
+          tree: [
+            {
+              name: "Leaf 1.1",
+            },
+            {
+              name: "Leaf 1.2"
+            }
+          ]
+        },
+        {
+          name: "Branch 2",
+          tree: [
+            {
+              name: "Leaf 2.1",
+            },
+            {
+              name: "Leaf 2.2"
+            },
+            {
+              name: "Branch 2.3",
+              tree: [
+                {
+                  name: "Leaf 2.3.1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+    document.getElementById("collapseTree").set("tree", tree);
+  </script>
+</html>

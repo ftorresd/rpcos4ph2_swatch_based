@@ -1,0 +1,20 @@
+<?xml version='1.0'?>
+<!-- The following line contains a reference to an XSL file -->
+<!-- that allows the rendering of this XML file into an HTML file -->
+<!-- <?xml-stylesheet type="text/xsl" href="xdaqConfig.xsl"?> -->
+
+<xc:Partition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xc="http://xdaq.web.cern.ch/xdaq/xsd/2004/XMLConfiguration-30">
+
+  <!-- SWATCH WORKER CELL -->
+  <xc:Context url="http://__HOSTNAME__PORT__">
+    <xc:Application class="__SUBSYSTEM_CELL_CLASS__" id="13" instance="203" service="__SUBSYSTEM_ID__cell-service" group="subsystem" network="local" publish="true" >
+      <properties xmlns="urn:xdaq-application:Cell" xsi:type="soapenc:Struct">
+        <name xsi:type="xsd:string">__SUBSYSTEM_ID__ cell</name>
+      </properties>
+    </xc:Application>     
+    __MODULES_TO_LOAD__
+
+  </xc:Context>
+
+</xc:Partition>
+

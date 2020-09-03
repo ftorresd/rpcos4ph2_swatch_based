@@ -1,0 +1,808 @@
+<system id="TwinMux">
+  <creator>twinmuxswatch::TwinMuxSystem</creator>
+  <crates>
+    <crate id="crate_0">
+      <description>Crate hosting Twinmux System for wheel YB0</description>
+      <location>Point5, S1D07-41</location>
+    </crate>
+    <crate id="crate_+1">
+      <description>Crate hosting Twinmux System for wheel YB+1</description>
+      <location>Point5, S1D08-29</location>
+    </crate>
+    <crate id="crate_+2">
+      <description>Crate hosting Twinmux System for wheel YB+2</description>
+      <location>Point5, S1D08-12</location>
+    </crate>
+    <crate id="crate_-1">
+      <description>Crate hosting Twinmux System for wheel YB-1</description>
+      <location>Point5, S1D07-27</location>
+    </crate>
+    <crate id="crate_-2">
+      <description>Crate hosting Twinmux System for wheel YB-2</description>
+      <location>Point5, S1D07-10</location>
+    </crate>
+  </crates>
+  <processors>
+    <processor id="YB0_S1">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-41:10203?target=amc-s1d07-41-01:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_0</crate>
+      <slot>1</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB0_S2">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-41:10203?target=amc-s1d07-41-02:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_0</crate>
+      <slot>2</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB0_S3">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-41:10203?target=amc-s1d07-41-03:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_0</crate>
+      <slot>3</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB0_S4">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-41:10203?target=amc-s1d07-41-04:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_0</crate>
+      <slot>4</slot>
+      <rx-port pid="[00:05]" name="DT[01:06]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB0_S5">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-41:10203?target=amc-s1d07-41-05:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_0</crate>
+      <slot>5</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB0_S6">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-41:10203?target=amc-s1d07-41-06:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_0</crate>
+      <slot>6</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB0_S7">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-41:10203?target=amc-s1d07-41-07:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_0</crate>
+      <slot>7</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB0_S8">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-41:10203?target=amc-s1d07-41-08:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_0</crate>
+      <slot>8</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB0_S9">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-41:10203?target=amc-s1d07-41-09:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_0</crate>
+      <slot>9</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB0_S10">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-41:10203?target=amc-s1d07-41-10:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_0</crate>
+      <slot>10</slot>
+      <rx-port pid="[00:05]" name="DT[01:06]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB0_S11">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-41:10203?target=amc-s1d07-41-11:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_0</crate>
+      <slot>11</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB0_S12">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-41:10203?target=amc-s1d07-41-12:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_0</crate>
+      <slot>12</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+1_S1">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-29:10203?target=amc-s1d08-29-01:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+1</crate>
+      <slot>1</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+1_S2">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-29:10203?target=amc-s1d08-29-02:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+1</crate>
+      <slot>2</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+1_S3">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-29:10203?target=amc-s1d08-29-03:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+1</crate>
+      <slot>3</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+1_S4">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-29:10203?target=amc-s1d08-29-04:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+1</crate>
+      <slot>4</slot>
+      <rx-port pid="[00:05]" name="DT[01:06]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+1_S5">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-29:10203?target=amc-s1d08-29-05:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+1</crate>
+      <slot>5</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+1_S6">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-29:10203?target=amc-s1d08-29-06:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+1</crate>
+      <slot>6</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+1_S7">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-29:10203?target=amc-s1d08-29-07:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+1</crate>
+      <slot>7</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+1_S8">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-29:10203?target=amc-s1d08-29-08:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+1</crate>
+      <slot>8</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+1_S9">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-29:10203?target=amc-s1d08-29-09:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+1</crate>
+      <slot>9</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+1_S10">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-29:10203?target=amc-s1d08-29-10:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+1</crate>
+      <slot>10</slot>
+      <rx-port pid="[00:05]" name="DT[01:06]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+1_S11">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-29:10203?target=amc-s1d08-29-11:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+1</crate>
+      <slot>11</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+1_S12">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-29:10203?target=amc-s1d08-29-12:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+1</crate>
+      <slot>12</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+2_S1">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-12:10203?target=amc-s1d08-12-01:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+2</crate>
+      <slot>1</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+2_S2">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-12:10203?target=amc-s1d08-12-02:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+2</crate>
+      <slot>2</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+2_S3">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-12:10203?target=amc-s1d08-12-03:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+2</crate>
+      <slot>3</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+2_S4">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-12:10203?target=amc-s1d08-12-04:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+2</crate>
+      <slot>4</slot>
+      <rx-port pid="[00:05]" name="DT[01:06]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+2_S5">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-12:10203?target=amc-s1d08-12-05:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+2</crate>
+      <slot>5</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+2_S6">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-12:10203?target=amc-s1d08-12-06:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+2</crate>
+      <slot>6</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+2_S7">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-12:10203?target=amc-s1d08-12-07:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+2</crate>
+      <slot>7</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+2_S8">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-12:10203?target=amc-s1d08-12-08:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+2</crate>
+      <slot>8</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+2_S9">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-12:10203?target=amc-s1d08-12-09:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+2</crate>
+      <slot>9</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+2_S10">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-12:10203?target=amc-s1d08-12-10:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+2</crate>
+      <slot>10</slot>
+      <rx-port pid="[00:05]" name="DT[01:06]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+2_S11">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-12:10203?target=amc-s1d08-12-11:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+2</crate>
+      <slot>11</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB+2_S12">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d08-12:10203?target=amc-s1d08-12-12:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_+2</crate>
+      <slot>12</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-1_S1">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-27:10203?target=amc-s1d07-27-01:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-1</crate>
+      <slot>1</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-1_S2">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-27:10203?target=amc-s1d07-27-02:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-1</crate>
+      <slot>2</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-1_S3">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-27:10203?target=amc-s1d07-27-03:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-1</crate>
+      <slot>3</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-1_S4">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-27:10203?target=amc-s1d07-27-04:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-1</crate>
+      <slot>4</slot>
+      <rx-port pid="[00:05]" name="DT[01:06]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-1_S5">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-27:10203?target=amc-s1d07-27-05:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-1</crate>
+      <slot>5</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-1_S6">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-27:10203?target=amc-s1d07-27-06:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-1</crate>
+      <slot>6</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-1_S7">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-27:10203?target=amc-s1d07-27-07:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-1</crate>
+      <slot>7</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-1_S8">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-27:10203?target=amc-s1d07-27-08:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-1</crate>
+      <slot>8</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-1_S9">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-27:10203?target=amc-s1d07-27-09:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-1</crate>
+      <slot>9</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-1_S10">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-27:10203?target=amc-s1d07-27-10:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-1</crate>
+      <slot>10</slot>
+      <rx-port pid="[00:05]" name="DT[01:06]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-1_S11">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-27:10203?target=amc-s1d07-27-11:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-1</crate>
+      <slot>11</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-1_S12">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-27:10203?target=amc-s1d07-27-12:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-1</crate>
+      <slot>12</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-2_S1">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-10:10203?target=amc-s1d07-10-01:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-2</crate>
+      <slot>1</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-2_S2">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-10:10203?target=amc-s1d07-10-02:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-2</crate>
+      <slot>2</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-2_S3">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-10:10203?target=amc-s1d07-10-03:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-2</crate>
+      <slot>3</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-2_S4">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-10:10203?target=amc-s1d07-10-04:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-2</crate>
+      <slot>4</slot>
+      <rx-port pid="[00:05]" name="DT[01:06]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-2_S5">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-10:10203?target=amc-s1d07-10-05:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-2</crate>
+      <slot>5</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-2_S6">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-10:10203?target=amc-s1d07-10-06:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-2</crate>
+      <slot>6</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-2_S7">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-10:10203?target=amc-s1d07-10-07:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-2</crate>
+      <slot>7</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-2_S8">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-10:10203?target=amc-s1d07-10-08:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-2</crate>
+      <slot>8</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-2_S9">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-10:10203?target=amc-s1d07-10-09:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-2</crate>
+      <slot>9</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-2_S10">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-10:10203?target=amc-s1d07-10-10:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-2</crate>
+      <slot>10</slot>
+      <rx-port pid="[00:05]" name="DT[01:06]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-2_S11">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-10:10203?target=amc-s1d07-10-11:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-2</crate>
+      <slot>11</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+    <processor id="YB-2_S12">
+      <creator>twinmuxswatch::TwinMuxProcessor</creator>
+      <hw-type>TM7</hw-type>
+      <role>tm7Role1</role>
+      <uri>chtcp-2.0://bridge-s1d07-10:10203?target=amc-s1d07-10-12:50001</uri>
+      <address-table>file:///opt/cactus/etc/tm7/addrtab/tm7_infra.xml</address-table>
+      <crate>crate_-2</crate>
+      <slot>12</slot>
+      <rx-port pid="[00:04]" name="DT[01:05]"/>
+      <tx-port pid="[00:06]" name="OMTF[00:06]"/>
+      <tx-port pid="[06:12]" name="BMTF[00:06]"/>
+    </processor>
+  </processors>
+  <daqttc-mgrs>
+    <daqttc-mgr id="AMC13_YB0">
+      <creator>twinmuxswatch::AMC13Interface</creator>
+      <role>daqttc</role>
+      <crate>crate_0</crate>
+      <slot>13</slot>
+      <uri id="t1">chtcp-2.0://bridge-s1d07-41:10203?target=amc-s1d07-41-13-t1:50001</uri>
+      <uri id="t2">chtcp-2.0://bridge-s1d07-41:10203?target=amc-s1d07-41-13-t2:50001</uri>
+      <address-table id="t1">file:///opt/cactus/etc/amc13/AMC13XG_T1.xml</address-table>
+      <address-table id="t2">file:///opt/cactus/etc/amc13/AMC13XG_T2.xml</address-table>
+      <fed-id>1390</fed-id>
+    </daqttc-mgr>
+    <daqttc-mgr id="AMC13_YB+1">
+      <creator>twinmuxswatch::AMC13Interface</creator>
+      <role>daqttc</role>
+      <crate>crate_+1</crate>
+      <slot>13</slot>
+      <uri id="t1">chtcp-2.0://bridge-s1d08-29:10203?target=amc-s1d08-29-13-t1:50001</uri>
+      <uri id="t2">chtcp-2.0://bridge-s1d08-29:10203?target=amc-s1d08-29-13-t2:50001</uri>
+      <address-table id="t1">file:///opt/cactus/etc/amc13/AMC13XG_T1.xml</address-table>
+      <address-table id="t2">file:///opt/cactus/etc/amc13/AMC13XG_T2.xml</address-table>
+      <fed-id>1393</fed-id>
+    </daqttc-mgr>
+    <daqttc-mgr id="AMC13_YB+2">
+      <creator>twinmuxswatch::AMC13Interface</creator>
+      <role>daqttc</role>
+      <crate>crate_+2</crate>
+      <slot>13</slot>
+      <uri id="t1">chtcp-2.0://bridge-s1d08-12:10203?target=amc-s1d08-12-13-t1:50001</uri>
+      <uri id="t2">chtcp-2.0://bridge-s1d08-12:10203?target=amc-s1d08-12-13-t2:50001</uri>
+      <address-table id="t1">file:///opt/cactus/etc/amc13/AMC13XG_T1.xml</address-table>
+      <address-table id="t2">file:///opt/cactus/etc/amc13/AMC13XG_T2.xml</address-table>
+      <fed-id>1394</fed-id>
+    </daqttc-mgr>
+    <daqttc-mgr id="AMC13_YB-1">
+      <creator>twinmuxswatch::AMC13Interface</creator>
+      <role>daqttc</role>
+      <crate>crate_-1</crate>
+      <slot>13</slot>
+      <uri id="t1">chtcp-2.0://bridge-s1d07-27:10203?target=amc-s1d07-27-13-t1:50001</uri>
+      <uri id="t2">chtcp-2.0://bridge-s1d07-27:10203?target=amc-s1d07-27-13-t2:50001</uri>
+      <address-table id="t1">file:///opt/cactus/etc/amc13/AMC13XG_T1.xml</address-table>
+      <address-table id="t2">file:///opt/cactus/etc/amc13/AMC13XG_T2.xml</address-table>
+      <fed-id>1391</fed-id>
+    </daqttc-mgr>
+    <daqttc-mgr id="AMC13_YB-2">
+      <creator>twinmuxswatch::AMC13Interface</creator>
+      <role>daqttc</role>
+      <crate>crate_-2</crate>
+      <slot>13</slot>
+      <uri id="t1">chtcp-2.0://bridge-s1d07-10:10203?target=amc-s1d07-10-13-t1:50001</uri>
+      <uri id="t2">chtcp-2.0://bridge-s1d07-10:10203?target=amc-s1d07-10-13-t2:50001</uri>
+      <address-table id="t1">file:///opt/cactus/etc/amc13/AMC13XG_T1.xml</address-table>
+      <address-table id="t2">file:///opt/cactus/etc/amc13/AMC13XG_T2.xml</address-table>
+      <fed-id>1395</fed-id>
+    </daqttc-mgr>
+  </daqttc-mgrs>
+  <links/>
+  <connected-feds/>
+  <excluded-boards/>
+</system>
+

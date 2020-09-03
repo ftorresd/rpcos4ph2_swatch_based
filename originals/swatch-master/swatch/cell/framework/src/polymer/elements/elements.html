@@ -1,0 +1,68 @@
+
+<!--
+
+STATIC LOADING
+
+<link rel="import" href="./swatch-styles/swatch-styles.html">
+<link rel="import" href="./monitoring-title/monitoring-title.html">
+<link rel="import" href="./panel-title/panel-title.html">
+<link rel="import" href="./crate-display/crate-display.html">
+<link rel="import" href="./processor-table/processor-table.html">
+<link rel="import" href="./daqttc-table/daqttc-table.html">
+<link rel="import" href="./internal-links-table/internal-links-table.html">
+<link rel="import" href="./tabbed-page/tabbed-page.html">
+<link rel="import" href="./generic-tabbed-page/generic-tabbed-page.html">
+<link rel="import" href="./component-view/component-view.html">
+<link rel="import" href="./system-page/system-page.html">
+<link rel="import" href="./metric-table/metric-table.html">
+<link rel="import" href="./ports-view/ports-view.html">
+<link rel="import" href="./ports-table/ports-table.html">
+<link rel="import" href="./processors-view/processors-view.html">
+<link rel="import" href="./metrics-view/metrics-view.html">
+<link rel="import" href="./commands-panel/commands-panel.html">
+<link rel="import" href="./command-sequences-panel/command-sequences-panel.html">
+<link rel="import" href="./system-setup-view/system-setup-view.html">
+<link rel="import" href="./gatekeeper-setup-view/gatekeeper-setup-view.html">
+<link rel="import" href="./monitoring-thread-setup-view/monitoring-thread-setup-view.html">
+<link rel="import" href="./charts-panel/charts-panel.html">
+<link rel="import" href="./redirect-panel/redirect-panel.html">
+<link rel="import" href="./state-machine-panel/state-machine-panel.html">
+<link rel="import" href="./monitorable-status/monitorable-status.html">
+
+-->
+
+
+
+<!-- LAZY LOADING -->
+
+<link rel="import" href="./system-setup-view/system-setup-view.html">
+<link rel="import" href="./gatekeeper-setup-view/gatekeeper-setup-view.html">
+<link rel="import" href="./monitoring-thread-setup-view/monitoring-thread-setup-view.html">
+<link rel="import" href="./system-page/system-page.html">
+<link rel="import" href="./ports-view/ports-view.html">
+<link rel="import" href="./processors-view/processors-view.html">
+<link rel="import" href="./component-view/component-view.html">
+<link rel="import" href="/ts/common-elements/fake-a/fake-a.html">
+
+<script>
+  var base = document._currentScript.baseURI;
+  base = base.substring(0, base.lastIndexOf("/") + 1);
+  LazyLoad({
+    base: base,
+    provides: {
+      "monitoring-title":"monitoring-title/monitoring-title.html",
+      "panel-title": "panel-title/panel-title.html",
+      "tabbed-page": "tabbed-page/tabbed-page.html",
+      "generic-tabbed-page": "generic-tabbed-page/generic-tabbed-page.html",
+      "commands-panel":"commands-panel/commands-panel.html",
+      "command-sequences-panel": "command-sequences-panel/command-sequences-panel.html",
+      "charts-panel": "charts-panel/charts-panel.html",
+      "redirect-panel": "redirect-panel/redirect-panel.html",
+      "state-machine-panel": "state-machine-panel/state-machine-panel.html",
+      "system-state-machine-panel": "system-state-machine-panel/system-state-machine-panel.html",
+      "masked-panel": "masked-panel/masked-panel.html",
+      "explore-panel": "explore-panel/explore-panel.html",
+      "log-panel": "log-panel/log-panel.html"
+    }
+  });
+</script>

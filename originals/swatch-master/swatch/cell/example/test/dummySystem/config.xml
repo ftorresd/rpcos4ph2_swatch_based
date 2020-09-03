@@ -1,0 +1,7 @@
+<db>
+  <key id="RunKey1">
+    <load module="params.xml"/>
+    <load module="masks.xml"/>
+    <load module="bigfile.xml"/>
+  </key>
+</db>

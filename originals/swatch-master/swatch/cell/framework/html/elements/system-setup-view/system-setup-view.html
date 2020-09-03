@@ -1,0 +1,178 @@
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+<link rel="import" href="/extern/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/ts/common-elements/iron-flex-layout-attributes/iron-flex-layout-attributes.html">
+<link rel="import" href="/extern/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/extern/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/extern/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/ts/common-elements/reset-css/reset-css.html">
+<link rel="import" href="/extern/bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="/ts/common-elements/ts-ajax/ts-ajax.html">
+<link rel="import" href="/ts/common-elements/ts-tree/ts-tree.html">
+
+
+<dom-module id="system-setup-view">
+
+    <template>
+
+        <style include="swatch-styles"></style>
+        <style include="iron-flex-layout-attributes"></style>
+        <style include="reset-css"></style>
+
+        <style>
+          paper-item {
+            --paper-item-min-height: 1em;
+            font-size: 1em;
+            --paper-item-focused-before: {
+              background: none;
+            };
+
+            --paper-item-disabled:{
+              color: black;
+            };
+          }
+        </style>
+
+        <style>
+paper-listbox{max-height:15vh;overflow-y:auto;border:1px solid;border-color:#aaa}
+</style>
+
+        <div vertical layout>
+
+          <div class="content" style="margin-top: 5px" vertical layout>
+            <span>Current system is '<span style="color: red; font-weight: bold;">{{currentSystem}}</span>'</span>
+
+            <div>
+              <div horizontal layout align-end>
+                <span style="padding: 10px;">Initialize from file:</span>
+                <div flex><paper-input label="File Path" value="{{filePath}}"></paper-input></div>
+                <div style="padding: 5px;"><paper-button raised on-click="loadSystemFromFile">Initialize from file</paper-button></div>
+              </div>
+            </div>
+
+            <div>
+              <div horizontal layout align-end>
+                <span style="padding: 10px;">Initialize from DB:</span>
+                <div flex><paper-input label="Subsystem ID" value="{{subsystemId}}"></paper-input></div>
+                <div flex style="padding-left: 5px;"><paper-input label="Configuration Key" value="{{configurationKey}}"></paper-input></div>
+                <div style="padding: 5px;"><paper-button raised on-click="loadSystemFromDB">Initialize from DB</paper-button></div>
+              </div>
+            </div>
+
+            <div class="Error" style="white-space: pre-wrap;" id="ErrorBox">{{loadStatus.errorMessage}}</div>
+          </div>
+
+          <div class="spacer">
+
+          </div>
+
+          <div class="content" horizontal layout flex>
+
+            <div style="min-width: 200px;">
+              <ts-tree tree="{{systemTree}}" selected="{{selectedItem}}" on-click="getOnClickObjectDetails"></ts-tree>
+            </div>
+
+            <div class="content" flex>
+              <h4>{{selectedItem}}</h4>
+              <div class="spacer">
+
+              </div>
+              <table>
+                <template is="dom-repeat" items="{{itemDetails}}" as="detail">
+                  <tr>
+
+                    <template is="dom-if" if="{{detail.name}}">
+                      <td class="CompactTable" style="width: 10vw;">
+                        <span style="font-weight: bold;">{{detail.name}}</span>
+                      </td>
+                    </template>
+
+                    <template is="dom-if" if="{{detail.value}}">
+                      <td class="CompactTable">
+                        {{detail.value}}
+                      </td>
+                    </template>
+
+                    <template is="dom-if" if="{{detail.srcPort}}">
+                      <td class="CompactTable">
+                        <span style="font-weight: bold;">{{detail.id}}</span>
+                      </td>
+                      <td class="CompactTable" style="text-align: right;">
+                        {{detail.srcPort}}
+                      </td>
+                      <td class="CompactTable" style="text-align: center;">
+                        &rarr;
+                      </td>
+                      <td class="CompactTable" style="text-align: left;">
+                        {{detail.dstPort}}
+                      </td>
+                    </template>
+
+                    <template is="dom-if" if="{{detail.FED}}">
+                      <td class="CompactTable">
+                        <span style="font-weight: bold;">{{detail.FED}}</span>
+                      </td>
+                      <td class="CompactTable">
+                        <paper-listbox>
+                          <template is="dom-repeat" items="{{detail.inputs}}" as="input">
+                            <paper-item disabled>{{input}}</paper-item>
+                          </template>
+                        </paper-listbox>
+                      </td>
+                    </template>
+
+                  </tr>
+                </template>
+              </table>
+            </div>
+
+          </div>
+
+        </div>
+
+        <ts-ajax
+          id="systemFromFileLoader"
+          callback="SetupPanel::loadSystemFromFile"
+          data="{{loadStatus}}"
+          parameters='["filepath"]'
+          filepath="{{filePath}}"
+          on-data-changed="onLoadedSystemFromFile"
+        ></ts-ajax>
+
+        <ts-ajax
+          id="systemFromDBLoader"
+          callback="SetupPanel::loadSystemFromDB"
+          data="{{loadStatus}}"
+          parameters='["subsystemid", "configurationkey"]'
+          subsystemid="{{subsystemId}}"
+          configurationkey="{{configurationKey}}"
+          on-data-changed="onLoadedSystemFromDB"
+        ></ts-ajax>
+
+        <ts-ajax
+          id="systemTreeRequester"
+          callback="SetupPanel::getSystemTreeJSON"
+          data="{{systemTree}}"
+          auto
+          on-data-changed="onReplySystemTree"
+        ></ts-ajax>
+
+        <ts-ajax
+          id="objectDetailsRequester"
+          callback="SetupPanel::getObjectDetails"
+          data="{{itemDetails}}"
+          parameters='["objectname", "type"]'
+        ></ts-ajax>
+
+    </template>
+    <script>
+Polymer({is:"system-setup-view",properties:{currentSystem:{type:String,value:"empty"},filePath:{type:String,value:""},loadStatus:{type:Object,value:""},systemTree:{type:Array,value:[]},selectedItem:{type:String,value:""},itemDetails:{type:Array,value:[]},loaded:{type:Boolean,value:!1},subsystemId:{type:String,value:""},configurationKey:{type:String,value:""}},loadSystemFromFile:function(){this.$.systemFromFileLoader.generateRequest(),this.set("loadStatus.errorMessage",""),this.loaded=!1},loadSystemFromDB:function(){this.$.systemFromDBLoader.generateRequest(),this.set("loadStatus.errorMessage",""),this.loaded=!1},isStatusError:function(status){return"error"==status},onLoadedSystemFromFile:function(){"success"==this.$.systemFromFileLoader.data.status&&(this.set("currentSystem",this.$.systemFromFileLoader.data.systemID),
+//Loads the tree only if Itialize is pressed
+this.loaded||(this.$.systemTreeRequester.generateRequest(),this.loaded=!0))},onLoadedSystemFromDB:function(){"success"==this.$.systemFromDBLoader.data.status&&(this.set("currentSystem",this.$.systemFromDBLoader.data.systemID),
+//Loads the tree only if Itialize is pressed
+this.loaded||(this.$.systemTreeRequester.generateRequest(),this.loaded=!0))},onReplySystemTree:function(){this.set("itemDetails",[]),this.set("selectedItem",""),null!=this.$.systemTreeRequester&&this.set("currentSystem",this.$.systemTreeRequester.data[0].name)},getObjectDetails:function(){
+//I need the type of objectname in the systemTree
+var selectedItemType=this.getItemType(this.$.tree.selected,this.systemTree[0]);"undefined"!=selectedItemType&&(this.set("itemDetails",[]),this.$.objectDetailsRequester.set("objectname",this.$.tree.selected),this.$.objectDetailsRequester.set("type",selectedItemType),this.$.objectDetailsRequester.generateRequest())},getItemType:function(itemName,treeNode){if(treeNode.name==itemName)return treeNode.type;if(void 0===treeNode.tree)return"undefined";if(null==treeNode.tree)return"undefined";for(var type="undefined",x=0;x<treeNode.tree.length;x++)"undefined"!=(type=this.getItemType(itemName,treeNode.tree[x]))&&(x=treeNode.tree.length);return type},getOnClickObjectDetails:function(e,detail){
+//console.log(Polymer.dom(e));
+if(null!=Polymer.dom(e).rootTarget.lastChild){var selectedItemType=this.getItemType(Polymer.dom(e).rootTarget.lastChild.textContent,this.systemTree[0]);"undefined"!=selectedItemType&&(this.set("itemDetails",[]),this.$.objectDetailsRequester.set("objectname",Polymer.dom(e).rootTarget.lastChild.textContent),this.$.objectDetailsRequester.set("type",selectedItemType),this.$.objectDetailsRequester.generateRequest())}}});
+</script>
+</dom-module>

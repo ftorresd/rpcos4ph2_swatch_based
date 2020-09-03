@@ -1,0 +1,94 @@
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+
+<link rel="import" href="/extern/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/extern/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/ts/common-elements/iron-flex-layout-attributes/iron-flex-layout-attributes.html">
+<link rel="import" href="/extern/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/extern/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/extern/bower_components/iron-icons/av-icons.html">
+
+
+<link rel="import" href="/swatchcell/framework/html/elements/monitorable-status/monitorable-status.html">
+<link rel="import" href="/swatchcell/framework/html/elements/monitoring-status-icon/monitoring-status-icon.html">
+
+<dom-module id="metric-table">
+
+  <template>
+    <style include="swatch-styles"></style>
+    <link rel="import" type="css" href="css/metric-table-min.css?__inline=true">
+
+    <template is="dom-if" if="[[!object]]">
+      <p>nothing to display</p>
+    </template>
+    <template is="dom-if" if="[[object]]">
+      <button class$="{{getHeadingClass(object.status)}}" on-click="toggle">
+      <div>
+        <span>{{name}}</span>
+        <span class="monitoringstatusheader">
+          <template is="dom-if" if="{{isNotEmpty(object.monitoringstatus)}}">
+            <span>Monitoring:&nbsp;<span class="monitoringstatus">{{object.monitoringstatus}}</span></span>
+          </template>
+          <template is="dom-if" if="{{isNotEmpty(object.ismasked)}}">
+            <span class="horizontalSpacer"></span>
+            <span>Masked:&nbsp;<span class="monitoringstatus">{{getCapitalBoolean(object.ismasked)}}</span></span>
+          </template>
+        </span>
+        <paper-icon-button icon="icons:expand-more" style="margin:0;padding:0"></paper-icon-button>
+      </div>
+      </button>
+    </template>
+    <iron-collapse id="metric_table" opened="{{isOpened}}">
+
+      <div id="container" class="content" vertical layout>
+
+        <template is="dom-if" if="[[recursive]]">
+
+          <template is="dom-if" if="[[object.submonitorables.length]]">
+            <span style="font-weight: bold;">Sub-monitorables:</span><br/>
+          </template>
+
+          <template is="dom-repeat" items="[[object.components]]" as="submonitorable">
+            <metric-table id$="{{submonitorable.id}}" name="{{submonitorable.id}}" object="{{submonitorable}}" on-toggled="updateOpenedSubmonitorables" recursive="{{recursive}}"></metric-table>
+          </template>
+
+        </template>
+
+        <template is="dom-if" if="[[object.metrics.length]]">
+          <table class="main-metric-table">
+            <tr>
+              <th class="metric-table-content">
+                Metric ID
+                <paper-button toggles class="sort-button" active="{{sortAlphabetically}}" on-click="updateSorting">
+                  <iron-icon icon="av:sort-by-alpha"></iron-icon>
+                </paper-button>
+              </th>
+              <th class="metric-table-content monitoring-column"></th>
+              <th class="metric-table-content"><span id="monitoringEnabledSpace" class="monitoring-status-empty"></span>Value</th>
+              <th class="metric-table-content">Error<br/> Condition</th>
+              <th class="metric-table-content">Warning<br/> Condition</th>
+              <th class="metric-table-content">Last updated (UTC)</th>
+            </tr>
+            <template is="dom-repeat" items="{{object.metrics}}" as="metric" sort="sortFunction" id="metricRepeater">
+              <tr not-monitored$="[[!isMonitored(metric.monitoringstatus)]]" is-warning$="[[isWarning(metric)]]" is-error$="[[isError(metric)]]">
+                <td class="metric-table-content" ><monitorable-status status="[[metric.status]]"></monitorable-status>{{metric.id}}</td>
+                <td class="metric-table-content monitoring-column">
+                  <monitoring-status-icon status="[[metric.monitoringstatus]]" class="monitoring-status-icon"></monitoring-status-icon>
+                </td>
+                <td class="metric-table-content"  style="font-weight:bold;">
+                  {{metric.value}}
+                </td>
+                <td class="metric-table-content" >{{metric.errorCondition}}</td>
+                <td class="metric-table-content" >{{metric.warningCondition}}</td>
+                <td class="metric-table-content" >{{metric.timestamp}}</td>
+              </tr>
+            </template>
+          </table>
+        </template>
+      </div>
+    </iron-collapse>
+    <div class="spacer">&nbsp;</div>
+  </template>
+
+  <script src="javascript/metric-table-min.js?__inline=true"></script>
+
+</dom-module>

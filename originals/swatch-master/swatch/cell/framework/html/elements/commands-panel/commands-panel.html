@@ -1,0 +1,259 @@
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+<link rel="import" href="/extern/bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="/extern/bower_components/paper-item/paper-item.html">
+<link rel="import" href="/extern/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/extern/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/extern/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/extern/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/extern/bower_components/paper-progress/paper-progress.html">
+<link rel="import" href="/ts/common-elements/iron-flex-layout-attributes/iron-flex-layout-attributes.html">
+<link rel="import" href="/ts/common-elements/command-input/command-input.html">
+<link rel="import" href="/ts/common-elements/auto-update/auto-update.html">
+<link rel="import" href="/ts/common-elements/ts-ajax/ts-ajax.html">
+<link rel="import" href="/ts/common-elements/master-detail-layout/master-detail-layout.html">
+<link rel="import" href="/ts/common-elements/reset-css/reset-css.html">
+
+
+<dom-module id="commands-panel">
+
+    <template>
+
+      <style include="swatch-styles"></style>
+      <style include="reset-css"></style>
+      <style include="iron-flex-layout-attributes"></style>
+      <style>
+.selectionlabel{margin-bottom:10px;padding-right:10px;width:90pt}paper-listbox{max-height:15vh;overflow-y:auto}.Done{color:var(--paper-green-400)}.Running{color:var(--paper-blue-500)}.Scheduled{color:var(--paper-grey-400)}paper-progress.Done{--paper-progress-active-color:var(--paper-green-400)}paper-progress.Error{--paper-progress-active-color:#e44e50}paper-progress.Warning{--paper-progress-active-color:orange}paper-progress.Running{--paper-progress-active-color:var(--paper-blue-500)}paper-progress.Scheduled{--paper-progress-active-color:var(--paper-grey-400)}command-input,paper-radio-button{padding:3px}paper-item{--paper-item-min-height:1em;font-size:1em}.Busy{color:#e44e50}
+</style>
+
+      <style>
+        paper-item {
+          --paper-item-min-height: 1em;
+          font-size: 1em;
+        }
+      </style>
+
+      <template is="dom-if" if="{{!objectTypes.0}}">
+        <p class="Error" style="font-weight:bold;">No processors / DaqTTCManagers in system</p>
+      </template>
+
+      <!-- Object Types -->
+
+      <ts-ajax
+        id="objectTypeArrayRequester"
+        data="{{objectTypes}}"
+        callback="CommandPanel::getObjectTypeArray"
+        auto
+      ></ts-ajax>
+
+      <!-- Devices -->
+
+      <auto-update
+        id="deviceArrayRequester"
+        data="{{devices}}"
+        callback="CommandPanel::getDeviceArray"
+        no-refresh
+        headless
+        parameters='["objecttype"]'
+        on-data-changed="deviceArrayChanged"
+        interval="3000"
+      ></auto-update>
+
+      <!-- Commands -->
+
+      <ts-ajax
+        id="commandArrayRequester"
+        data="{{commands}}"
+        callback="CommandPanel::getCommandArray"
+        parameters='["objecttype"]'
+      ></ts-ajax>
+
+      <ts-ajax
+        id="GateKeeperChecker"
+        data="{{isGateKeeperReady}}"
+        callback="CommandPanel::isGateKeeperReady"
+        auto
+        headless
+      ></ts-ajax>
+
+
+      <master-detail-layout>
+        <div master style="padding:10px" >
+          <template is="dom-if" if="{{objectTypes.0}}">
+            <span style="font-weight: bold;">Select object type:</span><br/>
+          </template>
+          <paper-listbox id="objectTypeMenu" selected="{{selectedObjectType}}" on-iron-select="sendObjectType" on-iron-items-changed="sendObjectType">
+            <template is="dom-repeat" items="{{objectTypes}}" as="obj">
+              <paper-item name$="{{obj}}">{{obj}}</paper-item>
+            </template>
+          </paper-listbox>
+        </div>
+        <div detail>
+          <master-detail-layout>
+
+            <div master style="padding:10px">
+              <template is="dom-if" if="{{commands.0}}">
+                <span style="font-weight: bold;">Select command:</span><br/>
+              </template>
+              <paper-listbox id="commandMenu" selected="{{selectedCommand}}" on-iron-select="sendDevicesAndCommand">
+                <template is="dom-repeat" items="{{commands}}" as="obj">
+                  <paper-item name$="{{obj}}">{{obj}}</paper-item>
+                </template>
+              </paper-listbox>
+            </div>
+
+            <div detail style="padding:10px">
+              <template is="dom-if" if="{{devices.0}}">
+                <span style="font-weight: bold;">Select device:</span><br/>
+              </template>
+              <paper-listbox id="deviceMenu" selected-values="{{selectedDevices}}" multi on-iron-select="sendDevicesAndCommand" on-iron-deselect="sendDevicesAndCommand" >
+                <template is="dom-repeat" items="{{devices}}" as="obj">
+                  <paper-item name$="{{obj.id}}" >{{obj.id}}
+                    <template is="dom-if" if="{{obj.lockedby}}">
+                      (locked by {{obj.lockedby}})
+                    </template>
+                  </paper-item>
+                </template>
+              </paper-listbox>
+              <template is="dom-if" if="{{devices.0}}">
+                <paper-button raised on-click="selectAll">Select all</paper-button>
+                <paper-button raised on-click="selectNone">Select none</paper-button>
+              </template>
+            </div>
+
+          </master-detail-layout>
+        </div>
+      </master-detail-layout>
+
+      <div class="spacer"></div>
+
+      <template is="dom-if" if="{{parameters.0}}">
+        <span style="font-weight:bold;">Parameters</span> <br/>
+        <template is="dom-if" if="{{!isGateKeeperReady}}">
+          <span class="Error">GateKeeper is Not Available.</span> <br/>
+        </template>
+      </template>
+
+      <ts-ajax
+        id="parameterArrayRequester"
+        data="{{parameters}}"
+        callback="CommandPanel::getParameterArray"
+        parameters='["command", "objecttype", "devices", "namespace", "loadfromgk"]'
+        loadfromgk="false"
+      ></ts-ajax>
+
+      <div horizontal layout>
+
+        <div vertical layout style="min-width: 200px;">
+          <template is="dom-repeat" items="{{parameters}}" as="parameter">
+            <command-input id$="[[sanitize(parameter.name)]]" name="{{parameter.name}}" type="{{parameter.type}}" value="{{parameter.value}}"></command-input>
+          </template>
+        </div>
+
+        <div vertical layout style="padding: 10px;">
+          <template is="dom-if" if="{{parameters.0}}">
+            <template is="dom-if" if="{{isGateKeeperReady}}">
+              <span style="font-weight: bold;">Load from GateKeeper:</span>
+              <div>
+                <paper-input id="namespace" label="Namespace"></paper-input>
+              </div>
+              <div>
+                <paper-button raised id="loadFromGateKeeperButton" on-click="loadFromGateKeeper" ><iron-icon icon="file-download"></iron-icon>Load from GateKeeper</paper-button>
+              </div>
+              <div>
+                <paper-button raised id="loadDefaultsButton" on-click="loadDefaults"><iron-icon icon="file-download"></iron-icon>Load default values</paper-button>
+              </div>
+            </template>
+          </template>
+        </div>
+
+        <div style="padding: 10px;">
+          <template is="dom-if" if="[[isCommandExisting(selectedCommand, commands.0)]]">
+            <template is="dom-if" if="[[selectedDevices.length]]">
+              <paper-button raised id="runCommandButton" on-click="runCommand" ><iron-icon icon="launch"></iron-icon>Run command</paper-button>
+            </template>
+          </template>
+        </div>
+
+
+      </div>
+
+      <div class="spacer"></div>
+
+      <ts-ajax
+          id="commandStarter"
+          callback="CommandPanel::runCommand"
+          parameters='["run"]'
+          run="{{run}}"
+        ></ts-ajax>
+
+      <auto-update
+          id="commandStatusUpdater"
+          data="{{commandStatus}}"
+          callback="CommandPanel::getCommandStatus"
+          parameters='["devices", "command"]'
+          headless
+          interval="1000"
+          on-data-changed="onCommandStatusChanged"
+        ></auto-update>
+
+      <template is="dom-if" if="{{commandStatus.0.status}}">
+        Last updated: <span>{{commandStatus.0.time}}</span>
+
+        <table id="commandInterface">
+          <tr>
+            <th>Object</th><th style="width:100px;">Status</th><th style="width: 100px;">Running <br/> time</th><th style="width: 250px">Progress</th><th style="width: 35%">Message</th><th>Result</th><th>Details</th>
+          </tr>
+          <template is="dom-repeat" items="[[commandStatus]]" as="cmd">
+            <tr>
+              <td class="compacttable" style="width: 150px" ><span>{{cmd.device}}</span></td>
+              <td class$="{{cmd.status}}">{{cmd.status}}</td>
+              <td>{{cmd.runningtime}}</td>
+              <td><paper-progress id$="[[getProgressID(cmd.device)]]" value="{{cmd.progress}}" class$="{{setProgressClass(cmd.status, cmd.device)}}"></paper-progress> &nbsp; <span>{{cmd.progress}}</span>&#37;</td>
+              <td>{{cmd.message}}</td>
+              <td>{{cmd.result}}</td>
+              <td style="padding-left: 5px;">
+                  <div>
+                    <paper-button id="[[getButtonCollapseID(cmd.device)]]" style="background-color: #E0E0E0;" on-click="toggleIronCollapse">
+                      <paper-icon-button icon="icons:expand-more" style="margin:0;padding:0; width: 15px; height: 15px;"></paper-icon-button>
+                    </paper-button>
+                  </div>
+                <iron-collapse id="[[getIronCollapseID(cmd.device)]]">
+                  <table>
+                    <tr>
+                      <th class="compacttable">Id</th><th class="compacttable">Value</th>
+                    </tr>
+                    <template is="dom-repeat" items="[[cmd.detailedInfo]]" as="par">
+                      <tr>
+                        <td class="compacttable"><span>{{par.key}}</span></td>
+                        <td class="compacttable"><span>{{par.value}}</span></td>
+                      </tr>
+                    </template>
+                  </table>
+                </iron-collapse>
+              </td>
+            </tr>
+          </table>
+        </template>
+      </template>
+
+    </template>
+
+    <script>
+Polymer({is:"commands-panel",properties:{objectTypes:{type:Array,value:function(){return[]}},devices:{type:Array,value:function(){return[]}},commands:{type:Array,value:function(){return[]}},parameters:{type:Array,value:function(){return[]}},commandStatus:{type:Array,value:function(){return[]},observer:"checkRunButtonAndAutoUpdate"},selectedObjectType:{type:Number,value:0},selectedDevices:{type:Array,value:function(){return[]},observer:"checkRunButtonAndAutoUpdate"},selectedCommand:{type:Number,value:0},
+//Prevents the command from being run accidentally at load time
+run:{type:Boolean,value:!1},isGateKeeperReady:{type:Boolean,value:!1}},sendObjectType:function(event,detail,sender){
+//Deletes the old information since they do not apply to the new objectType
+null!=this.parameters&&(this.set("parameters",[]),this.set("devices",[]),this.set("commands",[])),
+//Default choice at the first element when changing objectType
+this.selectNone(),this.set("selectedCommand","0"),
+//Sets up the call
+this.$.deviceArrayRequester.set("objecttype",this.objectTypes[this.selectedObjectType]),this.$.commandArrayRequester.set("objecttype",this.objectTypes[this.selectedObjectType]),this.$.deviceArrayRequester.generateRequest(),this.$.deviceArrayRequester.set("noRefresh",!1),this.$.commandArrayRequester.generateRequest()},sendDevicesAndCommand:function(event,detail,sender){if(this.$.parameterArrayRequester.set("objecttype",this.objectTypes[this.selectedObjectType]),null!=this.devices&&null!=this.commands&&void 0!==this.commands[this.selectedCommand]){for(var selectedDevicesIDs=[],x=0;x<this.selectedDevices.length;x++)selectedDevicesIDs.push(this.devices[this.selectedDevices[x]].id);var loadFromGateKeeperButton=Polymer.dom(this.root).querySelector("#loadFromGateKeeperButton"),loadDefaultsButton=Polymer.dom(this.root).querySelector("#loadDefaultsButton"),namespaceInput=Polymer.dom(this.root).querySelector("#namespace");
+//I check if the buttons exist and if there is more than one device selected I don't allow the load from GK feature
+this.isGateKeeperReady&&loadDefaultsButton&&loadFromGateKeeperButton&&(this.selectedDevices.length>1&&(loadFromGateKeeperButton.set("disabled",!0),loadDefaultsButton.set("disabled",!0),namespaceInput.set("disabled",!0)),1==this.selectedDevices.length&&(loadFromGateKeeperButton.set("disabled",!1),loadDefaultsButton.set("disabled",!1),namespaceInput.set("disabled",!1))),this.$.parameterArrayRequester.set("devices",JSON.stringify(selectedDevicesIDs)),this.$.parameterArrayRequester.set("command",this.commands[this.selectedCommand]),this.$.parameterArrayRequester.set("loadfromgk","false"),null!=Polymer.dom(this.root).querySelector("#namespace")&&Polymer.dom(this.root).querySelector("#namespace").set("value",""),this.$.parameterArrayRequester.generateRequest(),this.$.commandStatusUpdater.set("devices",JSON.stringify(selectedDevicesIDs)),this.$.commandStatusUpdater.set("command",this.commands[this.selectedCommand]),this.$.commandStatusUpdater.generateRequest()}},runCommand:function(event,detail,sender){var deviceMenu=Polymer.dom(this.root).querySelector("#deviceMenu");if(deviceMenu.selectedValues.length&&void 0!==this.commands[this.selectedCommand]){for(var parametersNames=["command","objecttype","devices","run"],x=0;x<this.parameters.length;x++)parametersNames.push(this.parameters[x].name);for(var selectedDevicesIDs=[],x=0;x<deviceMenu.selectedValues.length;x++)selectedDevicesIDs.push(this.devices[this.selectedDevices[x]].id);this.$.commandStarter.set("parameters",parametersNames),this.$.commandStarter.set("objecttype",this.objectTypes[this.selectedObjectType]),this.$.commandStarter.set("devices",JSON.stringify(selectedDevicesIDs)),this.$.commandStarter.set("command",this.commands[this.selectedCommand]),this.set("run",!0),this.$.commandStarter.set("run",!0);for(var x=0;x<this.parameters.length;x++)this.$.commandStarter.set(this.parameters[x].name,Polymer.dom(this.root).querySelector("#"+this.sanitize(this.parameters[x].name)).value);this.$.commandStarter.generateRequest(),this.$.commandStatusUpdater.set("devices",JSON.stringify(selectedDevicesIDs)),this.$.commandStatusUpdater.set("command",this.commands[this.selectedCommand]),this.$.commandStatusUpdater.set("noRefresh",!1),this.$.commandStatusUpdater.generateRequest(),this.$.deviceArrayRequester.generateRequest()}},toBoolean:function(item){return void 0!==item&&"true"==item.toLowerCase()},setProgressClass:function(item,deviceID){var statusBarID=CSS.escape(this.getProgressID(deviceID));if(null==Polymer.dom(this.root).querySelector("#"+statusBarID))return item;switch(item){case"Done":Polymer.dom(this.root).querySelector("#"+statusBarID).customStyle["--paper-progress-active-color"]="#66bb6a",Polymer.dom(this.root).querySelector("#"+statusBarID).updateStyles();break;case"Error":Polymer.dom(this.root).querySelector("#"+statusBarID).customStyle["--paper-progress-active-color"]="#E44E50",Polymer.dom(this.root).querySelector("#"+statusBarID).updateStyles();break;case"Warning":Polymer.dom(this.root).querySelector("#"+statusBarID).customStyle["--paper-progress-active-color"]="orange",Polymer.dom(this.root).querySelector("#"+statusBarID).updateStyles();break;case"Running":Polymer.dom(this.root).querySelector("#"+statusBarID).customStyle["--paper-progress-active-color"]="#2196f3",Polymer.dom(this.root).querySelector("#"+statusBarID).updateStyles();break;case"Scheduled":Polymer.dom(this.root).querySelector("#"+statusBarID).customStyle["--paper-progress-active-color"]="#bdbdbd",Polymer.dom(this.root).querySelector("#"+statusBarID).updateStyles()}return item},loadFromGateKeeper:function(){this.$.parameterArrayRequester.set("namespace",Polymer.dom(this.root).querySelector("#namespace").value),this.$.parameterArrayRequester.set("loadfromgk","true"),this.$.parameterArrayRequester.generateRequest()},loadDefaults:function(){this.$.parameterArrayRequester.set("loadfromgk","false"),this.$.parameterArrayRequester.generateRequest()},checkRunButtonAndAutoUpdate:function(){if(null!=this.devices&&null!=Polymer.dom(this.root).querySelector("#runCommandButton")){
+//Checking if at least a device is selected
+if(0==this.selectedDevices.length)return Polymer.dom(this.root).querySelector("#runCommandButton").set("disabled",!0),void this.$.commandStatusUpdater.set("noRefresh",!0);for(var newDisabledRun=!1,newNoRefresh=!0,x=0;x<this.selectedDevices.length;x++)"Busy"==this.devices[this.selectedDevices[x]].status&&(newDisabledRun=!0,newNoRefresh=!1);
+//If I don't spam requests anymore, I do a last one in order to get the final status of the cmd
+!this.$.commandStatusUpdater.noRefresh&&newNoRefresh&&this.$.commandStatusUpdater.generateRequest(),this.$.commandStatusUpdater.set("noRefresh",newNoRefresh),Polymer.dom(this.root).querySelector("#runCommandButton").set("disabled",newDisabledRun)}},isCommandExisting:function(selCmd,firstCmd){return void 0!==this.commands[this.selectedCommand]},sanitize:function(value){return value.toLowerCase().replace(/[^a-zA-Z0-9]+/g,"-")},onCommandStatusChanged:function(){this.commandStatus=this.$.commandStatusUpdater.data,this.checkRunButtonAndAutoUpdate()},deviceArrayChanged:function(newVal,oldVal){this.devices=this.$.deviceArrayRequester.data,this.checkRunButtonAndAutoUpdate()},selectAll:function(event,detail,sender){for(var listbox=Polymer.dom(this.root).querySelector("#deviceMenu"),sa=[],x=0;x<listbox.items.length;x++)listbox.items[x].disabled||sa.push(x);listbox.set("selectedValues",sa);for(var selectedDevicesIDs=[],x=0;x<this.selectedDevices.length;x++)selectedDevicesIDs.push(this.devices[this.selectedDevices[x]].id);this.$.commandStatusUpdater.set("devices",JSON.stringify(selectedDevicesIDs)),this.$.commandStatusUpdater.generateRequest(),this.checkRunButtonAndAutoUpdate()},selectNone:function(event,detail,sender){Polymer.dom(this.root).querySelector("#deviceMenu").set("selectedValues",[]);var selectedDevicesIDs=[];this.$.commandStatusUpdater.set("devices",JSON.stringify(selectedDevicesIDs)),this.$.commandStatusUpdater.generateRequest(),this.checkRunButtonAndAutoUpdate()},getProgressID:function(deviceID){return deviceID+"Progress"},getButtonCollapseID:function(deviceID){return deviceID+"Button"},getIronCollapseID:function(deviceID){return deviceID+"IronCollapse"},toggleIronCollapse:function(event,detail){Polymer.dom(this.root).querySelector("#"+event.model.cmd.device+"IronCollapse").toggle()}});
+</script>
+
+</dom-module>

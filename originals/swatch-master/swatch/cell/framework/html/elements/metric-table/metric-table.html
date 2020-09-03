@@ -1,0 +1,130 @@
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+
+<link rel="import" href="/extern/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/extern/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/ts/common-elements/iron-flex-layout-attributes/iron-flex-layout-attributes.html">
+<link rel="import" href="/extern/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/extern/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/extern/bower_components/iron-icons/av-icons.html">
+
+
+<link rel="import" href="/swatchcell/framework/html/elements/monitorable-status/monitorable-status.html">
+<link rel="import" href="/swatchcell/framework/html/elements/monitoring-status-icon/monitoring-status-icon.html">
+
+<dom-module id="metric-table">
+
+  <template>
+    <style include="swatch-styles"></style>
+    <style>
+.spacer{height:20px}.monitoringstatusheader{float:right}.monitoringstatus{font-weight:700}tr[not-monitored]{background-color:#dadada}tr[is-warning]{background-color:#ffdea3}tr[is-error]{background-color:#ffd5d5}table.main-metric-table{border-spacing:0}.metric-table-content{padding:5px 3px}monitoring-status-icon.monitoring-status-icon{height:20px;margin:auto}span.monitoring-status-empty{height:20px;width:24px;display:inline-block}td.monitoring-column{width:27px}paper-button.sort-button{background-color:#c7c7c7}paper-button.sort-button,paper-button.sort-button[active]{color:#fff;padding:0;width:20px;min-width:10px;height:20px;margin-left:10px}paper-button.sort-button[active]{background-color:var(--paper-red-500)}
+</style>
+
+    <template is="dom-if" if="[[!object]]">
+      <p>nothing to display</p>
+    </template>
+    <template is="dom-if" if="[[object]]">
+      <button class$="{{getHeadingClass(object.status)}}" on-click="toggle">
+      <div>
+        <span>{{name}}</span>
+        <span class="monitoringstatusheader">
+          <template is="dom-if" if="{{isNotEmpty(object.monitoringstatus)}}">
+            <span>Monitoring:&nbsp;<span class="monitoringstatus">{{object.monitoringstatus}}</span></span>
+          </template>
+          <template is="dom-if" if="{{isNotEmpty(object.ismasked)}}">
+            <span class="horizontalSpacer"></span>
+            <span>Masked:&nbsp;<span class="monitoringstatus">{{getCapitalBoolean(object.ismasked)}}</span></span>
+          </template>
+        </span>
+        <paper-icon-button icon="icons:expand-more" style="margin:0;padding:0"></paper-icon-button>
+      </div>
+      </button>
+    </template>
+    <iron-collapse id="metric_table" opened="{{isOpened}}">
+
+      <div id="container" class="content" vertical layout>
+
+        <template is="dom-if" if="[[recursive]]">
+
+          <template is="dom-if" if="[[object.submonitorables.length]]">
+            <span style="font-weight: bold;">Sub-monitorables:</span><br/>
+          </template>
+
+          <template is="dom-repeat" items="[[object.components]]" as="submonitorable">
+            <metric-table id$="{{submonitorable.id}}" name="{{submonitorable.id}}" object="{{submonitorable}}" on-toggled="updateOpenedSubmonitorables" recursive="{{recursive}}"></metric-table>
+          </template>
+
+        </template>
+
+        <template is="dom-if" if="[[object.metrics.length]]">
+          <table class="main-metric-table">
+            <tr>
+              <th class="metric-table-content">
+                Metric ID
+                <paper-button toggles class="sort-button" active="{{sortAlphabetically}}" on-click="updateSorting">
+                  <iron-icon icon="av:sort-by-alpha"></iron-icon>
+                </paper-button>
+              </th>
+              <th class="metric-table-content monitoring-column"></th>
+              <th class="metric-table-content"><span id="monitoringEnabledSpace" class="monitoring-status-empty"></span>Value</th>
+              <th class="metric-table-content">Error<br/> Condition</th>
+              <th class="metric-table-content">Warning<br/> Condition</th>
+              <th class="metric-table-content">Last updated (UTC)</th>
+            </tr>
+            <template is="dom-repeat" items="{{object.metrics}}" as="metric" sort="sortFunction" id="metricRepeater">
+              <tr not-monitored$="[[!isMonitored(metric.monitoringstatus)]]" is-warning$="[[isWarning(metric)]]" is-error$="[[isError(metric)]]">
+                <td class="metric-table-content" ><monitorable-status status="[[metric.status]]"></monitorable-status>{{metric.id}}</td>
+                <td class="metric-table-content monitoring-column">
+                  <monitoring-status-icon status="[[metric.monitoringstatus]]" class="monitoring-status-icon"></monitoring-status-icon>
+                </td>
+                <td class="metric-table-content"  style="font-weight:bold;">
+                  {{metric.value}}
+                </td>
+                <td class="metric-table-content" >{{metric.errorCondition}}</td>
+                <td class="metric-table-content" >{{metric.warningCondition}}</td>
+                <td class="metric-table-content" >{{metric.timestamp}}</td>
+              </tr>
+            </template>
+          </table>
+        </template>
+      </div>
+    </iron-collapse>
+    <div class="spacer">&nbsp;</div>
+  </template>
+
+  <script>
+Polymer({is:"metric-table",properties:{object:{type:Object,value:function(){return{}},observer:"refreshItems"},name:String,recursive:Boolean,sortAlphabetically:{type:Boolean,value:!1},openedSubmonitorables:{type:Array,value:function(){return[]}},isOpened:{type:Boolean,value:!1},columns:{type:Array,value:function(){return[{name:"Metric ID",renderer:this.valueColumnRenderer.bind(this),sortable:!0},{name:"Value"},{name:"Last updated (UTC)"},{name:"Monitoring"},{name:"Error Condition"},{name:"Warning Condition"}]}},oldMetricsNumber:{type:Number,value:-1}},toggle:function(event,detail,sender){event.preventDefault(),this.$.metric_table.opened?this.close():this.open()},getHeadingClass:function(status){return"heading "+status+"-faded-bkg"},isNotEmpty:function(status){return!(void 0===status)},getMetricStatusClass:function(status){return"metricstatus "+status+"-bkg"},getCapitalBoolean:function(flag){switch(flag){case!0:return"True";case!1:return"False"}return"Invalid flag"},
+//Tracks the opened children
+updateOpenedSubmonitorables:function(event){var senderObject={id:event.detail.sender};if(event.detail.opened)senderObject.openedSubmonitorables=event.detail.openedSubmonitorables,this.openedSubmonitorables.push(senderObject);else{
+//Looking for the element to remove
+for(var found=!1,indexToRemove=-1,x=0;x<this.openedSubmonitorables.length&&!found;x++)this.openedSubmonitorables[x].id==senderObject.id&&(found=!0,indexToRemove=x);indexToRemove>=0&&this.openedSubmonitorables.splice(indexToRemove,1)}
+//toggle must be handled only by the direct parent
+event.stopPropagation(),this.fire("children-changed",{sender:this.object.id,opened:event.detail.opened})},open:function(){this.$.metric_table.opened||(this.$.metric_table.toggle(),this.fire("toggled",{sender:this.object.id,openedSubmonitorables:this.openedSubmonitorables,opened:this.$.metric_table.opened}))},close:function(){if(this.$.metric_table.opened){this.$.metric_table.toggle(),
+//If it is closed it must be removed from the array, so I don't need the openedSubmonitorables because I'm going to look for the ID and to remove the element
+this.fire("toggled",{sender:this.object.id,opened:this.$.metric_table.opened});for(var metrictables=Polymer.dom(this.root).querySelectorAll("metric-table"),x=0;x<metrictables.length;x++)metrictables[x].close();this.openedSubmonitorables=[]}},rowify:function(metrics){
+//Prevents crash when the table is created without metrics
+if(metrics){for(var rows=[],x=0;x<metrics.length;x++){var row={"Device Path":metrics[x].path,"Metric ID":{status:metrics[x].status,id:metrics[x].id},Value:metrics[x].value,"Last updated (UTC)":metrics[x].timestamp,Monitoring:metrics[x].monitoringstatus,"Error Condition":metrics[x].errorCondition,"Warning Condition":metrics[x].warningCondition};rows.push(row)}return rows}},valueColumnRenderer:function(cell){cell.element.innerHTML="";
+//<div title="Metric Status: {{metric.status}}" class$="{{getMetricStatusClass(metric.status)}}"></div>{{metric.id}}
+var status=document.createElement("monitorable-status");status.setAttribute("status",cell.data.status);var id=document.createTextNode(cell.data.id);cell.element.appendChild(status),cell.element.appendChild(id)},sortTable:function(event){if(this.object.metrics&&this.object.metrics.length){
+//We have 2 sorts, by metric and by path
+var table=this.$$("#table"),columnName=table.columns[table.sortOrder[0].column].name,direction="asc"==table.sortOrder[0].direction?-1:1,sort=function(row1,row2){var row1Data,row2Data;return row1Data=row1[columnName].id,row2Data=row2[columnName].id,row1Data<row2Data?direction:-direction};table.items.sort(sort)}},
+//Refreshing the table if a sort is selected
+refreshItems:function(newValue,oldValue){var table=this.$$("#table"),containerDiv=this.$$("#container");
+//If the number of rows changes for whatever reason I rescale the div resetting the height to auto
+newValue&&newValue.metrics&&this.oldMetricsNumber!=newValue.metrics.length&&(containerDiv.style.height="auto",this.oldMetricsNumber=newValue.metrics.length),
+//I have to check if the table exists, because I have a dom-if
+//Updating sorting in case of an auto-update
+table&&table.sortOrder&&table.sortOrder.length&&(this.sortTable(),table.refreshItems())},
+//When refreshing a table, it gets momentarily empty, causing the div to have 0px height
+//To fix this I can let the div auto scale until it has content, then fix the height to this value
+updateHeight:function(){var containerDiv=this.$$("#container");
+//At the beginning the height is 0, so I don't have to save it
+"0px"!=window.getComputedStyle(containerDiv).height&&"auto"==containerDiv.style.height&&(containerDiv.style.height=window.getComputedStyle(containerDiv).height)},sortByMetricID:function(rowA,rowB){return rowA.id<rowB.id?-1:1},sortByMetricIDAndErrorWarningFirst:function(rowA,rowB){
+//If I am not being monitored I will be sorted alphabetically after the monitored ones
+//Error before everything
+//If I am not being monitored I will be sorted alphabetically after the monitored ones
+//Error before everything
+//Warning before everything, but after error
+return"Enabled"==rowA.monitoringstatus&&"Enabled"==rowB.monitoringstatus?"Error"==rowA.status&&"Error"!=rowB.status?-1:"Error"!=rowA.status&&"Error"==rowB.status?1:"Error"==rowA.status&&"Warning"==rowB.status?-1:"Warning"==rowA.status&&"Error"==rowB.status?1:"Warning"==rowA.status&&"Warning"!=rowB.status?-1:"Warning"!=rowA.status&&"Warning"==rowB.status?1:rowA.id<rowB.id?-1:1:"Enabled"!=rowB.monitoringstatus&&"Enabled"==rowA.monitoringstatus?-1:"Enabled"!=rowA.monitoringstatus&&"Enabled"==rowB.monitoringstatus?1:rowA.id<rowB.id?-1:1},isMonitored:function(monitoringStatus){return"Enabled"==monitoringStatus},isDisabled:function(monitoringStatus){return"Disabled"==monitoringStatus},isNonCritical:function(monitoringStatus){return"Non critical"==monitoringStatus},isWarning:function(metric){return this.isMonitored(metric.monitoringstatus)&&"Warning"==metric.status},isError:function(metric){return this.isMonitored(metric.monitoringstatus)&&"Error"==metric.status},sortFunction:function(rowA,rowB){return this.sortAlphabetically?this.sortByMetricID(rowA,rowB):this.sortByMetricIDAndErrorWarningFirst(rowA,rowB)},updateSorting:function(event){this.$$("#metricRepeater").render()}});
+</script>
+
+</dom-module>

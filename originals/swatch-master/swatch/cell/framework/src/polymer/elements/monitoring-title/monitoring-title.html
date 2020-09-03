@@ -1,0 +1,39 @@
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+
+<link rel="import" href="/ts/common-elements/auto-update/auto-update.html">
+
+
+<dom-module id="monitoring-title">
+  <template>
+    <style include="swatch-styles"></style>
+    <style>
+    </style>
+    <auto-update data="{{status}}" callback="MonitorPanel::respondMonitoringTitleJSON" headless></auto-update>
+    <div class="monitoring-title">
+        <h2 class="panel-title">
+          <span>{{title}}</span>
+          <small>{{subtitle}}</small>
+          <span class$="{{getLabelClass(status.status)}}">Status: <span>{{status.status}}</span></span>
+          <template is="dom-if" if="[[status.isengaged]]">
+            <span class="label NoLimit-bkg">State machine:&nbsp;<span>[[status.statemachineid]]</span>::<span>[[status.state]]</span></span>
+          </template>
+          <template is="dom-if" if="[[!status.isengaged]]">
+            <span class="label NoLimit-bkg">State machine: not engaged</span>
+          </template>
+        </h2>
+    </div>
+  </template>
+  <script>
+      Polymer({
+        is: 'monitoring-title',
+        properties: {
+          title: String,
+          status: Object,
+          subtitle: String
+        },
+        getLabelClass: function(status) {
+          return 'label '+status+'-bkg';
+        }
+      });
+  </script>
+</dom-module>

@@ -1,0 +1,3 @@
+<connections>
+    <connection id="DummyProcessor" uri="ipbusudp-2.0://127.0.0.1:50001" address_table="file://dummy.xml" />  
+</connections>

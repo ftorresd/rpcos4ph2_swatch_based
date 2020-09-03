@@ -1,0 +1,49 @@
+<link rel="import" href="/extern/bower_components/polymer/polymer.html">
+<link rel="import" href="/ts/common-elements/reset-css/reset-css.html">
+<link rel="import" href="/ts/common-elements/iron-flex-layout-attributes/iron-flex-layout-attributes.html">
+
+<!--
+an element lives in the folder /bower_components/agilians-elements/<element-name>/
+
+only the last comment before <dom-module ...> appears in the documentation
+-->
+
+<!--
+Material design: [Click me](https://www.google.com/design/spec/components/text-fields.html)
+
+`template-element` is a template to be used when creating new elements.
+
+Example:
+
+    <template-element></template-element>
+    <template-element test="test"></template-element>
+
+### Styling
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--my-custom-color` | A custom css property | `black`
+`--my-mixin-name` | A custom mixin | `{}`
+
+@demo demo/index.html
+
+
+-->
+<dom-module id="template-element">
+  <template>
+    <!-- this makes your element follow the general theme (things like fonts) -->
+    <style include="reset-css"></style>
+
+    <!-- this will allow you to use flexbox easily -->
+    <!-- surf to /ts/common-elements/iron-flex-layout-attributes/index.html -->
+    <style include="iron-flex-layout-attributes"></style>
+
+    <link rel="stylesheet" type="text/css" href="css/template-element-min.css?__inline=true">
+
+    <h1>This is the template-element element!</h1>
+    <paper-button raised on-click="makeDinosaur">[[someproperty]]</paper-button>
+
+  </template>
+  <script src="javascript/template-element-min.js?__inline=true"></script>
+</dom-module>

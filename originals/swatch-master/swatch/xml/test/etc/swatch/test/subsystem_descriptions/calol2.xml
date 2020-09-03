@@ -1,0 +1,236 @@
+<system id="calol2">
+  <creator>calol2::System</creator>
+  <crates>
+    <crate id="S2D11-29">
+      <description>Calorimeter trigger layer 2 main processor crate</description>
+      <location>Point5, S2D11-29</location>
+    </crate>
+  </crates>
+  <processors>
+    <processor id="MP0">
+      <creator>calol2::MainProcessor</creator>
+      <hw-type>MP7-XE</hw-type>
+      <role>MainProcessor</role>
+      <uri>chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-01:50001</uri>
+      <address-table>file:///opt/cactus/etc/mp7/addrtab/xe_v2_0_0/mp7xe_infra.xml</address-table>
+      <crate>S2D11-29</crate>
+      <slot>1</slot>
+      <rx-port pid="[0:72]" name="Rx[0:72]"/>
+      <tx-port pid="[60:66]" name="Tx[60:66]"/>
+    </processor>
+    <processor id="MP1">
+      <creator>calol2::MainProcessor</creator>
+      <hw-type>MP7-XE</hw-type>
+      <role>MainProcessor</role>
+      <uri>chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-02:50001</uri>
+      <address-table>file:///opt/cactus/etc/mp7/addrtab/xe_v2_0_0/mp7xe_infra.xml</address-table>
+      <crate>S2D11-29</crate>
+      <slot>2</slot>
+      <rx-port pid="[0:72]" name="Rx[0:72]"/>
+      <tx-port pid="[60:66]" name="Tx[60:66]"/>
+    </processor>
+    <processor id="MP2">
+      <creator>calol2::MainProcessor</creator>
+      <hw-type>MP7-XE</hw-type>
+      <role>MainProcessor</role>
+      <uri>chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-03:50001</uri>
+      <address-table>file:///opt/cactus/etc/mp7/addrtab/xe_v2_0_0/mp7xe_infra.xml</address-table>
+      <crate>S2D11-29</crate>
+      <slot>3</slot>
+      <rx-port pid="[0:72]" name="Rx[0:72]"/>
+      <tx-port pid="[60:66]" name="Tx[60:66]"/>
+    </processor>
+    <processor id="MP3">
+      <creator>calol2::MainProcessor</creator>
+      <hw-type>MP7-XE</hw-type>
+      <role>MainProcessor</role>
+      <uri>chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-04:50001</uri>
+      <address-table>file:///opt/cactus/etc/mp7/addrtab/xe_v2_0_0/mp7xe_infra.xml</address-table>
+      <crate>S2D11-29</crate>
+      <slot>4</slot>
+      <rx-port pid="[0:72]" name="Rx[0:72]"/>
+      <tx-port pid="[60:66]" name="Tx[60:66]"/>
+    </processor>
+    <processor id="MP4">
+      <creator>calol2::MainProcessor</creator>
+      <hw-type>MP7-XE</hw-type>
+      <role>MainProcessor</role>
+      <uri>chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-05:50001</uri>
+      <address-table>file:///opt/cactus/etc/mp7/addrtab/xe_v2_0_0/mp7xe_infra.xml</address-table>
+      <crate>S2D11-29</crate>
+      <slot>5</slot>
+      <rx-port pid="[0:72]" name="Rx[0:72]"/>
+      <tx-port pid="[60:66]" name="Tx[60:66]"/>
+    </processor>
+    <processor id="MP5">
+      <creator>calol2::MainProcessor</creator>
+      <hw-type>MP7-XE</hw-type>
+      <role>MainProcessor</role>
+      <uri>chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-06:50001</uri>
+      <address-table>file:///opt/cactus/etc/mp7/addrtab/xe_v2_0_0/mp7xe_infra.xml</address-table>
+      <crate>S2D11-29</crate>
+      <slot>6</slot>
+      <rx-port pid="[0:72]" name="Rx[0:72]"/>
+      <tx-port pid="[60:66]" name="Tx[60:66]"/>
+    </processor>
+    <processor id="MP6">
+      <creator>calol2::MainProcessor</creator>
+      <hw-type>MP7-XE</hw-type>
+      <role>MainProcessor</role>
+      <uri>chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-07:50001</uri>
+      <address-table>file:///opt/cactus/etc/mp7/addrtab/xe_v2_0_0/mp7xe_infra.xml</address-table>
+      <crate>S2D11-29</crate>
+      <slot>7</slot>
+      <rx-port pid="[0:72]" name="Rx[0:72]"/>
+      <tx-port pid="[60:66]" name="Tx[60:66]"/>
+    </processor>
+    <processor id="MP7">
+      <creator>calol2::MainProcessor</creator>
+      <hw-type>MP7-XE</hw-type>
+      <role>MainProcessor</role>
+      <uri>chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-08:50001</uri>
+      <address-table>file:///opt/cactus/etc/mp7/addrtab/xe_v2_0_0/mp7xe_infra.xml</address-table>
+      <crate>S2D11-29</crate>
+      <slot>8</slot>
+      <rx-port pid="[0:72]" name="Rx[0:72]"/>
+      <tx-port pid="[60:66]" name="Tx[60:66]"/>
+    </processor>
+    <processor id="MP8">
+      <creator>calol2::MainProcessor</creator>
+      <hw-type>MP7-XE</hw-type>
+      <role>MainProcessor</role>
+      <uri>chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-09:50001</uri>
+      <address-table>file:///opt/cactus/etc/mp7/addrtab/xe_v2_0_0/mp7xe_infra.xml</address-table>
+      <crate>S2D11-29</crate>
+      <slot>9</slot>
+      <rx-port pid="[0:72]" name="Rx[0:72]"/>
+      <tx-port pid="[60:66]" name="Tx[60:66]"/>
+    </processor>
+    <processor id="DEMUX">
+      <creator>calol2::Demux</creator>
+      <hw-type>MP7-XE</hw-type>
+      <role>Demux</role>
+      <uri>chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-12:50001</uri>
+      <address-table>file:///opt/cactus/etc/mp7/addrtab/xe_v2_0_0/mp7xe_infra.xml</address-table>
+      <crate>S2D11-29</crate>
+      <slot>12</slot>
+      <rx-port pid="[00:72]" name="Rx[00:72]"/>
+      <tx-port pid="[04:11]" name="Tx[04:11]"/>
+    </processor>
+  </processors>
+  <daqttc-mgrs>
+    <daqttc-mgr id="AMC13">
+      <creator>swatch::amc13::AMC13Manager</creator>
+      <role>daqttc</role>
+      <crate>S2D11-29</crate>
+      <slot>13</slot>
+      <uri id="t1">chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-13-t1:50001</uri>
+      <uri id="t2">chtcp-2.0://ctrl-calol2:10203?target=amc-s2d11-29-13-t2:50001</uri>
+      <address-table id="t1">file:///opt/cactus/etc/amc13/AMC13XG_T1.xml</address-table>
+      <address-table id="t2">file:///opt/cactus/etc/amc13/AMC13XG_T2.xml</address-table>
+      <fed-id>1360</fed-id>
+    </daqttc-mgr>
+  </daqttc-mgrs>
+  <links>
+    <link id="MP0_Tx_[60:66]">
+      <from>MP0</from>
+      <tx-port>Tx[60:66]</tx-port>
+      <to>DEMUX</to>
+      <rx-port>Rx[00:36:6]</rx-port>
+    </link>
+    <link id="MP1_Tx_[60:66]">
+      <from>MP1</from>
+      <tx-port>Tx[60:66]</tx-port>
+      <to>DEMUX</to>
+      <rx-port>Rx[01:36:6]</rx-port>
+    </link>
+    <link id="MP2_Tx_[60:66]">
+      <from>MP2</from>
+      <tx-port>Tx[60:66]</tx-port>
+      <to>DEMUX</to>
+      <rx-port>Rx[02:36:6]</rx-port>
+    </link>
+    <link id="MP3_Tx_[60:66]">
+      <from>MP3</from>
+      <tx-port>Tx[60:66]</tx-port>
+      <to>DEMUX</to>
+      <rx-port>Rx[03:36:6]</rx-port>
+    </link>
+    <link id="MP4_Tx_[60:66]">
+      <from>MP4</from>
+      <tx-port>Tx[60:66]</tx-port>
+      <to>DEMUX</to>
+      <rx-port>Rx[04:36:6]</rx-port>
+    </link>
+    <link id="MP5_Tx_[60:66]">
+      <from>MP5</from>
+      <tx-port>Tx[60:66]</tx-port>
+      <to>DEMUX</to>
+      <rx-port>Rx[36:72:6]</rx-port>
+    </link>
+    <link id="MP6_Tx_[60:66]">
+      <from>MP6</from>
+      <tx-port>Tx[60:66]</tx-port>
+      <to>DEMUX</to>
+      <rx-port>Rx[37:72:6]</rx-port>
+    </link>
+    <link id="MP7_Tx_[60:66]">
+      <from>MP7</from>
+      <tx-port>Tx[60:66]</tx-port>
+      <to>DEMUX</to>
+      <rx-port>Rx[38:72:6]</rx-port>
+    </link>
+    <link id="MP8_Tx_[60:66]">
+      <from>MP8</from>
+      <tx-port>Tx[60:66]</tx-port>
+      <to>DEMUX</to>
+      <rx-port>Rx[39:72:6]</rx-port>
+    </link>
+  </links>
+  <connected-feds>
+    <connected-fed id="1354">
+      <port id="MP0.inputPorts.Rx[10:34]"/>
+      <port id="MP1.inputPorts.Rx[10:34]"/>
+      <port id="MP2.inputPorts.Rx[10:34]"/>
+      <port id="MP3.inputPorts.Rx[10:34]"/>
+      <port id="MP4.inputPorts.Rx[10:34]"/>
+      <port id="MP5.inputPorts.Rx[10:34]"/>
+      <port id="MP6.inputPorts.Rx[10:34]"/>
+      <port id="MP7.inputPorts.Rx[10:34]"/>
+      <port id="MP8.inputPorts.Rx[10:34]"/>
+    </connected-fed>
+    <connected-fed id="1356">
+      <port id="MP0.inputPorts.Rx[00:10]"/>
+      <port id="MP0.inputPorts.Rx[58:72]"/>
+      <port id="MP1.inputPorts.Rx[00:10]"/>
+      <port id="MP1.inputPorts.Rx[58:72]"/>
+      <port id="MP2.inputPorts.Rx[00:10]"/>
+      <port id="MP2.inputPorts.Rx[58:72]"/>
+      <port id="MP3.inputPorts.Rx[00:10]"/>
+      <port id="MP3.inputPorts.Rx[58:72]"/>
+      <port id="MP4.inputPorts.Rx[00:10]"/>
+      <port id="MP4.inputPorts.Rx[58:72]"/>
+      <port id="MP5.inputPorts.Rx[00:10]"/>
+      <port id="MP5.inputPorts.Rx[58:72]"/>
+      <port id="MP6.inputPorts.Rx[00:10]"/>
+      <port id="MP6.inputPorts.Rx[58:72]"/>
+      <port id="MP7.inputPorts.Rx[00:10]"/>
+      <port id="MP7.inputPorts.Rx[58:72]"/>
+      <port id="MP8.inputPorts.Rx[00:10]"/>
+      <port id="MP8.inputPorts.Rx[58:72]"/>
+    </connected-fed>
+    <connected-fed id="1358">
+      <port id="MP0.inputPorts.Rx[34:58]"/>
+      <port id="MP1.inputPorts.Rx[34:58]"/>
+      <port id="MP2.inputPorts.Rx[34:58]"/>
+      <port id="MP3.inputPorts.Rx[34:58]"/>
+      <port id="MP4.inputPorts.Rx[34:58]"/>
+      <port id="MP5.inputPorts.Rx[34:58]"/>
+      <port id="MP6.inputPorts.Rx[34:58]"/>
+      <port id="MP7.inputPorts.Rx[34:58]"/>
+      <port id="MP8.inputPorts.Rx[34:58]"/>
+    </connected-fed>
+  </connected-feds>
+  <excluded-boards/>
+</system>
+

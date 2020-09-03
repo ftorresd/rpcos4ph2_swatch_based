@@ -1,0 +1,257 @@
+<system id="dummySys">
+  <creator>swatch::dummy::DummySystem</creator>
+  <crates>
+    <crate id="crate1">
+      <location>Point5, S2D10-43</location>
+      <unknown_child_tag_crate>
+      </unknown_child_tag_crate>
+    </crate>
+    <crate id="crate2">
+      <description>The second crate</description>
+      <location>Point5</location>
+    </crate>
+    <unknown_child_tag_crates>
+    </unknown_child_tag_crates>
+  </crates>
+  <processors>
+    <processor id="procA1">
+      <creator>swatch::dummy::DummyProcessor</creator>
+      <hw-type>DummyHw</hw-type>
+      <uri>dummy://uriA1</uri>
+      <address-table>file:///path/to/addrFileA.xml</address-table>
+      <crate>crate1</crate>
+      <slot>3b</slot>
+      <rx-port pid="[00:80]" name="Rx[00:80]"/>
+      <rx-port pid="100"/>
+      <rx-port name="Rx101"/>
+      <tx-port pid="[00:40:4]" name="Tx[00:10]"/>
+      <rx-port pid="100"/>
+      <rx-port name="Rx101"/>
+      <unknown_child_tag_processor>
+      </unknown_child_tag_processor>
+    </processor>
+    <processor id="procA2">
+      <creator>swatch::dummy::DummyProcessor</creator>
+      <hw-type>DummyHw</hw-type>
+      <role>procRoleA</role>
+      <uri>dummy://uriA2</uri>
+      <address-table>file:///path/to/addrFile.xml</address-table>
+      <crate>crate1</crate>
+      <slot>2</slot>
+      <rx-port pid="[00:80]" name="Rx[00:80]"/>
+      <tx-port pid="[00:40:4]" name="Tx[00:10]"/>
+    </processor>
+    <processor id="procA3">
+      <creator>swatch::dummy::DummyProcessor</creator>
+      <hw-type>DummyHw</hw-type>
+      <role>procRoleA</role>
+      <uri>dummy://uriA3</uri>
+      <address-table>file:///path/to/addrFileA.xml</address-table>
+      <crate>crate1</crate>
+      <slot>5</slot>
+      <rx-port pid="[00:80]" name="Rx[00:80]"/>
+      <tx-port pid="[00:40:4]" name="Tx[00:10]"/>
+    </processor>
+    <processor id="procA4">
+      <creator>swatch::dummy::DummyProcessor</creator>
+      <hw-type>DummyHw</hw-type>
+      <role>procRoleA</role>
+      <uri>dummy://uriA4</uri>
+      <address-table>file:///path/to/addrFileA.xml</address-table>
+      <crate>crate1</crate>
+      <slot>6</slot>
+      <rx-port pid="[00:80]" name="Rx[00:80]"/>
+      <tx-port pid="[00:40:4]" name="Tx[00:10]"/>
+    </processor>
+    <processor id="procA5">
+      <creator>swatch::dummy::DummyProcessor</creator>
+      <hw-type>DummyHw</hw-type>
+      <role>procRoleA</role>
+      <uri>dummy://uriA5</uri>
+      <address-table>file:///path/to/addrFileA.xml</address-table>
+      <crate>crate1</crate>
+      <slot>9</slot>
+      <rx-port pid="[00:80]" name="Rx[00:80]"/>
+      <tx-port pid="[00:40:4]" name="Tx[00:10]"/>
+    </processor>
+    <processor id="procA6">
+      <creator>swatch::dummy::DummyProcessor</creator>
+      <hw-type>DummyHw</hw-type>
+      <role>procRoleA</role>
+      <uri>dummy://uriA6</uri>
+      <address-table>file:///path/to/addrFileA.xml</address-table>
+      <crate>crate1</crate>
+      <slot>10</slot>
+      <rx-port pid="[00:80]" name="Rx[00:80]"/>
+      <tx-port pid="[00:40:4]" name="Tx[00:10]"/>
+    </processor>
+    <processor id="procB1">
+      <creator>swatch::dummy::DummyProcessor</creator>
+      <hw-type>DummyHw</hw-type>
+      <role>procRoleB</role>
+      <uri>dummy://uriB1</uri>
+      <address-table>file:///path/to/addrFile.xml</address-table>
+      <crate>crate2</crate>
+      <slot>7</slot>
+      <rx-port pid="[00:40]" name="Rx[00:40]"/>
+      <tx-port pid="[0:2]" name="Tx[00:02]"/>
+    </processor>
+    <processor id="procB2">
+      <creator>swatch::dummy::DummyProcessor</creator>
+      <hw-type>DummyHw</hw-type>
+      <role>procRoleB</role>
+      <uri>dummy://uriB2</uri>
+      <address-table>file:///path/to/addrFile.xml</address-table>
+      <crate>crate2</crate>
+      <slot>8</slot>
+      <rx-port pid="[00:40]" name="Rx[00:40]"/>
+      <tx-port pid="[0:2]" name="Tx[00:02]"/>
+    </processor>
+    <processor id="procB3">
+      <creator>swatch::dummy::DummyProcessor</creator>
+      <hw-type>DummyHw</hw-type>
+      <role>procRoleB</role>
+      <uri>dummy://uriB3</uri>
+      <address-table>file:///path/to/addrFile.xml</address-table>
+      <crate>crate2</crate>
+      <slot>9</slot>
+      <rx-port pid="[00:40]" name="Rx[00:40]"/>
+      <tx-port pid="[0:2]" name="Tx[00:02]"/>
+    </processor>
+    <processor id="procB4">
+      <creator>swatch::dummy::DummyProcessor</creator>
+      <hw-type>DummyHw</hw-type>
+      <role>procRoleB</role>
+      <uri>dummy://uriB4</uri>
+      <address-table>file:///path/to/addrFile.xml</address-table>
+      <crate>crate2</crate>
+      <slot>10</slot>
+      <rx-port pid="[00:40]" name="Rx[00:40]"/>
+      <tx-port pid="[0:2]" name="Tx[00:02]"/>
+    </processor>
+    <processor id="procB5">
+      <creator>swatch::dummy::DummyProcessor</creator>
+      <hw-type>DummyHw</hw-type>
+      <role>procRoleB</role>
+      <uri>dummy://uriB5</uri>
+      <address-table>file:///path/to/addrFile.xml</address-table>
+      <crate>crate2</crate>
+      <slot>11</slot>
+      <rx-port pid="[00:40]" name="Rx[00:40]"/>
+      <tx-port pid="[0:2]" name="Tx[00:02]"/>
+    </processor>
+    <processor id="procB6">
+      <creator>swatch::dummy::DummyProcessor</creator>
+      <hw-type>DummyHw</hw-type>
+      <role>procRoleB</role>
+      <uri>dummy://uriB6</uri>
+      <address-table>file:///path/to/addrFile.xml</address-table>
+      <crate>crate2</crate>
+      <slot>12</slot>
+      <rx-port pid="[00:40]" name="Rx[00:40]"/>
+      <tx-port pid="[0:2]" name="Tx[00:02]"/>
+    </processor>
+    <processor id="procC">
+      <creator>swatch::dummy::DummyProcessor</creator>
+      <hw-type>DummyHw</hw-type>
+      <role>procRoleC</role>
+      <uri>dummy://uriC</uri>
+      <address-table>file:///path/to/addrFile.xml</address-table>
+      <crate>crate2</crate>
+      <slot>1</slot>
+      <rx-port pid="[00:72]" name="Rx[00:72]"/>
+      <tx-port pid="[0:4]" name="Tx[00:04]"/>
+    </processor>
+    <unknown_child_tag_processors>
+    </unknown_child_tag_processors>
+  </processors>
+  <daqttc-mgrs>
+    <daqttc-mgr id="AMC13_one">
+      <creator>swatch::dummy::DummyAMC13Manager</creator>
+      <crate>crate1</crate>
+      <slot>13b</slot>
+      <uri id="t">dummy://uriDaqTTC-1-T1</uri>
+      <uri id="t2">dummy://uriDaqTTC-1-T2</uri>
+      <address-table id="t2">file:///path/to/addrFile.xml</address-table>
+      <fed-id>1234b</fed-id>
+      <unknown_child_tag_daqttcmgrs>
+      </unknown_child_tag_daqttcmgrs>
+    </daqttc-mgr>
+    <daqttc-mgr id="AMC13_two">
+      <creator>swatch::dummy::DummyAMC13Manager</creator>
+      <role>daqttc</role>
+      <crate>crate2</crate>
+      <slot>13</slot>
+      <uri id="t1">dummy://uriDaqTTC-2-T1</uri>
+      <uri id="t2">dummy://uriDaqTTC-2-T2</uri>
+      <address-table id="t1">file:///path/to/addrFile.xml</address-table>
+      <address-table id="t2">file:///path/to/addrFile.xml</address-table>
+      <fed-id>1235</fed-id>
+    </daqttc-mgr>
+    <unknown_child_tag_daqttcmgrs>
+    </unknown_child_tag_daqttcmgrs>
+  </daqttc-mgrs>
+  <links>
+    <link id="link_A1C_[00:10]">
+      <tx-port>Tx[00:10]</tx-port>
+      <to>procC</to>
+      <rx-port>Rx[00:10]</rx-port>
+      <unknown_child_tag_link>
+      </unknown_child_tag_link>
+    </link>
+    <link id="link_A2C_[00:10]">
+      <from>procA2</from>
+      <tx-port>Tx[00:10]</tx-port>
+      <to>procC</to>
+      <rx-port>Rx[10:20]</rx-port>
+    </link>
+    <link id="link_A3C_[00:10]">
+      <from>procA3</from>
+      <tx-port>Tx[00:10]</tx-port>
+      <to>procC</to>
+      <rx-port>Rx[20:30]</rx-port>
+    </link>
+    <link id="link_A4C_[00:10]">
+      <from>procA4</from>
+      <tx-port>Tx[00:10]</tx-port>
+      <to>procC</to>
+      <rx-port>Rx[30:40]</rx-port>
+    </link>
+    <link id="link_A5C_[00:10]">
+      <from>procA5</from>
+      <tx-port>Tx[00:10]</tx-port>
+      <to>procC</to>
+      <rx-port>Rx[40:50]</rx-port>
+    </link>
+    <link id="link_A6C_[00:10]">
+      <from>procA6</from>
+      <tx-port>Tx[00:10]</tx-port>
+      <to>procC</to>
+      <rx-port>Rx[50:60]</rx-port>
+    </link>
+    <unknown_child_tag_links>
+    </unknown_child_tag_links>
+  </links>
+  <connected-feds>
+    <connected-fed id="999">
+      <port id="procA1.inputPorts.Rx[00:10]"/>
+      <port/>
+      <unknown_child_tag_connFed>
+      </unknown_child_tag_connFed>
+    </connected-fed>
+    <connected-fed id="899">
+      <port id="procA1.inputPorts.Rx[10:20]"/>
+    </connected-fed>
+    <connected-fed id="1001">
+    </connected-fed>
+    <unknown_child_tag_connFeds>
+    </unknown_child_tag_connFeds>
+  </connected-feds>
+  <excluded-boards>
+    <unknown_child_tag_excl_boards>
+    </unknown_child_tag_excl_boards>
+  </excluded-boards>
+  <unknown_child_tag_system>
+  </unknown_child_tag_system>
+</system>
+

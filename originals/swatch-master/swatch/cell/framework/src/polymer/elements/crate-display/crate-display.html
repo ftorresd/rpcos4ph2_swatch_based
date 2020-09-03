@@ -1,0 +1,118 @@
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+
+<dom-module id="crate-display">
+  <template>
+    <style include="swatch-styles"></style>
+    <style>
+      div.slot {
+        float:left;
+        font-size:10px;
+        margin: 0px 3px;
+        color:#aaa;
+        text-align:center;
+      }
+      div.processor {
+        width:12px;
+        min-height:115px;
+        border:1px solid #ddd;
+        margin-bottom:3px;
+        display:flex;
+        flex-direction: column;
+      }
+      div.last_component {
+        min-height:15px;
+        flex:1 100%;
+        overflow:auto;
+      }
+      div.component {
+        width:12px; height:15px;
+        border-bottom:1px solid #ddd;
+        vertical-align:bottom;
+      }
+      div.crate {
+        text-align:center;
+        border: 1px solid #ddd;
+        display:inline-block;
+        padding: 10px 10px 5px 10px;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.10);
+        border-radius: 5px;
+        margin:12px 10px 30px 10px;
+      }
+      hr {
+        border: 0px;
+        border-bottom:1px solid #ddd;
+      }
+      .descriptor {
+        min-height:30px;
+        height:20px;
+        padding: 5px;
+        font-size:16px;
+        display:inline-block;
+      }
+      .hidden{
+        display: none;
+      }
+    </style>
+    <div class="crate">
+      <h4><span>{{system.id}}</span> <span class="faded">fed-id: <span>{{system.fed}}</span></span></h4><hr>
+      <template is="dom-repeat" items="{{system.processors}}" as="processor">
+        <div class="slot">
+          <div class="processor">
+          <template is="dom-repeat" items="{{processor.components}}" as="component" index-as="comp_idx">
+            <div class$="{{getClass(component.status)}}" on-mouseout="mouseOut" on-mouseover="mouseIn" data-hover$="{{getData(component.id, processor.id)}}">&nbsp;</div>
+          </template>
+          <div class$="{{getClass(processor.input_ports.status)}}" on-mouseout="mouseOut" on-mouseover="mouseIn" data-hover$="{{getData(processor.input_ports.id, processor.id)}}">&nbsp;</div>
+          <div class$="{{getClass(processor.output_ports.status)}}" on-mouseout="mouseOut" on-mouseover="mouseIn" data-hover$="{{getData(processor.output_ports.id, processor.id)}}">&nbsp;</div>
+          <div class$="{{getProcClass(processor.status)}}" on-mouseout="mouseOut" on-mouseover="mouseIn" data-hover$="{{processor.id}}">&nbsp;</div>
+          </div>
+          <div class="slot_id">{{calcSlotNumber(index)}}</div>
+        </div>
+      </template>
+      <div class="slot">
+        <div class="processor" on-mouseout="mouseOut">
+        <template is="dom-repeat" items="{{system.amc13.components}}" as="component" index-as="comp_idx">
+          <div class$="{{getClass(component.status)}}" on-mouseout="mouseOut" on-mouseover="mouseIn" data-hover$="{{getData(component.id, system.amc13.id)}}">&nbsp;</div>
+        </template>
+          <div class$="{{getClass(system.amc13.amc_ports.status)}}" on-mouseout="mouseOut" on-mouseover="mouseIn" data-hover$="{{getData(system.amc13.amc_ports.id, system.amc13.id)}}">&nbsp;</div>
+          <div class$="{{getProcClass(system.amc13.status)}}" on-mouseout="mouseOut" on-mouseover="mouseIn" data-hover$="{{system.amc13.id}}">&nbsp;</div>
+        </div>
+        <div class="slot_id">13</div>
+      </div>
+      <br>
+      <div class="descriptor"><span>{{hover}}</span>&nbsp;</div>
+    </div>
+  </template>
+  <script>
+      Polymer({
+        is: 'crate-display',
+        properties: {
+          system: Object,
+          hover: {
+            type: String,
+            value: " "
+          }
+        },
+        getClass: function(status) {
+          if (status === undefined) return "hidden";
+          return 'component '+status+'-bkg';
+        },
+        getProcClass: function(status) {
+          return 'last_component '+status+'-bkg';
+        },
+        calcSlotNumber : function(index) {
+          return index+1;
+        },
+        mouseOut : function() {
+          this.hover = " ";
+        },
+        mouseIn : function(e) {
+          if (e.target) {
+            this.hover = e.target.attributes['data-hover'].value;
+          }
+        },
+        getData : function(compid, procid) {
+          return procid + " - " + compid;
+        }
+      });
+  </script>
+</dom-module>

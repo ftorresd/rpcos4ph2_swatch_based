@@ -1,0 +1,19 @@
+<dom-module id="redirect-panel">
+
+  <template>
+
+  </template>
+
+  <script>
+      Polymer({
+        is: 'redirect-panel',
+        properties: {
+          redirectPath: String
+        },
+        ready: function() {
+          page(this.redirectPath);
+        }
+      });
+  </script>
+
+</dom-module>

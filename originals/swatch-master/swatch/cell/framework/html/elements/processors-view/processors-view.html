@@ -1,0 +1,102 @@
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+<link rel="import" href="/ts/common-elements/reset-css/reset-css.html">
+<link rel="import" href="/swatchcell/framework/html/elements/metric-table/metric-table.html">
+<link rel="import" href="/swatchcell/framework/html/elements/ports-table/ports-table.html">
+
+<link rel="import" href="/ts/common-elements/auto-update/auto-update.html">
+
+
+<dom-module id="processors-view">
+  <template>
+    <style include="swatch-styles"></style>
+    <style include="reset-css"></style>
+    <style>
+
+</style>
+    <auto-update id="autoupdateprocessor" style="padding: 15px;" data="{{data}}" callback="MonitorPanel::respondProcessorJSON" parameters='["monitorables"]' ></auto-update>
+    <div class="container">
+    <!-- hides the view if no processor is present or loaded -->
+      <template is="dom-if" if="{{data.system.processors}}">
+        <table>
+          <tr>
+            <th>Processor ID</th><th>Crate ID</th><th>Slot</th><th>Overall Status</th><th>Monitoring</th>
+            <template is="dom-repeat" items="{{data.system.processors.0.components}}" as="component">
+              <th>{{component.id}}</th>
+            </template>
+              <th>{{data.system.processors.0.input_ports.id}}</th>
+              <th>{{data.system.processors.0.output_ports.id}}</th>
+            </tr>
+            <template is="dom-repeat" items="{{data.system.processors}}" as="proc">
+              <tr>
+                <td>{{proc.id}}</td><td>{{proc.crate}}</td><td>{{proc.slot}}</td><td class$="{{proc.status}}">{{proc.status}}</td><td>{{proc.monitoringstatus}}</td>
+                <template is="dom-repeat" items="{{proc.components}}" as="component">
+                  <td class$="{{component.status}}">{{component.status}}</td>
+                </template>
+                <td class$="{{proc.input_ports.status}}">{{proc.input_ports.status}}</td>
+                <td class$="{{proc.output_ports.status}}">{{proc.output_ports.status}}</td>
+              </tr>
+            </template>
+          </table>
+        <hr>
+      </template>
+
+      <template is="dom-if" if="{{data.system.processors}}">
+        <h3>TTC Details</h3>
+      </template>
+      <template is="dom-repeat" items="{{data.system.processors}}" as="proc">
+        <template is="dom-repeat" items="{{proc.components}}" as="cmp" filter="isTTC">
+          <metric-table object="{{cmp}}" name="{{proc.id}}"  recursive on-toggled="updateOpenedSubmonitorables" on-children-changed="updateJSON"></metric-table>
+        </template>
+      </template>
+
+      <template is="dom-if" if="{{data.system.processors}}">
+        <h3>Readout Details</h3>
+      </template>
+      <template is="dom-repeat" items="{{data.system.processors}}" as="proc">
+        <template is="dom-repeat" items="{{proc.components}}" as="cmp" filter="isReadout">
+          <metric-table object$="{{cmp}}" name="{{proc.id}}"  recursive on-toggled="updateOpenedSubmonitorables" on-children-changed="updateJSON"></metric-table>
+        </template>
+      </template>
+
+      <template is="dom-if" if="{{data.system.processors}}">
+        <h3>Algorithm Details</h3>
+      </template>
+      <template is="dom-repeat" items="{{data.system.processors}}" as="proc">
+        <template is="dom-repeat" items="{{proc.components}}" as="cmp" filter="isAlgo">
+          <metric-table object$="{{cmp}}" name="{{proc.id}}"  recursive on-toggled="updateOpenedSubmonitorables" on-children-changed="updateJSON"></metric-table>
+        </template>
+      </template>
+
+      <template is="dom-if" if="{{data.system.processors}}">
+        <h3>Input Port Details</h3>
+      </template>
+      <template is="dom-repeat" items="{{data.system.processors}}" as="proc">
+        <template is="dom-repeat" items="{{proc.components}}" as="cmp" filter="isInputPorts">
+          <ports-table portcollection="{{cmp}}" name="{{proc.id}}" on-toggled="updateOpenedSubmonitorables"></ports-table>
+        </template>
+      </template>
+
+      <template is="dom-if" if="{{data.system.processors}}">
+      <h3>Output Port Details</h3>
+      </template>
+      <template is="dom-repeat" items="{{data.system.processors}}" as="proc">
+        <template is="dom-repeat" items="{{proc.components}}" as="cmp" filter="isOutputPorts">
+          <ports-table portcollection="{{cmp}}" name="{{proc.id}}" on-toggled="updateOpenedSubmonitorables"></ports-table>
+        </template>
+      </template>
+    </div>
+  </template>
+    <script>
+Polymer({is:"processors-view",properties:{data:Object,openedSubmonitorables:{type:Array,value:function(){return[]}}},isTTC:function(item){return"ttc"==item.id},isAlgo:function(item){return"algo"==item.id},isReadout:function(item){return"readout"==item.id},isInputPorts:function(item){return"inputPorts"==item.id},isOutputPorts:function(item){return"outputPorts"==item.id},attached:function(){Polymer.dom(document).querySelector("#monitoringtitle").set("subtitle","Processors summary")},updateOpenedSubmonitorables:function(event){var senderObject={id:event.detail.sender};if(event.detail.opened){void 0!==event.detail.openedSubmonitorables&&(senderObject.openedSubmonitorables=event.detail.openedSubmonitorables);for(var processorIndex=-1,x=0;x<this.openedSubmonitorables.length&&processorIndex<0;x++)
+//If the id of the object is the same of the name of metric-table we found the processor
+this.openedSubmonitorables[x].id==Polymer.dom(event).localTarget.name&&(this.openedSubmonitorables[x].openedSubmonitorables.push(senderObject),processorIndex=x);
+//If I don't find the processor I create the entry
+if(processorIndex<0){var newProcessor={id:Polymer.dom(event).localTarget.name,openedSubmonitorables:[senderObject]};this.openedSubmonitorables.push(newProcessor)}Polymer.dom(this.root).querySelector("#autoupdateprocessor").set("monitorables",JSON.stringify(this.openedSubmonitorables)),console.log(JSON.stringify(this.openedSubmonitorables)),
+//If I add a component I need a new request
+Polymer.dom(this.root).querySelector("#autoupdateprocessor").manualRefresh()}else{
+//First we look 4 the processor
+for(var found=!1,processorIndex=-1,y=0;y<this.openedSubmonitorables.length&&processorIndex<0;y++)if(this.openedSubmonitorables[y].id==Polymer.dom(event).localTarget.name){processorIndex=y;
+//Then for the submonitorable
+for(var x=0;x<this.openedSubmonitorables[y].openedSubmonitorables.length&&!found;x++)this.openedSubmonitorables[y].openedSubmonitorables[x].id==senderObject.id&&(this.openedSubmonitorables[y].openedSubmonitorables.splice(x,1),found=!0)}Polymer.dom(this.root).querySelector("#autoupdateprocessor").set("monitorables",JSON.stringify(this.openedSubmonitorables)),console.log(JSON.stringify(this.openedSubmonitorables))}},updateJSON:function(event){Polymer.dom(this.root).querySelector("#autoupdateprocessor").set("monitorables",JSON.stringify(this.openedSubmonitorables)),console.log(JSON.stringify(this.openedSubmonitorables)),event.detail.opened&&Polymer.dom(this.root).querySelector("#autoupdateprocessor").manualRefresh()}});
+</script>
+</dom-module>

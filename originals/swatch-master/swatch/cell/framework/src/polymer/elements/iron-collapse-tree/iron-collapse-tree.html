@@ -1,0 +1,105 @@
+<link rel="import" href="/extern/bower_components/polymer/polymer.html">
+<link rel="import" href="/ts/common-elements/reset-css/reset-css.html">
+<link rel="import" href="/ts/common-elements/iron-flex-layout-attributes/iron-flex-layout-attributes.html">
+<link rel="import" href="/extern/bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="/extern/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/extern/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/extern/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/extern/bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+
+
+<!--
+
+`iron-collapse-tree` allows to create a tree using the <iron-collapse> Polymer Element
+
+Example:
+
+    <iron-collapse-tree tree="yourTree"></iron-collapse-tree>
+    
+    The tree must be in JSON format like this:
+    
+    {
+      name: "My root",
+      tree: [
+        {
+          name: "Branch 1",
+          tree: [
+            {
+              name: "Leaf 1.1",
+            },
+            {
+              name: "Leaf 1.2"
+            }
+          ],
+          name: "Branch 2",
+          tree: [
+            {
+              name: "Leaf 2.1",
+            },
+            {
+              name: "Leaf 2.2"
+            },
+            {
+              name: "Branch 2.3",
+              tree: [
+                {
+                  name: "Leaf 2.3.1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+    
+    @demo demo/index.html
+
+-->
+<dom-module id="iron-collapse-tree">
+  <template>
+    <!-- this makes your element follow the general theme (things like fonts) -->
+    <style include="reset-css"></style>
+    <style include="swatch-styles"></style>
+
+    <!-- this will allow you to use flexbox easily -->
+    <!-- surf to /ts/common-elements/iron-flex-layout-attributes/index.html -->
+    <style include="iron-flex-layout-attributes"></style>
+
+    <link rel="stylesheet" type="text/css" href="css/iron-collapse-tree-min.css?__inline=true">
+
+    <div vertical layout class="containerBox">
+
+      <div horizontal layout id$="[[tree.name]]" class="treeNode" align-center on-click="_fireClickEvent">
+        <template is="dom-if" if="[[tree.tree]]">
+          
+          <template is="dom-if" if="[[!opened]]">
+            <iron-icon icon="icons:expand-more" on-click="toggleCollapse"></iron-icon>
+          </template>
+          
+          <template is="dom-if" if="[[opened]]">
+            <iron-icon icon="icons:expand-less" on-click="toggleCollapse"></iron-icon>
+          </template>
+        
+        </template>
+        [[tree.name]]
+        <paper-ripple></paper-ripple>
+      </div>
+      
+      <iron-collapse id="collapse" opened="{{opened}}">
+        <template is="dom-if" if="[[opened]]" on-dom-change="_updateCollapse">
+          <div>
+            <div vertical layout>
+              <template is="dom-repeat" items="{{tree.tree}}" as="branch">
+                <iron-collapse-tree tree="{{branch}}" on-attached="_updateCollapse"></iron-collapse-tree>
+              </template>
+            </div>
+          </div>
+        </template>
+      </iron-collapse>
+      
+    </div>
+
+  </template>
+  <script src="javascript/iron-collapse-tree-min.js?__inline=true"></script>
+</dom-module>

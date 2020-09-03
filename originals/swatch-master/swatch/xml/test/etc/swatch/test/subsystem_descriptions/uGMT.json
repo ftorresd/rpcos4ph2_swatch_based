@@ -1,0 +1,115 @@
+{
+  "SYSTEM":
+          {
+            "NAME": "ugmt",
+            "CREATOR": "ugmt::hardware::UGMTSystem",
+            "CRATES":
+                [
+                  {
+                    "NAME": "Vadatech",
+                    "LOCATION": "P5 s1e04-43",
+                    "DESCRIPTION": "P5 uGMT system"
+                  }
+                ],
+            "PROCESSORS":
+                    [
+                      {
+                        "NAME": "ugmt_processor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "CREATOR": "ugmt::hardware::UGMTProcessor",
+                        "ROLE": "processors",
+                        "URI": "chtcp-2.0://bridge-s1e04-43:10203?target=amc-s1e04-43-09:50001",
+                        "ADDRESS TABLE": "file:///cmsnfshome0/nfshome0/ugmtts/test/address_tables/mp7xe_infra.xml",
+                        "CRATE NAME": "Vadatech",
+                        "CRATE SLOT": 9,
+                        "RX PORTS": [
+                            {
+                              "NAME": "CaloL2_[01:29]", "PID": "[08:36]"
+                            },
+                            {
+                              "NAME": "EMTF+_[01:07]", "PID": "[36:42]"
+                            },
+                            {
+                              "NAME": "OMTF+_[01:07]", "PID": "[42:48]"
+                            },
+                            {
+                              "NAME": "BMTF_[01:13]", "PID": "[48:60]"
+                            },
+                            {
+                              "NAME": "OMTF-_[01:07]", "PID": "[60:66]"
+                            },
+                            {
+                              "NAME": "EMTF-_[01:07]", "PID": "[66:72]"
+                            }
+                        ],
+                        "TX PORTS": [
+                            {
+                              "NAME": "uGT_[01:05]", "PID": "[00:04]"
+                            }
+                        ]
+                      }
+                    ],
+            "DAQTTCS":
+                    [
+                      {
+                        "NAME": "ugmt_amc13",
+                        "CREATOR": "swatch::amc13::AMC13Manager",
+                        "ROLE": "daqttcs",
+                        "CRATE NAME": "Vadatech",
+                        "CRATE SLOT": 13,
+                        "URI T1": "chtcp-2.0://bridge-s1e04-43:10203?target=amc-s1e04-43-13-t1.cms:50001",
+                        "ADDRESS TABLE T1": "file:///opt/cactus/etc/amc13/AMC13XG_T1.xml",
+                        "URI T2": "chtcp-2.0://bridge-s1e04-43:10203?target=amc-s1e04-43-13-t2.cms:50001",
+                        "ADDRESS TABLE T2": "file:///opt/cactus/etc/amc13/AMC13XG_T2.xml",
+                        "FED ID": 1402
+                      }
+                    ],
+            "EXCLUDED BOARDS":
+                   [
+
+                   ],
+            "LINKS":
+                   [
+
+                   ],
+            "CONNECTED FEDS":
+                [
+                  {
+                    "FED ID": 1385,
+                    "RX PORTS": [
+                      "ugmt_processor.inputPorts.EMTF+_[01:07]"
+                    ]
+                  },
+                  {
+                    "FED ID": 1381,
+                    "RX PORTS": [
+                      "ugmt_processor.inputPorts.OMTF+_[01:07]"
+                    ]
+                  },
+                  {
+                    "FED ID": 1376,
+                    "RX PORTS": [
+                      "ugmt_processor.inputPorts.BMTF_[01:07]"
+                    ]
+                  },
+                  {
+                    "FED ID": 1377,
+                    "RX PORTS": [
+                      "ugmt_processor.inputPorts.BMTF_[07:13]"
+                    ]
+                  },
+                  {
+                    "FED ID": 1380,
+                    "RX PORTS": [
+                      "ugmt_processor.inputPorts.OMTF-_[01:07]"
+                    ]
+                  },
+                  {
+                    "FED ID": 1384,
+                    "RX PORTS": [
+                      "ugmt_processor.inputPorts.EMTF-_[01:07]"
+                    ]
+                  }
+                ]
+          }
+}

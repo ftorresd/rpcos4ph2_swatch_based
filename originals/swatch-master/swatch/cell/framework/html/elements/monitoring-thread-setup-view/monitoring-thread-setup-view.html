@@ -1,0 +1,102 @@
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+<link rel="import" href="/extern/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/ts/common-elements/iron-flex-layout-attributes/iron-flex-layout-attributes.html">
+<link rel="import" href="/extern/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/extern/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/extern/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/extern/bower_components/iron-icons/image-icons.html">
+<link rel="import" href="/ts/common-elements/reset-css/reset-css.html">
+<link rel="import" href="/extern/bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="/ts/common-elements/ts-tree/ts-tree.html">
+<link rel="import" href="/ts/common-elements/ts-ajax/ts-ajax.html">
+<link rel="import" href="/ts/common-elements/command-input/command-input.html">
+
+<dom-module id="monitoring-thread-setup-view">
+
+    <template>
+
+        <style include="swatch-styles"></style>
+        <style include="iron-flex-layout-attributes"></style>
+        <style include="reset-css"></style>
+
+        <style>
+
+</style>
+
+        <div class="content" style="margin-top: 5px">
+
+          <div vertical layout>
+
+              <div> Current status: <span style="font-weight: bold;">{{monitoringThreadData.status}}</span> </div>
+              <div> Current period: <span style="font-weight: bold;">{{monitoringThreadData.period}}</span>&nbsp;seconds</div>
+
+          </div>
+
+          <div class="spacer">
+
+          </div>
+
+          <div vertical layout>
+
+            <div horizontal layout align-end>
+
+              <div style="padding: 15px;">
+                <span>Period:</span>
+              </div>
+
+              <div>
+                <command-input name="Period" id="periodInput" type="unsigned int" value="{{newPeriod}}" style="width: 200px;"></command-input>
+              </div>
+
+              <div style="padding: 5px;">
+                <paper-button raised on-click="setPeriod"><iron-icon icon="image:timer"></iron-icon>Set period</paper-button>
+              </div>
+
+            </div>
+
+            <div class="spacer">
+
+            </div>
+
+            <div horizontal layout>
+
+              <div>
+                <paper-button id="startButton" raised on-click="startMonitoringThread" disabled><iron-icon icon="forward"></iron-icon>Start</paper-button>
+              </div>
+
+              <div>
+                <paper-button id="stopButton" raised on-click="stopMonitoringThread" disabled><iron-icon icon="close"></iron-icon>Stop</paper-button>
+              </div>
+
+              <div>
+                <paper-button id="executeButton" raised on-click="executeOnce"><iron-icon icon="launch"></iron-icon>Execute once</paper-button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <ts-ajax
+          id="monitoringThreadStatusRequester"
+          callback="SetupPanel::getMonitoringThreadStatus"
+          data="{{monitoringThreadData}}"
+          auto
+          on-data-changed="setInitialButtons"
+        ></ts-ajax>
+
+        <ts-ajax
+          id="monitoringThreadCommandSender"
+          callback="SetupPanel::monitoringThreadRunCommand"
+          parameters='["command", "period"]'
+          period="{{newPeriod}}"
+          data="{{monitoringThreadData}}"
+          on-data-changed="setButtons"
+        ></ts-ajax>
+
+    </template>
+    <script>
+Polymer({is:"monitoring-thread-setup-view",properties:{monitoringThreadData:{type:Object,value:function(){return{status:"Unknown",period:"Unknown"}}},newPeriod:{type:String,value:""}},setPeriod:function(){this.$.monitoringThreadCommandSender.set("command","setperiod"),this.$.monitoringThreadCommandSender.generateRequest()},startMonitoringThread:function(){this.$.monitoringThreadCommandSender.set("command","start"),this.$.monitoringThreadCommandSender.generateRequest()},stopMonitoringThread:function(){this.$.monitoringThreadCommandSender.set("command","stop"),this.$.monitoringThreadCommandSender.generateRequest()},executeOnce:function(){this.$.monitoringThreadCommandSender.set("command","execute"),this.$.monitoringThreadCommandSender.generateRequest()},setInitialButtons:function(){this.set("newPeriod",this.$.monitoringThreadStatusRequester.data.period),"Running"==this.$.monitoringThreadStatusRequester.data.status&&(this.$.startButton.set("disabled",!0),this.$.stopButton.set("disabled",!1)),"Stopped"==this.$.monitoringThreadStatusRequester.data.status&&(this.$.startButton.set("disabled",!1),this.$.stopButton.set("disabled",!0))},setButtons:function(){"Running"==this.$.monitoringThreadCommandSender.data.status&&(this.$.startButton.set("disabled",!0),this.$.stopButton.set("disabled",!1)),"Stopped"==this.$.monitoringThreadCommandSender.data.status&&(this.$.startButton.set("disabled",!1),this.$.stopButton.set("disabled",!0))}});
+</script>
+</dom-module>

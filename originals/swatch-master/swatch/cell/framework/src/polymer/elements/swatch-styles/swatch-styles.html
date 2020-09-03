@@ -1,0 +1,244 @@
+
+
+<dom-module id="swatch-styles">
+  <template>
+    <style>
+      :host {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 14px;
+      }
+      span.label {
+        position: relative;
+        font-size:75%;
+        font-weight:400;
+        border-radius: 5px;
+        color: white;
+        padding: 7px;
+      }
+      .faded {
+        color: #999;
+      }
+      .spacer {
+        height: 20px;
+      }
+
+      .horizontalSpacer{
+        width: 20px;
+        display:inline-block;
+      }
+
+      /* STATUS BASED COLOURS: */
+      .Error-bkg {
+        background-color: #E44E50;
+        color: white;
+      }
+      .Good-bkg {
+        background-color: var(--paper-green-400);
+      }
+      .Warning-bkg {
+        background-color: orange;
+      }
+      .NoLimit-bkg {
+        background-color: var(--paper-grey-400);
+      }
+      .Unknown-bkg {
+        background-color: var(--paper-grey-800);
+        color: white;
+      }
+
+      .Error {
+        color: #E44E50;
+      }
+
+      .Good {
+        color: var(--paper-green-400);
+      }
+
+      .Warning {
+        color: #cc8200;
+      }
+      .NoLimit {
+        color: var(--paper-grey-400);
+      }
+      .Unknown {
+        color: var(--paper-grey-800);
+      }
+
+      .Enabled{
+	    color: blue;
+      }
+
+      .Disabled{
+	    color: gray;
+      }
+
+      .NonCritical{
+	    color: #997300;
+	  }
+
+	  .Enabled-bkg {
+	    background-color: #4d4dff;
+      }
+
+      .Disabled-bkg {
+	    background-color: gray;
+      }
+
+      .NonCritical-bkg {
+	    background-color: #997300;
+	  }
+
+      .Error-faded-bkg {
+        background: -webkit-linear-gradient(#F1DDDD, #E7C9CE); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(#F1DDDD, #E7C9CE); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(#F1DDDD, #E7C9CE); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(#F1DDDD, #E7C9CE); /* Standard syntax */
+        border: 1px solid #E7C9CE;
+        color: #983D3B;
+      }
+      .Good-faded-bkg {
+        background: -webkit-linear-gradient(#DFF0D8, #D6E9C6); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(#DFF0D8, #D6E9C6); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(#DFF0D8, #D6E9C6); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(#DFF0D8, #D6E9C6); /* Standard syntax */
+        border: 1px solid #D6E9C6;
+        color:#3C763D;
+      }
+
+      .Warning-faded-bkg {
+        background: #ffe0b7; /* Old browsers */
+        background: -moz-linear-gradient(top, #ffe0b7 0%, #fdd197 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, #ffe0b7 0%,#fdd197 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, #ffe0b7 0%,#fdd197 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe0b7', endColorstr='#fdd197',GradientType=0 );
+        border: 1px solid #ffc866;
+        color: #996200;
+      }
+
+      .NoLimit-faded-bkg {
+        background: -webkit-linear-gradient(#efefef, #eee); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(#efefef, #eee); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(#efefef, #eee); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(#efefef, #eee); /* Standard syntax */
+        border: 1px solid #eee;
+        color:#000;
+      }
+
+      .Unknown-faded-bkg {
+        background: -webkit-linear-gradient(#868686, #888888); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(#868686, #888888); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(#868686, #888888); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(#868686, #888888); /* Standard syntax */
+        border: 1px solid #888888;
+        color:#000;
+      }
+
+      .undefined-faded-bkg {
+        background: -webkit-linear-gradient(#efefef, #eee); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(#efefef, #eee); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(#efefef, #eee); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(#efefef, #eee); /* Standard syntax */
+        border: 1px solid #eee;
+        color:#000;
+      }
+
+      hr {
+        border:0px;
+        border-bottom: 1px solid #eee;
+        margin-bottom:20px;
+      }
+      h2 {
+        font-size: 28px;
+        font-weight:400;
+        padding-top:20px;
+        padding-left:55px;
+        margin-bottom:15px;
+        color: #333;
+      }
+      h3 {
+        font-size:24px;
+        font-weight:400;
+        margin-bottom:15px;
+        padding-top:20px;
+      }
+      h4 {
+        font-size:16px;
+        padding: 0;
+        margin-bottom:5px;
+        margin: 0;
+        font-weight:600;
+      }
+      h1 > small, h2 > small, h3 > small, h4 > small{
+        font-size: 70%;
+        color: gray;
+      }
+      /* TABLE STYLING */
+      table {
+        width:100%;
+        padding:0;
+        margin:0;
+      }
+      th {
+        text-align: left;
+        border-bottom:1px solid #ddd;
+        padding: 10px 0;
+        margin: 0;
+        font-weight: bold;
+      }
+      td {
+        margin:0;
+        border-top:1px solid #efefef;
+        padding: 5px 0;
+      }
+      .heading {
+        padding: 4px 15px 4px 15px;
+        margin:0;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        width: 100%;
+        text-align: left;
+      }
+
+      .content {
+        margin: 0;
+        padding: 15px;
+        border: 1px solid #eee;
+        border-top: none;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+      .container {
+        padding:15px;
+      }
+
+      .port {
+        width: 12px;
+        height: 12px;
+      }
+
+      div.clearfix {
+        clear: both;
+      }
+
+
+      div.metricstatus {
+        width: 20px;
+        height: 20px;
+      }
+
+      td.CompactTable{
+        padding: 0px;
+      }
+
+      h2.panel-title{
+        margin-top: 15px;
+        padding-top: 0px;
+      }
+
+
+    </style>
+  </template>
+</dom-module>

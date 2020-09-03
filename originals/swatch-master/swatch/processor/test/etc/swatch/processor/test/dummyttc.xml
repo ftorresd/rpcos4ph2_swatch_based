@@ -1,0 +1,32 @@
+<node>
+    <node id="ctrl" address="0x0">
+      <node id="enable" mask="0x01"/>
+      <node id="genBC0" mask="0x02"/>
+      <node id="sendL1A" mask="0x04"/>
+      <node id="sendL1Burst" mask="0x8"/>
+      <node id="clearCntrs" mask="0x10"/>
+      <node id="clearErrCntrs" mask="0x20"/>
+      <node id="spy" mask="0x40"/>
+      <node id="maskBCOSpy" mask="0x80"/>
+      <node id="sendBGo" mask="0xf0000000"/>
+    </node>
+    <node id="stat" address="0x1">
+        <node id="clk40Locked" mask="0x1"/>
+        <node id="clk40Stopped" mask="0x2"/>
+        <node id="bc0Locked" mask="0x4"/>
+        <node id="bc0Stopped" mask="0x8"/>
+    </node>
+    <node id="counters" address="0x2">
+        <node id="bunchCntr" mask="0xfff"/>
+    </node>
+    <node id="counters1" address="0x3">
+        <node id="eventCntr" mask="0xffffff"/>
+    </node>
+    <node id="counters2" address="0x4">
+        <node id="orbitCntr" mask="0xffffff"/>
+    </node>
+    <node id="counters3" address="0x5">
+        <node id="singleBitErrCntr" mask="0xffff"/>
+        <node id="doubleBitErrCntr" mask="0xffff0000"/>
+    </node>
+</node> 

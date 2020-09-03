@@ -1,0 +1,56 @@
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+
+
+<link rel="import" href="/extern/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/extern/bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="/swatchcell/framework/html/elements/monitoring-status-icon/monitoring-status-icon.html">
+
+
+<dom-module id="ports-table">
+  <template>
+    <style include="swatch-styles"></style>
+    <link rel="import" type="css" href="css/ports-table-min.css?__inline=true">
+    <button class$="{{getHeadingClass(portcollection.status)}}" on-click="toggle">
+      <div>
+        <span>{{name}}</span>
+        <span class="monitoringstatusheader">Monitoring:&nbsp;<span class="monitoringstatus">{{portcollection.monitoringstatus}}</span></span>
+        <paper-icon-button icon="icons:expand-more" style="margin:0;padding:0"></paper-icon-button>
+      </div>
+    </button>
+    <iron-collapse id="link_table" opened="{{isopened}}">
+      <div class="content">
+        <table class="main-metric-table">
+          <template is="dom-repeat" items="{{portcollection.components}}" as="ports">          
+            <tr>
+              <th>Port ID</th>
+              <th></th>
+              <th left-border>Status</th>
+              <template is="dom-if" if="{{isNotEmpty(ports.0.ismasked)}}">
+                <th left-border>Masked</th>
+              </template>
+              <template is="dom-repeat" items="[[getSortedMetricIdArray(portcollection.components, ports.0)]]" as="metricId">
+                <th left-border>{{metricId}}</th>
+              </template>
+            </tr>
+            <!-- if index > 0 add separation-->
+            <template is="dom-repeat" items="{{ports}}" as="port">
+              <tr not-monitored$="[[!isMonitored(port.monitoringstatus)]]" is-warning$="[[isWarning(port)]]" is-error$="[[isError(port)]]">
+                <td id={{port.id}}>{{port.id}}</td>
+                <td><monitoring-status-icon status="[[port.monitoringstatus]]" class="monitoring-status-icon"></monitoring-status-icon></td>
+                <td class$="{{port.status}}" left-border>{{port.status}}</td>
+                <template is="dom-if" if="{{isNotEmpty(port.ismasked)}}">
+                  <td left-border>{{getCapitalBoolean(port.ismasked)}}</td>
+                </template>
+                <template is="dom-repeat" items="{{getSortedMetricIdArray(portcollection.components, ports.0)}}" as="metricId">
+                  <td left-border> <monitorable-status status="[[getMetricStatus(port, metricId)]]"></monitorable-status> <span style="font-weight: bold;">{{getMetricValue(port, metricId)}}</span></td>
+                </template>
+              </tr>
+            </template>
+          </table>
+        </template>
+      </div>
+    </iron-collapse>
+    <div class="spacer">&nbsp;</div>
+  </template>
+  <script src="javascript/ports-table-min.js?__inline=true"></script>
+</dom-module>

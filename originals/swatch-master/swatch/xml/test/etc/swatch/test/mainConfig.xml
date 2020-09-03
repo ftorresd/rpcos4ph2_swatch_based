@@ -1,0 +1,7 @@
+<db>
+  <key id="MyDummyKey">
+    <load module="sub1.xml" />
+    <load module="sub2.xml" />
+    <load module="sub3.xml" />
+  </key>
+</db>

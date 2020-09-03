@@ -1,0 +1,4 @@
+**/*.o
+**/*.so
+**/*.d
+!swatch/cell/example/lib/libswatchcellexample.so

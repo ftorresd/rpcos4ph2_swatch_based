@@ -1,0 +1,39 @@
+<system id="hwSys">
+  <creator>swatch::system::System</creator>
+  <crates>
+    <crate id="schroff2">
+      <description>The first crate</description>
+      <location>Point5, S2D13-43</location>
+    </crate>
+  </crates>
+  <processors>
+    <processor id="mp7test">
+      <creator>swatch::mp7::test::TestMP7Processor</creator>
+      <hw-type>MP7XE</hw-type>
+      <role>mp7test</role>
+      <uri>chtcp-2.0://localhost:50607?target=10.176.129.12:50001</uri>
+      <address-table>file:///${CACTUS_ROOT}/etc/mp7/addrtab/xe_v2_2_1/mp7xe_infra.xml</address-table>
+      <crate>schroff2</crate>
+      <slot>1</slot>
+      <rx-port name="Rx[00:72]" pid="[00:72]"/>
+      <tx-port name="Tx[00:72]" pid="[00:72]"/>
+    </processor>
+  </processors>
+  <daqttc-mgrs>
+    <daqttc-mgr id="amc13test">
+      <creator>swatch::amc13::AMC13Manager</creator>
+      <role>daqttc</role>
+      <crate>schroff2</crate>
+      <slot>13</slot>
+      <uri id="t1">chtcp-2.0://localhost:50607?target=10.176.129.24:50001</uri>
+      <uri id="t2">chtcp-2.0://localhost:50607?target=10.176.129.25:50001</uri>
+      <address-table id="t1">file://${CACTUS_ROOT}/etc/amc13/AMC13XG_T1.xml</address-table>
+      <address-table id="t2">file://${CACTUS_ROOT}/etc/amc13/AMC13XG_T2.xml</address-table>
+      <fed-id>1234</fed-id>
+    </daqttc-mgr>
+  </daqttc-mgrs>
+  <links/>
+  <connected-feds/>
+  <excluded-boards/>
+</system>
+

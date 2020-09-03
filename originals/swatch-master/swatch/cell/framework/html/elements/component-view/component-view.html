@@ -1,0 +1,142 @@
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+<link rel="import" href="/ts/common-elements/reset-css/reset-css.html">
+
+<link rel="import" href="/extern/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/extern/bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="/extern/bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="/extern/bower_components/paper-item/paper-item.html">
+<link rel="import" href="/extern/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/extern/bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="/ts/common-elements/auto-update/auto-update.html">
+<link rel="import" href="/ts/common-elements/iron-flex-layout-attributes/iron-flex-layout-attributes.html">
+<link rel="import" href="/swatchcell/framework/html/elements/monitorable-object-status/monitorable-object-status.html">
+<link rel="import" href="/swatchcell/framework/html/elements/port-summary/port-summary.html">
+<link rel="import" href="/swatchcell/framework/html/elements/metric-table/metric-table.html">
+
+
+<dom-module id="component-view">
+
+    <template>
+        <style include="swatch-styles"></style>
+        <style include="reset-css"></style>
+        <style include="iron-flex-layout-attributes"></style>
+        <style>
+[tabs-container]{margin-left:-5px;margin-top:-40px;float:left;display:block}.stub-container{margin-top:10px;margin-left:50px;float:left;width:45%}.display-container{margin-top:30px;float:left;width:40%;margin-left:55px}td.stubname{font-weight:700;border-right:1px solid #ddd;padding:7px}td.stubval{border-left:1px solid #ddd;padding:7px}div.cmp{padding:8px;margin:5px 5px 5px 0;border-radius:5px}div.ports{float:left;width:49%;padding-right:1%}div.components{float:left;width:50%}h4{padding-top:15px}.statusspan{margin-top:2px;margin-bottom:2px;display:inline-block}.monitoringstatusheader{float:right}.monitoringstatus{font-weight:700}div.proc{border:1px solid #ddd;display:inline-block;padding:10px 10px 5px;box-shadow:0 2px 6px rgba(0,0,0,.1);border-radius:5px;margin:20px 10px 30px;width:350px}div.mouseover{text-align:center;height:20px}div.portsection{width:100%}
+</style>
+
+        <form id="tabbed-page-form" >
+          <div form-container>
+            <iron-ajax id="ajax" method="post" handle-as="text"
+                on-response="formResponse"
+                on-error="formError">
+            </iron-ajax>
+            <div class="container">
+              <div class="display-container">
+                <div tabs-container horizontal layout>
+                  <paper-dropdown-menu label="Selected object" on-iron-select="report" selected-item-label="{{selectedLabel}}"  noink>
+                      <paper-menu id="processorselector" class="dropdown-content" selected$="{{selected}}">
+                          <template is="dom-repeat" items="{{components}}" as="obj">
+                              <paper-item seldata$="{{obj}}">{{obj}}</paper-item>
+                          </template>
+                      </paper-menu>
+                  </paper-dropdown-menu>
+                  <div vertical layout style="padding-left: 30px;">
+                    <span class$="{{getLabel(component.status)}}">Component Status: <span>{{component.status}}</span></span>
+                    <span class$="{{getLabel(component.monitoringstatus)}}">Monitoring: <span>{{component.monitoringstatus}}</span></span>
+                  </div>
+                </div>
+                <!-- conditional show of processor ports  -->
+                <div style="margin-top:30px" class="portsection" horizontal layout align-center>
+                  <template is="dom-if" if="{{isProcessor(component)}}">
+                    <template is="dom-repeat" items="[[component.components]]" filter="isInputPorts" as="input_ports">
+                      <template is="dom-repeat" items="[[component.components]]" filter="isOutputPorts" as="output_ports">
+                        <port-summary
+                          id="summaryProcessor"
+                          processor-id="[[component.id]]"
+                          input-ports="[[input_ports.components]]"
+                          output-ports="[[output_ports.components]]"
+                          flex
+                          style="margin-right: 20px;"
+                          on-port-click="showPortMetric">
+                        </port-summary>
+                      </template>
+                    </template>
+                  </template>
+                  <template is="dom-if" if="{{isDaqTTC(component)}}">
+                    <template is="dom-repeat" items="[[component.components]]" filter="isAMCPorts" as="amc_ports">
+                      <port-summary
+                        id="summaryAMC"
+                        header="[[component.id]]"
+                        processor-id="[[component.id]]"
+                        amc-ports="[[amc_ports.components]]"
+                        flex
+                        style="margin-right: 20px;">
+                      </port-summary>
+                    </template>
+                  </template>
+          <!-- END OF conditional show of processor ports  -->
+                  <div class="components" flex>
+                    <h4>Monitorables</h4>
+                    <template is="dom-repeat" items="{{component.components}}" as="cmp">
+                      <div class$="{{getSubCompClass(cmp.status)}}" hover-data$="{{cmp.id}}" on-click="showComponent">{{cmp.id}}</div>
+                    </template>
+                    <h4>State machine</h4>
+                    <template is="dom-if" if="[[component.isengaged]]">
+                      <div class="cmp NoLimit-bkg"><span>[[component.statemachineid]]</span>::<span>[[component.state]]</span></div>
+                    </template>
+                    <template is="dom-if" if="[[!component.isengaged]]">
+                      <div class="cmp NoLimit-bkg">Not engaged</div>
+                    </template>
+                  </div>
+                </div>
+              </div> <!-- END display container -->
+              <div class="stub-container" layout vertical>
+                <div>
+                  <auto-update
+                    id="autoupdateprocessor"
+                    data="{{component}}"
+                    callback="MonitorPanel::switchComponent"
+                    parameters='["monitorables"]'
+                    monitorables="{{openedSubmonitorables}}"
+                  ></auto-update>
+                </div>
+                <div flex>
+                  <h4>Stub Info</h4>
+                  <table>
+                    <template is="dom-repeat" items="{{component.stub_info}}" as="stub">
+                      <tr>
+                        <td class="stubname">{{stub.name}}</td><td class="stubval">{{stub.value}}</td>
+                      </tr>
+                    </template>
+                  </table>
+                </div>
+              </div>  <!-- END stub container -->
+            </div>  <!-- END container -->
+          </div>  <!-- END form-container -->
+        </form>
+        <div class="clearfix"></div>
+        <div class="container" style="margin-top:50px;">
+          <metric-table object="{{component}}" name="{{component.id}}"></metric-table>
+          <template is="dom-repeat" items="{{component.components}}" as="cmp">
+              <metric-table id="{{cmp.id}}" object="{{cmp}}" name="{{cmp.id}}" recursive on-toggled="updateOpenedSubmonitorables" on-children-changed="updateJSON"></metric-table>
+          </template>
+        </div>
+
+    </template>
+    <script>
+Polymer({is:"component-view",properties:{components:{type:Array,value:[]},selected:{type:String,value:0},component:{type:Object,notify:!0},selectedLabel:{type:String,value:""},openedSubmonitorables:{type:Array,value:function(){return[]}}},report:function(event,detail,sender){
+//console.log("component-view report");
+this.openedSubmonitorables[0]={},this.openedSubmonitorables[0].id=this.selectedLabel;var metrictables=Polymer.dom(this.root).querySelectorAll("metric-table");this.openedSubmonitorables[0].openedSubmonitorables=[];for(var x=0;x<metrictables.length;x++)metrictables[x].close();Polymer.dom(this.root).querySelector("#autoupdateprocessor").set("monitorables",JSON.stringify(this.openedSubmonitorables)),console.log(JSON.stringify(this.openedSubmonitorables)),Polymer.dom(this.root).querySelector("#autoupdateprocessor").manualRefresh()},getLabel:function(status){if(""==status)return"label statusspan NoLimit-bkg";switch(status){case"Good":case"Warning":case"Error":case"NoLimit":case"Enabled":case"Disabled":return"label statusspan "+status+"-bkg";case"Non critical":return"label statusspan NonCritical-bkg"}return"label statusspan "+status+"-bkg"},getSubCompClass:function(status){return"cmp "+status+"-bkg"},showPortMetric:function(event){if(Polymer.dom(event).rootTarget){var metricTableRoot={};switch(event.detail.portType){case"input":metricTableRoot=Polymer.dom(Polymer.dom(this.root).querySelector("#inputPorts").root),metricTableRoot.querySelector("#metric_table").set("noAnimation",!0),Polymer.dom(this.root).querySelector("#inputPorts").open(),metricTableRoot.querySelector("#metric_table").set("noAnimation",!1);break;case"output":metricTableRoot=Polymer.dom(Polymer.dom(this.root).querySelector("#outputPorts").root),metricTableRoot.querySelector("#metric_table").set("noAnimation",!0),Polymer.dom(this.root).querySelector("#outputPorts").open(),metricTableRoot.querySelector("#metric_table").set("noAnimation",!1);break;case"amc":metricTableRoot=Polymer.dom(Polymer.dom(this.root).querySelector("#amcports").root),metricTableRoot.querySelector("#metric_table").set("noAnimation",!0),Polymer.dom(this.root).querySelector("#amcports").open(),metricTableRoot.querySelector("#metric_table").set("noAnimation",!1)}
+//I have to enter in the dom root and open the metric-table
+metricTableRoot.querySelector("#"+event.detail.portId).open(),metricTableRoot.querySelector("#"+event.detail.portId).scrollIntoView()}},isProcessor:function(item){return null!=item&&"daqttc"!==item.type},isDaqTTC:function(item){return null!=item&&"daqttc"==item.type},isInputPorts:function(item){return null!=item&&"inputPorts"==item.type},isOutputPorts:function(item){return null!=item&&"outputPorts"==item.type},isAMCPorts:function(item){return null!=item&&"amcPorts"==item.type},showComponent:function(e){var component=e.target.attributes["hover-data"].value;
+//Polymer.dom(this.root).querySelector('#' + component).isopened = "true";
+Polymer.dom(this.root).querySelector("#"+component).open(),Polymer.dom(this.root).querySelector("#"+component).scrollIntoView()},attached:function(){Polymer.dom(document).querySelector("#monitoringtitle").set("subtitle","Component view")},updateOpenedSubmonitorables:function(event){var senderObject={id:event.detail.sender};if(event.detail.opened)senderObject.openedSubmonitorables=event.detail.openedSubmonitorables,this.openedSubmonitorables[0].openedSubmonitorables.push(senderObject),Polymer.dom(this.root).querySelector("#autoupdateprocessor").set("monitorables",JSON.stringify(this.openedSubmonitorables)),
+//console.log ( JSON.stringify(this.openedSubmonitorables));
+//If I add a component I need a new request
+Polymer.dom(this.root).querySelector("#autoupdateprocessor").manualRefresh();else{
+//Looking for the element to remove
+for(var found=!1,indexToRemove=-1,x=0;x<this.openedSubmonitorables[0].openedSubmonitorables.length&&!found;x++)this.openedSubmonitorables[0].openedSubmonitorables[x].id==senderObject.id&&(found=!0,indexToRemove=x);indexToRemove>=0&&this.openedSubmonitorables[0].openedSubmonitorables.splice(indexToRemove,1),Polymer.dom(this.root).querySelector("#autoupdateprocessor").set("monitorables",JSON.stringify(this.openedSubmonitorables))}},updateJSON:function(event){Polymer.dom(this.root).querySelector("#autoupdateprocessor").set("monitorables",JSON.stringify(this.openedSubmonitorables)),
+//console.log ( JSON.stringify(this.openedSubmonitorables));
+event.detail.opened&&Polymer.dom(this.root).querySelector("#autoupdateprocessor").manualRefresh()}});
+</script>
+</dom-module>

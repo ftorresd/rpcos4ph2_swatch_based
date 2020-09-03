@@ -1,0 +1,141 @@
+{
+  "SYSTEM":
+          {
+            "NAME": "exampleSys_p5",
+            "CREATOR": "swatch::system::SystemLoggingCreator",
+            "CRATES": 
+                [
+                  {
+                    "NAME": "Schroff crate 2",
+                    "LOCATION": "Point5, S2D10-43",
+                    "DESCRIPTION": "Second Schroff crate"
+                  }
+                ],
+            "PROCESSORS":
+                    [
+                      {
+                        "NAME": "mp_1",
+                        "TYPE": "MP7 XE",
+                        "CREATOR": "swatch::mp7::MP7NullAlgoProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "MP",
+                        "URI": "chtcp-2.0://localhost:50607?target=10.176.4.74:50001",
+                        "ADDRESS TABLE": "file:///opt/cactus/etc/mp7/addrtab/xe_v1_8_0/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 2",
+                        "CRATE SLOT": 1,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:72]", "PID": "[00:72]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[00:72]", "PID": "[00:72]" }
+                        ]
+                      },
+                      {
+                        "NAME": "mp_3",
+                        "TYPE": "MP7 XE",
+                        "CREATOR": "swatch::mp7::MP7NullAlgoProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "MP",
+                        "URI": "chtcp-2.0://localhost:50607?target=10.176.4.76:50001",
+                        "ADDRESS TABLE": "file:///opt/cactus/etc/mp7/addrtab/xe_v1_8_0/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 2",
+                        "CRATE SLOT": 3,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:72]", "PID": "[00:72]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[00:72]", "PID": "[00:72]" }
+                        ]
+                      },
+                      {
+                        "NAME": "mp_4",
+                        "TYPE": "MP7 XE",
+                        "CREATOR": "swatch::mp7::MP7NullAlgoProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "MP",
+                        "URI": "chtcp-2.0://localhost:50607?target=10.176.4.77:50001",
+                        "ADDRESS TABLE": "file:///opt/cactus/etc/mp7/addrtab/xe_v1_8_0/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 2",
+                        "CRATE SLOT": 4,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:72]", "PID": "[00:72]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[00:72]", "PID": "[00:72]" }
+                        ]
+                      },
+                      {
+                        "NAME": "mp_5",
+                        "TYPE": "MP7 XE",
+                        "CREATOR": "swatch::mp7::MP7NullAlgoProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "MP",
+                        "URI": "chtcp-2.0://localhost:50607?target=10.176.4.78:50001",
+                        "ADDRESS TABLE": "file:///opt/cactus/etc/mp7/addrtab/xe_v1_8_0/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 2",
+                        "CRATE SLOT": 5,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:72]", "PID": "[00:72]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[00:72]", "PID": "[00:72]" }
+                        ]
+                      },
+                      {
+                        "NAME": "mp_6",
+                        "TYPE": "MP7 XE",
+                        "CREATOR": "swatch::mp7::MP7NullAlgoProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "MP",
+                        "URI": "chtcp-2.0://localhost:50607?target=10.176.4.79:50001",
+                        "ADDRESS TABLE": "file:///opt/cactus/etc/mp7/addrtab/xe_v1_8_0/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 2",
+                        "CRATE SLOT": 6,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:72]", "PID": "[00:72]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[00:72]", "PID": "[00:72]" }
+                        ]
+                      },
+                      {
+                        "NAME": "mp_7",
+                        "TYPE": "MP7 XE",
+                        "CREATOR": "swatch::mp7::MP7NullAlgoProcessor",
+                        "HARDWARE TYPE": "MP7 XE",
+                        "ROLE": "MP",
+                        "URI": "chtcp-2.0://localhost:50607?target=10.176.4.80:50001",
+                        "ADDRESS TABLE": "file:///opt/cactus/etc/mp7/addrtab/xe_v1_8_0/mp7xe_infra.xml",
+                        "CRATE NAME": "Schroff crate 2",
+                        "CRATE SLOT": 7,
+                        "RX PORTS": [
+                            { "NAME" : "Rx[00:72]", "PID": "[00:72]" }
+                        ],
+                        "TX PORTS": [
+                            { "NAME" : "Tx[00:72]", "PID": "[00:72]" }
+                        ]
+                      }                  
+                    ],
+            "DAQTTCS":
+                    [
+                      {
+                        "NAME": "AMC13",
+                        "TYPE": "AMC13",
+                        "CREATOR": "swatch::amc13::AMC13Manager",
+                        "ROLE": "daqttc",
+                        "CRATE NAME": "Schroff crate 2",
+                        "CRATE SLOT": 13,
+                        "URI T1": "chtcp-2.0://localhost:50607?target=10.176.4.86:50001",
+                        "ADDRESS TABLE T1": "file:///opt/cactus/etc/amc13/AMC13XG_T1.xml",
+                        "URI T2": "chtcp-2.0://localhost:50607?target=10.176.4.87:50001",
+                        "ADDRESS TABLE T2": "file:///opt/cactus/etc/amc13/AMC13XG_T2.xml",
+                        "FED ID": 1234
+                      }
+                    ],
+            "LINKS":
+                    [
+                      { "NAME" : "link23_[00:35]", "FROM" : "mp_4.ports.Tx[00:35]", "TO" : "mp_3.ports.Rx[36:71]" } ,
+                      { "NAME" : "link32_[00:35]", "FROM" : "mp_3.ports.Tx[36:71]", "TO" : "mp_4.ports.Rx[00:35]" }
+                    ]
+          }
+}

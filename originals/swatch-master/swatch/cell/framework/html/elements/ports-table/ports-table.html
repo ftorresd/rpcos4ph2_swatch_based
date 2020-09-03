@@ -1,0 +1,77 @@
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+
+
+<link rel="import" href="/extern/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/extern/bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="/swatchcell/framework/html/elements/monitoring-status-icon/monitoring-status-icon.html">
+
+
+<dom-module id="ports-table">
+  <template>
+    <style include="swatch-styles"></style>
+    <style>
+.spacer{height:20px}.monitoringstatusheader{float:right}.monitoringstatus{font-weight:700}monitoring-status-icon.monitoring-status-icon{height:20px;margin:auto}tr[not-monitored]{background-color:#dadada}tr[is-warning]{background-color:#ffdea3}tr[is-error]{background-color:#ffd5d5}table.main-metric-table{border-spacing:0}[left-border]{border-left:1px solid #aaa;padding-left:10px}[separator-line]{margin-top:10px;margin-bottom:10px;border-width:0}
+</style>
+    <button class$="{{getHeadingClass(portcollection.status)}}" on-click="toggle">
+      <div>
+        <span>{{name}}</span>
+        <span class="monitoringstatusheader">Monitoring:&nbsp;<span class="monitoringstatus">{{portcollection.monitoringstatus}}</span></span>
+        <paper-icon-button icon="icons:expand-more" style="margin:0;padding:0"></paper-icon-button>
+      </div>
+    </button>
+    <iron-collapse id="link_table" opened="{{isopened}}">
+      <div class="content">
+        <table class="main-metric-table">
+          <template is="dom-repeat" items="{{portcollection.components}}" as="ports">          
+            <tr>
+              <th>Port ID</th>
+              <th></th>
+              <th left-border>Status</th>
+              <template is="dom-if" if="{{isNotEmpty(ports.0.ismasked)}}">
+                <th left-border>Masked</th>
+              </template>
+              <template is="dom-repeat" items="[[getSortedMetricIdArray(portcollection.components, ports.0)]]" as="metricId">
+                <th left-border>{{metricId}}</th>
+              </template>
+            </tr>
+            <!-- if index > 0 add separation-->
+            <template is="dom-repeat" items="{{ports}}" as="port">
+              <tr not-monitored$="[[!isMonitored(port.monitoringstatus)]]" is-warning$="[[isWarning(port)]]" is-error$="[[isError(port)]]">
+                <td id={{port.id}}>{{port.id}}</td>
+                <td><monitoring-status-icon status="[[port.monitoringstatus]]" class="monitoring-status-icon"></monitoring-status-icon></td>
+                <td class$="{{port.status}}" left-border>{{port.status}}</td>
+                <template is="dom-if" if="{{isNotEmpty(port.ismasked)}}">
+                  <td left-border>{{getCapitalBoolean(port.ismasked)}}</td>
+                </template>
+                <template is="dom-repeat" items="{{getSortedMetricIdArray(portcollection.components, ports.0)}}" as="metricId">
+                  <td left-border> <monitorable-status status="[[getMetricStatus(port, metricId)]]"></monitorable-status> <span style="font-weight: bold;">{{getMetricValue(port, metricId)}}</span></td>
+                </template>
+              </tr>
+            </template>
+          </table>
+        </template>
+      </div>
+    </iron-collapse>
+    <div class="spacer">&nbsp;</div>
+  </template>
+  <script>
+Polymer({is:"ports-table",properties:{portcollection:{type:Object,value:function(){return{}}},name:String,isopened:String},toggle:function(event){event.preventDefault(),this.$.link_table.toggle(),this.fire("toggled",{sender:this.portcollection.id,opened:this.$.link_table.opened})},open:function(){this.$.link_table.set("opened",!0),this.fire("toggled",{sender:this.portcollection.id,opened:this.$.link_table.opened})},close:function(){this.$.link_table.set("opened",!1),this.fire("toggled",{sender:this.portcollection.id,opened:this.$.link_table.opened})},getMetricIdArray:function(metrics){return Object.keys(metrics)},getMetricStatus:function(port,metricId){return void 0===port.metrics[metricId]?"Unknown":port.metrics[metricId].status},getMetricValue:function(port,metricId){return void 0===port.metrics[metricId]?"":port.metrics[metricId].value},getMergedMetricIdArray:function(portcollections){
+// is it cached?
+if(void 0!==this.header)return this.header;var idArrayCollection=[];
+// Preparing an array of array of ids
+portcollections.forEach(function(portcollection){var idArray=this.getMetricIdArray(portcollection[0].metrics);idArrayCollection.push(idArray)}.bind(this));
+// Finding common metrics
+var intersection=idArrayCollection[0];
+//Remove common elements from original ids and adding it to the intersection
+//cache it
+return idArrayCollection.forEach(function(idArray){intersection=intersection.filter(function(value){return-1!==idArray.indexOf(value)})}.bind(this)),idArrayCollection.forEach(function(idArray){idArray=idArray.filter(function(el){return!intersection.includes(el)}),intersection=intersection.concat(idArray)}.bind(this)),this.set("header",intersection),intersection},getSortedMetricIdArray:function(portcollections,port){
+//find max length for table column
+var maxLength=0;portcollections.forEach(function(ports){this.getMetricIdArray(ports[0].metrics).length>maxLength&&(maxLength=this.getMetricIdArray(ports[0].metrics).length)}.bind(this));
+// taking mega header
+var header=this.getMergedMetricIdArray(portcollections);
+// removing metrics non belonging to that port type
+header=header.filter(function(el){return this.getMetricIdArray(port.metrics).includes(el)}.bind(this));
+//adding missing headers to have a consistent number of rows
+for(var x=header.size;x<maxLength;x++)header.push("");return header},getHeadingClass:function(status){return"heading "+status+"-faded-bkg"},getPortTD:function(portID){return Polymer.dom(this.root).querySelector("#"+portID)},setNoAnimation:function(noanim){Polymer.dom(this.root).querySelector("#link_table").noAnimation=noanim},getCapitalBoolean:function(flag){switch(flag){case!0:return"True";case!1:return"False"}return"Invalid flag"},isNotEmpty:function(status){return!(void 0===status)},getMetricStatusClass:function(status){return"metricstatus "+status+"-bkg"},isMonitored:function(monitoringStatus){return"Enabled"==monitoringStatus},isDisabled:function(monitoringStatus){return"Disabled"==monitoringStatus},isNonCritical:function(monitoringStatus){return"Non critical"==monitoringStatus},isWarning:function(metric){return this.isMonitored(metric.monitoringstatus)&&"Warning"==metric.status},isError:function(metric){return this.isMonitored(metric.monitoringstatus)&&"Error"==metric.status}});
+</script>
+</dom-module>

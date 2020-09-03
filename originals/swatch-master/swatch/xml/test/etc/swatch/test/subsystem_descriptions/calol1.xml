@@ -1,0 +1,641 @@
+<system id="calol1">
+  <creator>calol1::CaloL1System</creator>
+  <crates>
+    <crate id="Vadatech_VT895_crate_2">
+      <description>Calo Layer-1 Crate 2</description>
+      <location>S2E10 46</location>
+    </crate>
+    <crate id="Vadatech_VT895_crate_3">
+      <description>Calo Layer-1 Crate 3</description>
+      <location>S2E10 33</location>
+    </crate>
+    <crate id="Vadatech_VT895_crate_4">
+      <description>Calo Layer-1 Crate 4</description>
+      <location>S2E10 20</location>
+    </crate>
+  </crates>
+  <processors>
+    <processor id="CTP7_Phi0">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>0</uri>
+      <address-table>amc-s2e10-33-08</address-table>
+      <crate>Vadatech_VT895_crate_3</crate>
+      <slot>8</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi1">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>1</uri>
+      <address-table>amc-s2e10-33-09</address-table>
+      <crate>Vadatech_VT895_crate_3</crate>
+      <slot>9</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi2">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>2</uri>
+      <address-table>amc-s2e10-33-11</address-table>
+      <crate>Vadatech_VT895_crate_3</crate>
+      <slot>11</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi3">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>3</uri>
+      <address-table>amc-s2e10-46-02</address-table>
+      <crate>Vadatech_VT895_crate_2</crate>
+      <slot>2</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi4">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>4</uri>
+      <address-table>amc-s2e10-46-03</address-table>
+      <crate>Vadatech_VT895_crate_2</crate>
+      <slot>3</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi5">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>5</uri>
+      <address-table>amc-s2e10-46-05</address-table>
+      <crate>Vadatech_VT895_crate_2</crate>
+      <slot>5</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi6">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>6</uri>
+      <address-table>amc-s2e10-46-08</address-table>
+      <crate>Vadatech_VT895_crate_2</crate>
+      <slot>8</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi7">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>7</uri>
+      <address-table>amc-s2e10-46-09</address-table>
+      <crate>Vadatech_VT895_crate_2</crate>
+      <slot>9</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi8">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>8</uri>
+      <address-table>amc-s2e10-46-11</address-table>
+      <crate>Vadatech_VT895_crate_2</crate>
+      <slot>11</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi9">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>9</uri>
+      <address-table>amc-s2e10-20-01</address-table>
+      <crate>Vadatech_VT895_crate_4</crate>
+      <slot>2</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi10">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>10</uri>
+      <address-table>amc-s2e10-20-03</address-table>
+      <crate>Vadatech_VT895_crate_4</crate>
+      <slot>3</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi11">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>11</uri>
+      <address-table>amc-s2e10-20-05</address-table>
+      <crate>Vadatech_VT895_crate_4</crate>
+      <slot>5</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi12">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>12</uri>
+      <address-table>amc-s2e10-20-08</address-table>
+      <crate>Vadatech_VT895_crate_4</crate>
+      <slot>8</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi13">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>13</uri>
+      <address-table>amc-s2e10-20-09</address-table>
+      <crate>Vadatech_VT895_crate_4</crate>
+      <slot>9</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi14">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>14</uri>
+      <address-table>amc-s2e10-20-11</address-table>
+      <crate>Vadatech_VT895_crate_4</crate>
+      <slot>11</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi15">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>15</uri>
+      <address-table>amc-s2e10-33-02</address-table>
+      <crate>Vadatech_VT895_crate_3</crate>
+      <slot>2</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi16">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>16</uri>
+      <address-table>amc-s2e10-33-03</address-table>
+      <crate>Vadatech_VT895_crate_3</crate>
+      <slot>3</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+    <processor id="CTP7_Phi17">
+      <creator>calol1::CTP7Processor</creator>
+      <hw-type>CTP7</hw-type>
+      <role>Layer1Processor</role>
+      <uri>17</uri>
+      <address-table>amc-s2e10-33-05</address-table>
+      <crate>Vadatech_VT895_crate_3</crate>
+      <slot>5</slot>
+      <rx-port pid="[00:16]" name="Pos_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Pos_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Pos_HF_LINK_[00:02]"/>
+      <rx-port pid="[00:16]" name="Neg_ECAL_LINK_[00:16]"/>
+      <rx-port pid="[16:30]" name="Neg_HCAL_LINK_[00:14]"/>
+      <rx-port pid="[30:32]" name="Neg_HF_LINK_[00:02]"/>
+      <tx-port pid="[00:24]" name="Pos_LINK_[00:24]"/>
+      <tx-port pid="[24:48]" name="Neg_LINK_[00:24]"/>
+    </processor>
+  </processors>
+  <daqttc-mgrs>
+    <daqttc-mgr id="crate_2_AMC13">
+      <creator>swatch::amc13::AMC13Manager</creator>
+      <role>Layer1DAQTTC</role>
+      <crate>Vadatech_VT895_crate_2</crate>
+      <slot>13</slot>
+      <uri id="t1">chtcp-2.0://ctrl-s2c16-10-01:10203?target=amc-s2e10-46-13-t1:50001</uri>
+      <uri id="t2">chtcp-2.0://ctrl-s2c16-10-01:10203?target=amc-s2e10-46-13-t2:50001</uri>
+      <address-table id="t1">file:///opt/cactus/etc/amc13/AMC13XG_T1.xml</address-table>
+      <address-table id="t2">file:///opt/cactus/etc/amc13/AMC13XG_T2.xml</address-table>
+      <fed-id>1354</fed-id>
+    </daqttc-mgr>
+    <daqttc-mgr id="crate_3_AMC13">
+      <creator>swatch::amc13::AMC13Manager</creator>
+      <role>Layer1DAQTTC</role>
+      <crate>Vadatech_VT895_crate_3</crate>
+      <slot>13</slot>
+      <uri id="t1">chtcp-2.0://ctrl-s2c16-10-01:10203?target=amc-s2e10-33-13-t1:50001</uri>
+      <uri id="t2">chtcp-2.0://ctrl-s2c16-10-01:10203?target=amc-s2e10-33-13-t2:50001</uri>
+      <address-table id="t1">file:///opt/cactus/etc/amc13/AMC13XG_T1.xml</address-table>
+      <address-table id="t2">file:///opt/cactus/etc/amc13/AMC13XG_T2.xml</address-table>
+      <fed-id>1356</fed-id>
+    </daqttc-mgr>
+    <daqttc-mgr id="crate_4_AMC13">
+      <creator>swatch::amc13::AMC13Manager</creator>
+      <role>Layer1DAQTTC</role>
+      <crate>Vadatech_VT895_crate_4</crate>
+      <slot>13</slot>
+      <uri id="t1">chtcp-2.0://ctrl-s2c16-10-01:10203?target=amc-s2e10-20-13-t1:50001</uri>
+      <uri id="t2">chtcp-2.0://ctrl-s2c16-10-01:10203?target=amc-s2e10-20-13-t2:50001</uri>
+      <address-table id="t1">file:///opt/cactus/etc/amc13/AMC13XG_T1.xml</address-table>
+      <address-table id="t2">file:///opt/cactus/etc/amc13/AMC13XG_T2.xml</address-table>
+      <fed-id>1358</fed-id>
+    </daqttc-mgr>
+  </daqttc-mgrs>
+  <links/>
+  <connected-feds>
+    <connected-fed id="601">
+      <port id="CTP7_Phi0.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi17.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="602">
+      <port id="CTP7_Phi1.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi2.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="603">
+      <port id="CTP7_Phi3.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi4.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="604">
+      <port id="CTP7_Phi5.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi6.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="605">
+      <port id="CTP7_Phi7.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi8.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="606">
+      <port id="CTP7_Phi9.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi10.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="607">
+      <port id="CTP7_Phi11.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi12.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="608">
+      <port id="CTP7_Phi13.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi14.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="609">
+      <port id="CTP7_Phi15.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi16.inputPorts.Neg_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="610">
+      <port id="CTP7_Phi0.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="611">
+      <port id="CTP7_Phi1.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="612">
+      <port id="CTP7_Phi2.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="613">
+      <port id="CTP7_Phi3.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="614">
+      <port id="CTP7_Phi4.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="615">
+      <port id="CTP7_Phi5.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="616">
+      <port id="CTP7_Phi6.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="617">
+      <port id="CTP7_Phi7.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="618">
+      <port id="CTP7_Phi8.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="619">
+      <port id="CTP7_Phi9.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="620">
+      <port id="CTP7_Phi10.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="621">
+      <port id="CTP7_Phi11.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="622">
+      <port id="CTP7_Phi12.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="623">
+      <port id="CTP7_Phi13.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="624">
+      <port id="CTP7_Phi14.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="625">
+      <port id="CTP7_Phi15.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="626">
+      <port id="CTP7_Phi16.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="627">
+      <port id="CTP7_Phi17.inputPorts.Neg_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="628">
+      <port id="CTP7_Phi0.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="629">
+      <port id="CTP7_Phi1.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="630">
+      <port id="CTP7_Phi2.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="631">
+      <port id="CTP7_Phi3.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="632">
+      <port id="CTP7_Phi4.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="633">
+      <port id="CTP7_Phi5.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="634">
+      <port id="CTP7_Phi6.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="635">
+      <port id="CTP7_Phi7.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="636">
+      <port id="CTP7_Phi8.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="637">
+      <port id="CTP7_Phi9.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="638">
+      <port id="CTP7_Phi10.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="639">
+      <port id="CTP7_Phi11.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="640">
+      <port id="CTP7_Phi12.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="641">
+      <port id="CTP7_Phi13.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="642">
+      <port id="CTP7_Phi14.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="643">
+      <port id="CTP7_Phi15.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="644">
+      <port id="CTP7_Phi16.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="645">
+      <port id="CTP7_Phi17.inputPorts.Pos_ECAL_LINK_[00:09]"/>
+    </connected-fed>
+    <connected-fed id="646">
+      <port id="CTP7_Phi0.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi17.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="647">
+      <port id="CTP7_Phi1.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi2.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="648">
+      <port id="CTP7_Phi3.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi4.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="649">
+      <port id="CTP7_Phi5.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi6.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="650">
+      <port id="CTP7_Phi7.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi8.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="651">
+      <port id="CTP7_Phi9.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi10.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="652">
+      <port id="CTP7_Phi11.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi12.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="653">
+      <port id="CTP7_Phi13.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi14.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="654">
+      <port id="CTP7_Phi15.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+      <port id="CTP7_Phi16.inputPorts.Pos_ECAL_LINK_[09:16]"/>
+    </connected-fed>
+    <connected-fed id="1100">
+      <port id="CTP7_Phi1.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi1.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi2.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi2.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+    </connected-fed>
+    <connected-fed id="1102">
+      <port id="CTP7_Phi3.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi3.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi4.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi4.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+    </connected-fed>
+    <connected-fed id="1104">
+      <port id="CTP7_Phi5.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi5.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi6.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi6.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+    </connected-fed>
+    <connected-fed id="1106">
+      <port id="CTP7_Phi7.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi7.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi8.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi8.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+    </connected-fed>
+    <connected-fed id="1108">
+      <port id="CTP7_Phi9.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi9.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi10.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi10.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+    </connected-fed>
+    <connected-fed id="1110">
+      <port id="CTP7_Phi11.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi11.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi12.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi12.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+    </connected-fed>
+    <connected-fed id="1112">
+      <port id="CTP7_Phi13.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi13.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi14.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi14.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+    </connected-fed>
+    <connected-fed id="1114">
+      <port id="CTP7_Phi15.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi15.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi16.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi16.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+    </connected-fed>
+    <connected-fed id="1116">
+      <port id="CTP7_Phi17.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi17.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi0.inputPorts.Neg_HCAL_LINK_[00:14]"/>
+      <port id="CTP7_Phi0.inputPorts.Pos_HCAL_LINK_[00:14]"/>
+    </connected-fed>
+    <connected-fed id="1118">
+      <port id="CTP7_Phi1.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi1.inputPorts.Pos_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi2.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi2.inputPorts.Pos_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi3.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi3.inputPorts.Pos_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi4.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi4.inputPorts.Pos_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi5.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi5.inputPorts.Pos_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi6.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi6.inputPorts.Pos_HF_LINK_[00:02]"/>
+    </connected-fed>
+    <connected-fed id="1120">
+      <port id="CTP7_Phi7.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi7.inputPorts.Pos_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi8.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi8.inputPorts.Pos_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi9.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi9.inputPorts.Pos_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi10.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi10.inputPorts.Pos_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi11.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi11.inputPorts.Pos_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi12.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi12.inputPorts.Pos_HF_LINK_[00:02]"/>
+    </connected-fed>
+    <connected-fed id="1122">
+      <port id="CTP7_Phi13.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi13.inputPorts.Pos_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi14.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi14.inputPorts.Pos_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi15.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi15.inputPorts.Pos_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi16.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi16.inputPorts.Pos_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi17.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi17.inputPorts.Pos_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi0.inputPorts.Neg_HF_LINK_[00:02]"/>
+      <port id="CTP7_Phi0.inputPorts.Pos_HF_LINK_[00:02]"/>
+    </connected-fed>
+  </connected-feds>
+  <excluded-boards/>
+</system>
+

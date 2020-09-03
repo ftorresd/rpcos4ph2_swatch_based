@@ -1,0 +1,64 @@
+.spacer {
+  height: 20px;
+}
+.monitoringstatusheader {
+  float: right;
+}
+.monitoringstatus {
+  font-weight: bold;
+}
+
+tr[not-monitored] {
+  background-color: #dadada;
+}
+
+tr[is-warning] {
+  background-color: #ffdea3;
+}
+
+tr[is-error] {
+  background-color: #ffd5d5;
+}
+
+table.main-metric-table {
+  border-spacing: 0px;
+}
+
+.metric-table-content {
+  padding: 5px 3px 5px 3px;
+}
+
+monitoring-status-icon.monitoring-status-icon{
+  height: 20px;
+  margin: auto;
+}
+
+span.monitoring-status-empty{
+  height: 20px;
+  width: 24px;
+  display: inline-block;
+}
+
+td.monitoring-column{
+  width: 27px;
+}
+
+paper-button.sort-button {
+  background-color: #c7c7c7;
+  color: white;
+  padding: 0px;
+  width: 20px;
+  min-width: 10px;
+  height: 20px;
+  margin-left: 10px;
+}
+
+paper-button.sort-button[active] {
+  color: white;
+  background-color: var(--paper-red-500);
+  padding: 0px;
+  width: 20px;
+  min-width: 10px;
+  height: 20px;
+  margin-left: 10px;
+}

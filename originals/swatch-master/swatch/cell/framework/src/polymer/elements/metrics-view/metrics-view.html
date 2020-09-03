@@ -1,0 +1,32 @@
+<link rel="import" href="../swatch-styles/swatch-styles.html">
+<link rel="import" href="/swatchcell/framework/html/elements/monitorable-status/monitorable-status.html">
+
+<link rel="import" href="/extern/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/extern/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/ts/common-elements/auto-update/auto-update.html">
+<link rel="import" href="/ts/common-elements/iron-flex-layout-attributes/iron-flex-layout-attributes.html">
+<link rel="import" href="/extern/bower_components/vaadin-grid/vaadin-grid.html">
+
+
+<dom-module id="metrics-view">
+
+    <template>
+
+        <style include="swatch-styles"></style>
+        <style include="iron-flex-layout-attributes"></style>
+        <link rel="import" type="css" href="css/metrics-view-min.css?__inline=true">
+
+        <div class="form-container" vertical layout>
+          <vaadin-grid id="table"
+            items="{{rowify(metrics)}}"
+            columns="{{columns}}"
+            flex
+          >
+          </vaadin-grid>
+        </div>
+
+    </template>
+
+    <script src="javascript/metrics-view-min.js?__inline=true"></script>
+
+</dom-module>
