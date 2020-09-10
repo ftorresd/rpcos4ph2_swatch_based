@@ -4,7 +4,9 @@ export XDAQ_DOCUMENT_ROOT=${XDAQ_ROOT}/htdocs
 export CACTUS_ROOT=/opt/cactus
 # export ROOTSYS=/opt/root/hcal-root-5.28.00f-gcc412
 # export LD_LIBRARY_PATH=${ROOTSYS}/lib:${XDAQ_ROOT}/lib:${CACTUS_ROOT}/lib
-export LD_LIBRARY_PATH=${XDAQ_ROOT}/lib:${CACTUS_ROOT}/lib
+export RPCOS4PH2_LIBRARY_PATH=`pwd`/rpcos4ph2/x86_64_centos7/lib
+# export LD_LIBRARY_PATH=${XDAQ_ROOT}/lib:${CACTUS_ROOT}/lib
+export LD_LIBRARY_PATH=${XDAQ_ROOT}/lib:${CACTUS_ROOT}/lib:${RPCOS4PH2_LIBRARY_PATH}
 
 # export XDAQ_OS=linux
 # export PATH=${PATH}:${XDAQ_ROOT}/bin:${ROOTSYS}/bin:/nfshome0/hcalcfg/bin
@@ -23,17 +25,20 @@ export LD_LIBRARY_PATH=${XDAQ_ROOT}/lib:${CACTUS_ROOT}/lib
 # HERE=$(python -c "import os.path; print os.path.dirname(os.path.abspath('$BASH_SOURCE'))")
 # export RPCOS4PH2_ROOT=${HERE}
 
-# export SUBSYSTEM_ID=rpcos4ph2
-# export SUBSYSTEM_CELL_CLASS=rpcos4ph2supervisorswatchcell::Cell
-# export SUBSYSTEM_CELL_LIB_PATH=${RPCOS4PH2_ROOT}/rpcos4ph2/x86_64_centos7/lib/librpcos4ph2supervisorswatchcell.so
-# export SWATCH_DEFAULT_INIT_FILE=${RPCOS4PH2_ROOT}/rpcos4ph2/etc/dummySystem/dummySystem.xml
+# export PWD_PATH=/home/rpcos4ph2_dev_env/rpcos4ph2/config/
+export SUBSYSTEM_ID=rpcos4ph2
+export SUBSYSTEM_CELL_CLASS=rpcos4ph2::cell::Cell 
+export SUBSYSTEM_CELL_LIB_PATH=/home/rpcos4ph2_dev_env/rpcos4ph2/x86_64_centos7/lib/librpcos4ph2_cell.so
+# export SUBSYSTEM_CELL_LIB_PATH=${RPCOS4PH2_LIBRARY_PATH}/librpcos4ph2_cell.so;${RPCOS4PH2_LIBRARY_PATH}/librpcos4ph2_dummy.so
+export SWATCH_DEFAULT_INIT_FILE=/home/rpcos4ph2_dev_env/rpcos4ph2/config/dummySystem.xml
 # export SWATCH_DEFAULT_GATEKEEPER_XML=${RPCOS4PH2_ROOT}/rpcos4ph2/etc/dummySystem/config.xml
-# export SWATCH_DEFAULT_GATEKEEPER_KEY=RunKey1
+export SWATCH_DEFAULT_GATEKEEPER_KEY=RunKey1
 
 # export PWD_PATH=${RPCOS4PH2_ROOT}/rpcos4ph2/etc
 
 # sudo ln -s $RPCOS4PH2_ROOT/rpcos4ph2/supervisor/cell/html $XDAQ_ROOT/htdocs/rpcos4ph2 
 
-# echo "Start the RPCOS4Ph2 Supervisor:"
-# echo "/opt/cactus/bin/swatchcell/runSubsystemCell.sh"
+echo "Start the RPCOS4Ph2 Cell:"
+echo "./runSubsystemCell.sh"
 
+# source setup_env.sh ; ./runSubsystemCell.sh

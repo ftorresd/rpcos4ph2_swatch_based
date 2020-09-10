@@ -1,9 +1,0 @@
-<infra id="system">
-  <context id="processors">
-    <param id="someParameter" type="string">aCommonValueAcrossCommands</param>
-    <param cmd="resetBoard" id="clockSource" type="string">external</param>
-    <param ns="someNamespace" cmd="myCoolCommand" id="myParameter" type="string">aSpecificValue</param>
-    <!--- many more params -->
-  </context>
-  <!-- In practice, many more contexts -->
-</infra>

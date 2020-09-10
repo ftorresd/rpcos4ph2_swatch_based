@@ -1,10 +1,10 @@
 
-#include "swatch/dummy/DummyTTC.hpp"
-#include "swatch/dummy/DummyProcDriver.hpp"
+#include "rpcos4ph2/dummy/DummyTTC.hpp"
+#include "rpcos4ph2/dummy/DummyProcDriver.hpp"
 #include "swatch/core/MetricConditions.hpp"
 
 
-namespace swatch {
+namespace rpcos4ph2 {
 namespace dummy {
 
 
@@ -13,7 +13,7 @@ DummyTTC::DummyTTC(DummyProcDriver& aDriver) :
   mDriver(aDriver),
   mWarningSign(registerMetric<bool>("warningSign"))
 {
-  setWarningCondition<>(mWarningSign, core::EqualCondition<bool>(true));
+  setWarningCondition<>(mWarningSign, swatch::core::EqualCondition<bool>(true));
 }
 
 
@@ -42,4 +42,4 @@ void DummyTTC::retrieveMetricValues()
 
 
 } // namespace dummy
-} // namespace swatch
+} // namespace rpcos4ph2

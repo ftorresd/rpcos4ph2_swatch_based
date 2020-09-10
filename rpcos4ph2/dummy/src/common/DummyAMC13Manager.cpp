@@ -1,5 +1,5 @@
 
-#include "swatch/dummy/DummyAMC13Manager.hpp"
+#include "rpcos4ph2/dummy/DummyAMC13Manager.hpp"
 
 
 // boost headers
@@ -9,40 +9,40 @@
 #include "swatch/core/Factory.hpp"
 #include "swatch/action/StateMachine.hpp"
 #include "swatch/dtm/DaqTTCStub.hpp"
-#include "swatch/dummy/DummyAMC13Driver.hpp"
-#include "swatch/dummy/DummyAMC13Interfaces.hpp"
-#include "swatch/dummy/DummyAMC13ManagerCommands.hpp"
+#include "rpcos4ph2/dummy/DummyAMC13Driver.hpp"
+#include "rpcos4ph2/dummy/DummyAMC13Interfaces.hpp"
+#include "rpcos4ph2/dummy/DummyAMC13ManagerCommands.hpp"
 #include "swatch/dtm/AMCPortCollection.hpp"
 #include "swatch/action/CommandSequence.hpp"
 
 
-SWATCH_REGISTER_CLASS(swatch::dummy::DummyAMC13Manager)
+SWATCH_REGISTER_CLASS(rpcos4ph2::dummy::DummyAMC13Manager)
 
 
-namespace swatch {
+namespace rpcos4ph2 {
 namespace dummy {
 
 
 DummyAMC13Manager::DummyAMC13Manager( const swatch::core::AbstractStub& aStub ) :
-  dtm::DaqTTCManager(aStub),
+  swatch::dtm::DaqTTCManager(aStub),
   mDriver(new DummyAMC13Driver())
 {
   // 0) Monitoring interfaces
   registerInterface( new AMC13TTC(*mDriver) );
   registerInterface( new AMC13SLinkExpress(0, *mDriver) );
-  registerInterface( new dtm::AMCPortCollection() );
+  registerInterface( new swatch::dtm::AMCPortCollection() );
   for ( uint32_t s(1); s<=kNumAMCPorts; ++s)
     getAMCPorts().addPort(new AMC13BackplaneDaqPort(s, *mDriver));
   registerInterface( new AMC13EventBuilder(*mDriver));
 
   // 1) Commands
-  action::Command& reboot = registerCommand<DummyAMC13RebootCommand>("reboot");
-  action::Command& reset = registerCommand<DummyAMC13ResetCommand>("reset");
-  action::Command& cfgEvb = registerCommand<DummyAMC13ConfigureEvbCommand>("configureEvb");
-  action::Command& cfgSLink = registerCommand<DummyAMC13ConfigureSLinkCommand>("configureSLink");
-  action::Command& cfgAMCPorts = registerCommand<DummyAMC13ConfigureAMCPortsCommand>("configureAMCPorts");
-  action::Command& startDaq = registerCommand<DummyAMC13StartDaqCommand>("startDaq");
-  action::Command& stopDaq = registerCommand<DummyAMC13StopDaqCommand>("stopDaq");
+  swatch::action::Command& reboot = registerCommand<DummyAMC13RebootCommand>("reboot");
+  swatch::action::Command& reset = registerCommand<DummyAMC13ResetCommand>("reset");
+  swatch::action::Command& cfgEvb = registerCommand<DummyAMC13ConfigureEvbCommand>("configureEvb");
+  swatch::action::Command& cfgSLink = registerCommand<DummyAMC13ConfigureSLinkCommand>("configureSLink");
+  swatch::action::Command& cfgAMCPorts = registerCommand<DummyAMC13ConfigureAMCPortsCommand>("configureAMCPorts");
+  swatch::action::Command& startDaq = registerCommand<DummyAMC13StartDaqCommand>("startDaq");
+  swatch::action::Command& stopDaq = registerCommand<DummyAMC13StopDaqCommand>("stopDaq");
 
   registerCommand<DummyAMC13ForceClkTtcStateCommand>("forceClkTtcState");
   registerCommand<DummyAMC13ForceEvbStateCommand>("forceEventBuilderState");
@@ -54,7 +54,7 @@ DummyAMC13Manager::DummyAMC13Manager( const swatch::core::AbstractStub& aStub ) 
   registerSequence("fullReconfigure", reboot).then(reset).then(cfgEvb).then(cfgSLink).then(cfgAMCPorts).then(startDaq);
 
   // 3) State machines
-  dtm::RunControlFSM& lFSM = getRunControlFSM();
+  swatch::dtm::RunControlFSM& lFSM = getRunControlFSM();
   lFSM.coldReset.add(reboot);
   lFSM.clockSetup.add(reset);
   lFSM.cfgDaq.add(cfgEvb).add(cfgSLink).add(cfgAMCPorts);
@@ -80,4 +80,4 @@ void DummyAMC13Manager::retrieveMetricValues()
 
 
 } // namespace dummy
-} // namespace swatch
+} // namespace rpcos4ph2

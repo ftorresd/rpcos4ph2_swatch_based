@@ -13,7 +13,7 @@
 
 ### Run
 
-`docker run -v `pwd`:/home/rpcos4ph2_dev_env -it ftorresd/swatch_build_env`
+``docker run -p 3333:3333 -v `pwd`:/home/rpcos4ph2_dev_env -it ftorresd/swatch_build_env``
 
 ### Documentation
 

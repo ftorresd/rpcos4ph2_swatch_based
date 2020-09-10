@@ -1,5 +1,5 @@
 
-#include "swatch/dummy/DummyAMC13Driver.hpp"
+#include "rpcos4ph2/dummy/DummyAMC13Driver.hpp"
 
 // SWATCH Headers
 #include "swatch/core/exception.hpp"
@@ -8,7 +8,7 @@
 #include "boost/lexical_cast.hpp"
 
 
-namespace swatch {
+namespace rpcos4ph2 {
 namespace dummy {
 
 
@@ -55,7 +55,7 @@ DummyAMC13Driver::TTCStatus DummyAMC13Driver::readTTCStatus() const
       break;
     // Hardware unreachable : Driver usually throws
     case ComponentState::kNotReachable :
-      XCEPT_RAISE(core::RuntimeError,"Problem communicating with AMC13 (TTC block).");
+      XCEPT_RAISE(swatch::core::RuntimeError,"Problem communicating with AMC13 (TTC block).");
   }
 
   return lStatus;
@@ -76,7 +76,7 @@ DummyAMC13Driver::EventBuilderStatus DummyAMC13Driver::readEvbStatus() const
   lStatus.l1aCount = mRunning ? 42 : 0;
 
   if (mEvbState == ComponentState::kNotReachable)
-    XCEPT_RAISE(core::RuntimeError,"Problem communicating with AMC13 (event builder).");
+    XCEPT_RAISE(swatch::core::RuntimeError,"Problem communicating with AMC13 (event builder).");
 
   return lStatus;
 }
@@ -91,7 +91,7 @@ DummyAMC13Driver::SLinkStatus DummyAMC13Driver::readSLinkStatus() const
   lStatus.packetsSent = mRunning ? 42 : 0;
 
   if (mSLinkState == ComponentState::kNotReachable)
-    XCEPT_RAISE(core::RuntimeError,"Problem communicating with AMC13 (event builder).");
+    XCEPT_RAISE(swatch::core::RuntimeError,"Problem communicating with AMC13 (event builder).");
 
   return lStatus;
 }
@@ -105,7 +105,7 @@ DummyAMC13Driver::AMCPortStatus DummyAMC13Driver::readAMCPortStatus(uint32_t aSl
   lStatus.amcEventCount = mRunning ? 42 : 0;
 
   if (mAMCPortState == ComponentState::kNotReachable)
-    XCEPT_RAISE(core::RuntimeError,"Problem communicating with AMC13 (AMC backplane port " + boost::lexical_cast<std::string>(aSlotId) + ").");
+    XCEPT_RAISE(swatch::core::RuntimeError,"Problem communicating with AMC13 (AMC backplane port " + boost::lexical_cast<std::string>(aSlotId) + ").");
 
   return lStatus;
 }
@@ -142,7 +142,7 @@ void DummyAMC13Driver::forceClkTtcState(ComponentState aNewState)
 void DummyAMC13Driver::configureEvb(uint16_t aFedId)
 {
   if (mClkTtcState == kError)
-    XCEPT_RAISE(core::RuntimeError,"Couldn't configure event builder - no clock!");
+    XCEPT_RAISE(swatch::core::RuntimeError,"Couldn't configure event builder - no clock!");
   else {
     mEvbState = kGood;
     mFedId = aFedId;
@@ -159,7 +159,7 @@ void DummyAMC13Driver::forceEvbState(ComponentState aNewState)
 void DummyAMC13Driver::configureSLink(uint16_t aFedId)
 {
   if (mClkTtcState == kError)
-    XCEPT_RAISE(core::RuntimeError,"Couldn't configure event builder - no clock!");
+    XCEPT_RAISE(swatch::core::RuntimeError,"Couldn't configure event builder - no clock!");
   else {
     mSLinkState = kGood;
     mFedId = aFedId;
@@ -176,7 +176,7 @@ void DummyAMC13Driver::forceSLinkState(ComponentState aNewState)
 void DummyAMC13Driver::configureAMCPorts()
 {
   if (mClkTtcState == kError)
-    XCEPT_RAISE(core::RuntimeError,"Couldn't configure AMC port - no clock!");
+    XCEPT_RAISE(swatch::core::RuntimeError,"Couldn't configure AMC port - no clock!");
   else
     mAMCPortState = kGood;
 }
@@ -191,11 +191,11 @@ void DummyAMC13Driver::forceAMCPortState(ComponentState aNewState)
 void DummyAMC13Driver::startDaq()
 {
   if (mClkTtcState == kError)
-    XCEPT_RAISE(core::RuntimeError,"Couldn't start run - no clock!");
+    XCEPT_RAISE(swatch::core::RuntimeError,"Couldn't start run - no clock!");
   else if (mEvbState == kError)
-    XCEPT_RAISE(core::RuntimeError,"Couldn't start run - my event builder isn't configured!");
+    XCEPT_RAISE(swatch::core::RuntimeError,"Couldn't start run - my event builder isn't configured!");
   else if (mSLinkState == kError)
-    XCEPT_RAISE(core::RuntimeError,"Couldn't start run - my SLink express block isn't configured!");
+    XCEPT_RAISE(swatch::core::RuntimeError,"Couldn't start run - my SLink express block isn't configured!");
   else
     mRunning = true;
 }
@@ -204,11 +204,11 @@ void DummyAMC13Driver::startDaq()
 void DummyAMC13Driver::stopDaq()
 {
   if (!mRunning)
-    XCEPT_RAISE(core::RuntimeError,"Couldn't stop run - not currently in run!");
+    XCEPT_RAISE(swatch::core::RuntimeError,"Couldn't stop run - not currently in run!");
   else
     mRunning = false;
 }
 
 
 } // namespace dummy
-} // namespace swatch
+} // namespace rpcos4ph2

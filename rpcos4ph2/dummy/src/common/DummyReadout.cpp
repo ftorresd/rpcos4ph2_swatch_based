@@ -1,11 +1,11 @@
 
-#include "swatch/dummy/DummyReadout.hpp"
+#include "rpcos4ph2/dummy/DummyReadout.hpp"
 
 
-#include "swatch/dummy/DummyProcDriver.hpp"
+#include "rpcos4ph2/dummy/DummyProcDriver.hpp"
 
 
-namespace swatch {
+namespace rpcos4ph2 {
 namespace dummy {
 
 
@@ -31,4 +31,4 @@ void DummyReadoutInterface::retrieveMetricValues()
 
 
 } // namespace dummy
-} // namespace swatch
+} // namespace rpcos4ph2

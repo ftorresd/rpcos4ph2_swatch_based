@@ -1,6 +1,0 @@
-<db>
-  <key id="RunKey1">
-    <load module="params.xml"/>
-    <load module="masks.xml"/>
-  </key>
-</db>

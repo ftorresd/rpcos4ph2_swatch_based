@@ -1,4 +1,4 @@
-#include "swatch/dummy/DummyProcDriver.hpp"
+#include "rpcos4ph2/dummy/DummyProcDriver.hpp"
 
 #include <cstdlib>
 
@@ -7,7 +7,7 @@
 #include "swatch/core/exception.hpp"
 
 
-namespace swatch {
+namespace rpcos4ph2 {
 namespace dummy {
 
 
@@ -46,7 +46,7 @@ DummyProcDriver::TTCStatus DummyProcDriver::getTTCStatus() const
 
   // Hardware unreachable : Driver usually throws
   if (mClkState == ComponentState::kNotReachable)
-    XCEPT_RAISE(core::RuntimeError,"Problem communicating with board (TTC block).");
+    XCEPT_RAISE(swatch::core::RuntimeError,"Problem communicating with board (TTC block).");
 
   return lStatus;
 }
@@ -66,7 +66,7 @@ DummyProcDriver::ReadoutStatus DummyProcDriver::getReadoutStatus() const
     case ComponentState::kNotReachable :
       break;
   }
-  XCEPT_RAISE(core::RuntimeError,"Problem communicating with board (readout block).");
+  XCEPT_RAISE(swatch::core::RuntimeError,"Problem communicating with board (readout block).");
 }
 
 
@@ -81,7 +81,7 @@ DummyProcDriver::RxPortStatus DummyProcDriver::getRxPortStatus(uint32_t aChannel
     case ComponentState::kNotReachable :
       break;
   }
-  XCEPT_RAISE(core::RuntimeError,"Problem communicating with board (rx port " + boost::lexical_cast<std::string>(aChannelId) + ").");
+  XCEPT_RAISE(swatch::core::RuntimeError,"Problem communicating with board (rx port " + boost::lexical_cast<std::string>(aChannelId) + ").");
 }
 
 
@@ -97,7 +97,7 @@ DummyProcDriver::TxPortStatus DummyProcDriver::getTxPortStatus(uint32_t aChannel
     case ComponentState::kNotReachable :
       break;
   }
-  XCEPT_RAISE(core::RuntimeError,"Problem communicating with board (tx port " + boost::lexical_cast<std::string>(aChannelId) + ").");
+  XCEPT_RAISE(swatch::core::RuntimeError,"Problem communicating with board (tx port " + boost::lexical_cast<std::string>(aChannelId) + ").");
 }
 
 
@@ -118,7 +118,7 @@ DummyProcDriver::AlgoStatus DummyProcDriver::getAlgoStatus() const
     case ComponentState::kNotReachable :
       break;
   }
-  XCEPT_RAISE(core::RuntimeError,"Problem communicating with board (algo block).");
+  XCEPT_RAISE(swatch::core::RuntimeError,"Problem communicating with board (algo block).");
 }
 
 
@@ -152,7 +152,7 @@ void DummyProcDriver::configureRxPorts()
 {
   if (mClkState == kError) {
     mRxState = kError;
-    XCEPT_RAISE(core::RuntimeError,"Couldn't configure rx ports - no clock!");
+    XCEPT_RAISE(swatch::core::RuntimeError,"Couldn't configure rx ports - no clock!");
   }
   else
     mRxState = kGood;
@@ -169,7 +169,7 @@ void DummyProcDriver::configureTxPorts()
 {
   if (mClkState == kError) {
     mTxState = kError;
-    XCEPT_RAISE(core::RuntimeError,"Couldn't configure tx ports - no clock!");
+    XCEPT_RAISE(swatch::core::RuntimeError,"Couldn't configure tx ports - no clock!");
   }
   else
     mTxState = kGood;
@@ -186,7 +186,7 @@ void DummyProcDriver::configureReadout()
 {
   if (mClkState == kError) {
     mReadoutState = kError;
-    XCEPT_RAISE(core::RuntimeError,"Couldn't configure readout block - no clock!");
+    XCEPT_RAISE(swatch::core::RuntimeError,"Couldn't configure readout block - no clock!");
   }
   else
     mReadoutState = kGood;
@@ -203,7 +203,7 @@ void DummyProcDriver::configureAlgo()
 {
   if (mClkState == kError) {
     mReadoutState = kError;
-    XCEPT_RAISE(core::RuntimeError,"Couldn't configure algo - no clock!");
+    XCEPT_RAISE(swatch::core::RuntimeError,"Couldn't configure algo - no clock!");
   }
   else
     mAlgoState = kGood;

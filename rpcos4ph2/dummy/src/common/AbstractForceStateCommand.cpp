@@ -1,5 +1,5 @@
 
-#include "swatch/dummy/AbstractForceStateCommand.hpp"
+#include "rpcos4ph2/dummy/AbstractForceStateCommand.hpp"
 
 
 #include <algorithm>
@@ -7,14 +7,14 @@
 
 #include "xdata/String.h"
 
-#include "swatch/dummy/ComponentState.hpp"
+#include "rpcos4ph2/dummy/ComponentState.hpp"
 
 
-namespace swatch {
+namespace rpcos4ph2 {
 namespace dummy {
 
 
-AbstractForceStateCommand::AbstractForceStateCommand(const std::string& aId, action::ActionableObject& aActionable) :
+AbstractForceStateCommand::AbstractForceStateCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   Command(aId, aActionable, xdata::String("Dummy 'force state' command's default result!"))
 {
   registerParameter("state", xdata::String("error"));
@@ -26,7 +26,7 @@ AbstractForceStateCommand::~AbstractForceStateCommand()
 }
 
 
-ComponentState AbstractForceStateCommand::parseState(const core::XParameterSet& aParams)
+ComponentState AbstractForceStateCommand::parseState(const swatch::core::XParameterSet& aParams)
 {
   std::string lStateParam = aParams.get<xdata::String>("state").value_;
 
@@ -42,7 +42,7 @@ ComponentState AbstractForceStateCommand::parseState(const core::XParameterSet& 
   else if (lStateParam == "good")
     return ComponentState::kGood;
   else
-    XCEPT_RAISE(core::RuntimeError,"Invalid state string '" + aParams.get<xdata::String>("state").value_ + "'");
+    XCEPT_RAISE(swatch::core::RuntimeError,"Invalid state string '" + aParams.get<xdata::String>("state").value_ + "'");
 }
 
 } // end ns: dummy

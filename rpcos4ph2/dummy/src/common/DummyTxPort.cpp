@@ -1,12 +1,12 @@
 
-#include "swatch/dummy/DummyTxPort.hpp"
+#include "rpcos4ph2/dummy/DummyTxPort.hpp"
 
 
 #include "swatch/core/MetricConditions.hpp"
-#include "swatch/dummy/DummyProcDriver.hpp"
+#include "rpcos4ph2/dummy/DummyProcDriver.hpp"
 
 
-namespace swatch {
+namespace rpcos4ph2 {
 namespace dummy {
 
 
@@ -16,7 +16,7 @@ DummyTxPort::DummyTxPort(const std::string& aId, uint32_t aNumber, DummyProcDriv
   mDriver(aDriver),
   mWarningSign(registerMetric<bool>("warningSign"))
 {
-  setWarningCondition<>(mWarningSign, core::EqualCondition<bool>(true));
+  setWarningCondition<>(mWarningSign, swatch::core::EqualCondition<bool>(true));
 }
 
 DummyTxPort::~DummyTxPort()
@@ -34,4 +34,4 @@ void DummyTxPort::retrieveMetricValues()
 
 
 } // namespace dummy
-} // namespace swatch
+} // namespace rpcos4ph2

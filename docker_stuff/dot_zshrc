@@ -1,0 +1,1 @@
+/usr/bin/scl enable devtoolset-8 /usr/bin/zsh

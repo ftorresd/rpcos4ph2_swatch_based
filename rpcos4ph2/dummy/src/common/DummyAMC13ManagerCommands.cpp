@@ -1,5 +1,5 @@
 
-#include "swatch/dummy/DummyAMC13ManagerCommands.hpp"
+#include "rpcos4ph2/dummy/DummyAMC13ManagerCommands.hpp"
 
 
 // XDAQ headers
@@ -8,19 +8,19 @@
 // SWATCH headers
 #include "swatch/dtm/AMCPortCollection.hpp"
 #include "swatch/dtm/AMCPort.hpp"
-#include "swatch/dummy/DummyAMC13Manager.hpp"
-#include "swatch/dummy/DummyAMC13Driver.hpp"
+#include "rpcos4ph2/dummy/DummyAMC13Manager.hpp"
+#include "rpcos4ph2/dummy/DummyAMC13Driver.hpp"
 
 
 
-namespace swatch {
+namespace rpcos4ph2 {
 namespace dummy {
 
 
 ///////////////////////////////
 /*  DummyAMC13RebootCommand  */
 
-DummyAMC13RebootCommand::DummyAMC13RebootCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyAMC13RebootCommand::DummyAMC13RebootCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractConfigureCommand(aId, aActionable)
 {
 }
@@ -39,7 +39,7 @@ void DummyAMC13RebootCommand::runAction(bool aGoIntoError)
 //////////////////////////////
 /*  DummyAMC13ResetCommand  */
 
-DummyAMC13ResetCommand::DummyAMC13ResetCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyAMC13ResetCommand::DummyAMC13ResetCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractConfigureCommand(aId, aActionable)
 {
 }
@@ -61,7 +61,7 @@ void DummyAMC13ResetCommand::runAction(bool aGoIntoError)
 ////////////////////////////////
 /*  DummyConfigureEvbCommand  */
 
-DummyAMC13ConfigureEvbCommand::DummyAMC13ConfigureEvbCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyAMC13ConfigureEvbCommand::DummyAMC13ConfigureEvbCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractConfigureCommand(aId, aActionable)
 {
 }
@@ -84,7 +84,7 @@ void DummyAMC13ConfigureEvbCommand::runAction(bool aGoIntoError)
 //////////////////////////////////
 /*  DummyConfigureSLinkCommand  */
 
-DummyAMC13ConfigureSLinkCommand::DummyAMC13ConfigureSLinkCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyAMC13ConfigureSLinkCommand::DummyAMC13ConfigureSLinkCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractConfigureCommand(aId, aActionable)
 {
 }
@@ -107,7 +107,7 @@ void DummyAMC13ConfigureSLinkCommand::runAction(bool aGoIntoError)
 /////////////////////////////////////
 /*  DummyConfigureAMCPortsCommand  */
 
-DummyAMC13ConfigureAMCPortsCommand::DummyAMC13ConfigureAMCPortsCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyAMC13ConfigureAMCPortsCommand::DummyAMC13ConfigureAMCPortsCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractConfigureCommand(aId, aActionable)
 {
 }
@@ -138,7 +138,7 @@ void DummyAMC13ConfigureAMCPortsCommand::runAction(bool aGoIntoError)
 ////////////////////////////
 /*  DummyStartDaqCommand  */
 
-DummyAMC13StartDaqCommand::DummyAMC13StartDaqCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyAMC13StartDaqCommand::DummyAMC13StartDaqCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractConfigureCommand(aId, aActionable)
 {
 }
@@ -158,7 +158,7 @@ void DummyAMC13StartDaqCommand::runAction(bool aGoIntoError)
 ////////////////////////////
 /*  DummyStartDaqCommand  */
 
-DummyAMC13StopDaqCommand::DummyAMC13StopDaqCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyAMC13StopDaqCommand::DummyAMC13StopDaqCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractConfigureCommand(aId, aActionable)
 {
 }
@@ -179,7 +179,7 @@ void DummyAMC13StopDaqCommand::runAction(bool aGoIntoError)
 /////////////////////////////////////////
 /*  DummyAMC13ForceClkTtcStateCommand  */
 
-DummyAMC13ForceClkTtcStateCommand::DummyAMC13ForceClkTtcStateCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyAMC13ForceClkTtcStateCommand::DummyAMC13ForceClkTtcStateCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractForceStateCommand(aId, aActionable)
 {
 }
@@ -188,7 +188,7 @@ DummyAMC13ForceClkTtcStateCommand::~DummyAMC13ForceClkTtcStateCommand()
 {
 }
 
-action::Command::State DummyAMC13ForceClkTtcStateCommand::code(const core::XParameterSet& aParamSet)
+swatch::action::Command::State DummyAMC13ForceClkTtcStateCommand::code(const swatch::core::XParameterSet& aParamSet)
 {
   DummyAMC13Driver& lDriver = getActionable<DummyAMC13Manager>().getDriver();
   lDriver.forceClkTtcState(parseState(aParamSet));
@@ -199,7 +199,7 @@ action::Command::State DummyAMC13ForceClkTtcStateCommand::code(const core::XPara
 //////////////////////////////////////
 /*  DummyAMC13ForceEvbStateCommand  */
 
-DummyAMC13ForceEvbStateCommand::DummyAMC13ForceEvbStateCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyAMC13ForceEvbStateCommand::DummyAMC13ForceEvbStateCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractForceStateCommand(aId, aActionable)
 {
 }
@@ -208,7 +208,7 @@ DummyAMC13ForceEvbStateCommand::~DummyAMC13ForceEvbStateCommand()
 {
 }
 
-action::Command::State DummyAMC13ForceEvbStateCommand::code(const core::XParameterSet& aParamSet)
+swatch::action::Command::State DummyAMC13ForceEvbStateCommand::code(const swatch::core::XParameterSet& aParamSet)
 {
   DummyAMC13Driver& lDriver = getActionable<DummyAMC13Manager>().getDriver();
   lDriver.forceEvbState(parseState(aParamSet));
@@ -219,7 +219,7 @@ action::Command::State DummyAMC13ForceEvbStateCommand::code(const core::XParamet
 ////////////////////////////////////////
 /*  DummyAMC13ForceSLinkStateCommand  */
 
-DummyAMC13ForceSLinkStateCommand::DummyAMC13ForceSLinkStateCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyAMC13ForceSLinkStateCommand::DummyAMC13ForceSLinkStateCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractForceStateCommand(aId, aActionable)
 {
 }
@@ -228,7 +228,7 @@ DummyAMC13ForceSLinkStateCommand::~DummyAMC13ForceSLinkStateCommand()
 {
 }
 
-action::Command::State DummyAMC13ForceSLinkStateCommand::code(const core::XParameterSet& aParamSet)
+swatch::action::Command::State DummyAMC13ForceSLinkStateCommand::code(const swatch::core::XParameterSet& aParamSet)
 {
   DummyAMC13Driver& lDriver = getActionable<DummyAMC13Manager>().getDriver();
   lDriver.forceSLinkState(parseState(aParamSet));
@@ -239,7 +239,7 @@ action::Command::State DummyAMC13ForceSLinkStateCommand::code(const core::XParam
 //////////////////////////////////////////
 /*  DummyAMC13ForceAMCPortStateCommand  */
 
-DummyAMC13ForceAMCPortStateCommand::DummyAMC13ForceAMCPortStateCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyAMC13ForceAMCPortStateCommand::DummyAMC13ForceAMCPortStateCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractForceStateCommand(aId, aActionable)
 {
 }
@@ -248,7 +248,7 @@ DummyAMC13ForceAMCPortStateCommand::~DummyAMC13ForceAMCPortStateCommand()
 {
 }
 
-action::Command::State DummyAMC13ForceAMCPortStateCommand::code(const core::XParameterSet& aParamSet)
+swatch::action::Command::State DummyAMC13ForceAMCPortStateCommand::code(const swatch::core::XParameterSet& aParamSet)
 {
   DummyAMC13Driver& lDriver = getActionable<DummyAMC13Manager>().getDriver();
   lDriver.forceAMCPortState(parseState(aParamSet));
@@ -257,4 +257,4 @@ action::Command::State DummyAMC13ForceAMCPortStateCommand::code(const core::XPar
 
 
 } // namespace dummy
-} // namespace swatch
+} // namespace rpcos4ph2

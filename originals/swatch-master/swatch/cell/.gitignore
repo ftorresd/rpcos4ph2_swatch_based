@@ -1,7 +1,0 @@
-*.so
-*.o
-*.d
-framework/src/polymer/node_modules
-framework/rpm
-example/test/tmp_htdocs/
-example/rpm

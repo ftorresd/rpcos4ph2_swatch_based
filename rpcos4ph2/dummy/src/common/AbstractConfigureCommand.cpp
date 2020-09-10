@@ -1,5 +1,5 @@
 
-#include "swatch/dummy/AbstractConfigureCommand.hpp"
+#include "rpcos4ph2/dummy/AbstractConfigureCommand.hpp"
 
 
 #include "xdata/Boolean.h"
@@ -7,11 +7,11 @@
 #include "xdata/UnsignedInteger.h"
 
 
-namespace swatch {
+namespace rpcos4ph2 {
 namespace dummy {
 
 
-AbstractConfigureCommand::AbstractConfigureCommand(const std::string& aId, action::ActionableObject& aActionable) :
+AbstractConfigureCommand::AbstractConfigureCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   Command(aId, aActionable, xdata::String("Dummy command's default result!"))
 {
   registerParameter("cmdDuration", xdata::UnsignedInteger(5));
@@ -26,7 +26,7 @@ AbstractConfigureCommand::~AbstractConfigureCommand()
 }
 
 
-action::Command::State AbstractConfigureCommand::code(const core::XParameterSet& aParams)
+swatch::action::Command::State AbstractConfigureCommand::code(const swatch::core::XParameterSet& aParams)
 {
   const size_t lNrSeconds = aParams.get<xdata::UnsignedInteger>("cmdDuration").value_;
 
@@ -48,7 +48,7 @@ action::Command::State AbstractConfigureCommand::code(const core::XParameterSet&
   this->runAction(lState == kError);
 
   if (aParams.get<xdata::Boolean>("throw").value_)
-    XCEPT_RAISE(core::RuntimeError,"An exceptional error occurred!");
+    XCEPT_RAISE(swatch::core::RuntimeError,"An exceptional error occurred!");
   return lState;
 }
 

@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<cell_xhannel_list xmlns="http://triggersupervisor.cern.ch/cell_xhannel_list" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://triggersupervisor.cern.ch/cell_xhannel_list cell_xhannel_list.xsd">
-   	<xhannel name="DB" application="tstore::TStore" type="tstore" instance="0"/>
-	<!-- <xhannel name="MON" application="xmas::slash2g::Application" type="monitor" instance="0"/> -->
-</cell_xhannel_list>

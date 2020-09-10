@@ -1,25 +1,25 @@
 
-#include "swatch/dummy/DummyProcessorCommands.hpp"
+#include "rpcos4ph2/dummy/DummyProcessorCommands.hpp"
 
 
 // XDAQ headers
 #include "xdata/Vector.h"
 
 // SWATCH headers
-#include "swatch/dummy/DummyProcessor.hpp"
-#include "swatch/dummy/DummyProcDriver.hpp"
+#include "rpcos4ph2/dummy/DummyProcessor.hpp"
+#include "rpcos4ph2/dummy/DummyProcDriver.hpp"
 #include "swatch/processor/Port.hpp"
 #include "swatch/processor/PortCollection.hpp"
 
 
-namespace swatch {
+namespace rpcos4ph2 {
 namespace dummy {
 
 
 //////////////////////////
 /*  DummyRebootCommand  */
 
-DummyRebootCommand::DummyRebootCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyRebootCommand::DummyRebootCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractConfigureCommand(aId, aActionable)
 {
 }
@@ -38,7 +38,7 @@ void DummyRebootCommand::runAction(bool aGoIntoError)
 /////////////////////////
 /*  DummyResetCommand  */
 
-DummyResetCommand::DummyResetCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyResetCommand::DummyResetCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractConfigureCommand(aId, aActionable)
 {
 }
@@ -58,7 +58,7 @@ void DummyResetCommand::runAction(bool aGoIntoError)
 ///////////////////////////////
 /*  DummyConfigureTxCommand  */
 
-DummyConfigureTxCommand::DummyConfigureTxCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyConfigureTxCommand::DummyConfigureTxCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractConfigureCommand(aId, aActionable)
 {
 }
@@ -85,7 +85,7 @@ void DummyConfigureTxCommand::runAction(bool aGoIntoError)
 ///////////////////////////////
 /*  DummyConfigureRxCommand  */
 
-DummyConfigureRxCommand::DummyConfigureRxCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyConfigureRxCommand::DummyConfigureRxCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractConfigureCommand(aId, aActionable)
 {
 }
@@ -114,7 +114,7 @@ void DummyConfigureRxCommand::runAction(bool aGoIntoError)
 ////////////////////////////////
 /*  DummyConfigureDaqCommand  */
 
-DummyConfigureDaqCommand::DummyConfigureDaqCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyConfigureDaqCommand::DummyConfigureDaqCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractConfigureCommand(aId, aActionable)
 {
 }
@@ -134,7 +134,7 @@ void DummyConfigureDaqCommand::runAction(bool aGoIntoError)
 /////////////////////////////////
 /*  DummyConfigureAlgoCommand  */
 
-DummyConfigureAlgoCommand::DummyConfigureAlgoCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyConfigureAlgoCommand::DummyConfigureAlgoCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractConfigureCommand(aId, aActionable)
 {
 }
@@ -154,7 +154,7 @@ void DummyConfigureAlgoCommand::runAction(bool aGoIntoError)
 /////////////////////////////////////////////
 /*  DummyProcessorForceClkTtcStateCommand  */
 
-DummyProcessorForceClkTtcStateCommand::DummyProcessorForceClkTtcStateCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyProcessorForceClkTtcStateCommand::DummyProcessorForceClkTtcStateCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractForceStateCommand(aId, aActionable)
 {
 }
@@ -163,7 +163,7 @@ DummyProcessorForceClkTtcStateCommand::~DummyProcessorForceClkTtcStateCommand()
 {
 }
 
-action::Command::State DummyProcessorForceClkTtcStateCommand::code(const core::XParameterSet& aParamSet)
+swatch::action::Command::State DummyProcessorForceClkTtcStateCommand::code(const swatch::core::XParameterSet& aParamSet)
 {
   DummyProcDriver& lDriver = getActionable<DummyProcessor>().getDriver();
   lDriver.forceClkTtcState(parseState(aParamSet));
@@ -174,7 +174,7 @@ action::Command::State DummyProcessorForceClkTtcStateCommand::code(const core::X
 //////////////////////////////////////////////
 /*  DummyProcessorForceRxPortsStateCommand  */
 
-DummyProcessorForceRxPortsStateCommand::DummyProcessorForceRxPortsStateCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyProcessorForceRxPortsStateCommand::DummyProcessorForceRxPortsStateCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractForceStateCommand(aId, aActionable)
 {
 }
@@ -183,7 +183,7 @@ DummyProcessorForceRxPortsStateCommand::~DummyProcessorForceRxPortsStateCommand(
 {
 }
 
-action::Command::State DummyProcessorForceRxPortsStateCommand::code(const core::XParameterSet& aParamSet)
+swatch::action::Command::State DummyProcessorForceRxPortsStateCommand::code(const swatch::core::XParameterSet& aParamSet)
 {
   DummyProcDriver& lDriver = getActionable<DummyProcessor>().getDriver();
   lDriver.forceRxPortsState(parseState(aParamSet));
@@ -194,7 +194,7 @@ action::Command::State DummyProcessorForceRxPortsStateCommand::code(const core::
 //////////////////////////////////////////////
 /*  DummyProcessorForceTxPortsStateCommand  */
 
-DummyProcessorForceTxPortsStateCommand::DummyProcessorForceTxPortsStateCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyProcessorForceTxPortsStateCommand::DummyProcessorForceTxPortsStateCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractForceStateCommand(aId, aActionable)
 {
 }
@@ -203,7 +203,7 @@ DummyProcessorForceTxPortsStateCommand::~DummyProcessorForceTxPortsStateCommand(
 {
 }
 
-action::Command::State DummyProcessorForceTxPortsStateCommand::code(const core::XParameterSet& aParamSet)
+swatch::action::Command::State DummyProcessorForceTxPortsStateCommand::code(const swatch::core::XParameterSet& aParamSet)
 {
   DummyProcDriver& lDriver = getActionable<DummyProcessor>().getDriver();
   lDriver.forceTxPortsState(parseState(aParamSet));
@@ -214,7 +214,7 @@ action::Command::State DummyProcessorForceTxPortsStateCommand::code(const core::
 //////////////////////////////////////////////
 /*  DummyProcessorForceReadoutStateCommand  */
 
-DummyProcessorForceReadoutStateCommand::DummyProcessorForceReadoutStateCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyProcessorForceReadoutStateCommand::DummyProcessorForceReadoutStateCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractForceStateCommand(aId, aActionable)
 {
 }
@@ -223,7 +223,7 @@ DummyProcessorForceReadoutStateCommand::~DummyProcessorForceReadoutStateCommand(
 {
 }
 
-action::Command::State DummyProcessorForceReadoutStateCommand::code(const core::XParameterSet& aParamSet)
+swatch::action::Command::State DummyProcessorForceReadoutStateCommand::code(const swatch::core::XParameterSet& aParamSet)
 {
   DummyProcDriver& lDriver = getActionable<DummyProcessor>().getDriver();
   lDriver.forceReadoutState(parseState(aParamSet));
@@ -234,7 +234,7 @@ action::Command::State DummyProcessorForceReadoutStateCommand::code(const core::
 ///////////////////////////////////////////
 /*  DummyProcessorForceAlgoStateCommand  */
 
-DummyProcessorForceAlgoStateCommand::DummyProcessorForceAlgoStateCommand(const std::string& aId, action::ActionableObject& aActionable) :
+DummyProcessorForceAlgoStateCommand::DummyProcessorForceAlgoStateCommand(const std::string& aId, swatch::action::ActionableObject& aActionable) :
   AbstractForceStateCommand(aId, aActionable)
 {
 }
@@ -243,7 +243,7 @@ DummyProcessorForceAlgoStateCommand::~DummyProcessorForceAlgoStateCommand()
 {
 }
 
-action::Command::State DummyProcessorForceAlgoStateCommand::code(const core::XParameterSet& aParamSet)
+swatch::action::Command::State DummyProcessorForceAlgoStateCommand::code(const swatch::core::XParameterSet& aParamSet)
 {
   DummyProcDriver& lDriver = getActionable<DummyProcessor>().getDriver();
   lDriver.forceAlgoState(parseState(aParamSet));
@@ -253,4 +253,4 @@ action::Command::State DummyProcessorForceAlgoStateCommand::code(const core::XPa
 
 
 } // namespace dummy
-} // namespace swatch
+} // namespace rpcos4ph2
