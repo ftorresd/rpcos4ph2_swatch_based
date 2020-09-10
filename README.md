@@ -1,13 +1,5 @@
 # RPCOS4Ph2 - SWATCH Based
 
-## Compile
-
-Inside the Docker container:
-
-```
-cd /home/rpcos4ph2_dev_env/rpcos4ph2
-make install -j`nproc`
-```
 
 ## Launch the container
 
