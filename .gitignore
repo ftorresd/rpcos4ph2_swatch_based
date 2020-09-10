@@ -1,6 +1,8 @@
 # custom
 originals
 rpcos4ph2/x86_64_centos7
+rpcos4ph2/dummy/include/rpcos4ph2/dummy/dummy
+rpcos4ph2/dummy/include/dummy
 
 # Prerequisites
 *.d
